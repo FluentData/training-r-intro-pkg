@@ -1,0 +1,653 @@
+title: "Subsetting, Sorting, and Combining Data Frames"
+metadata:
+  author: Fluent Data, LLC
+  date: "`r Sys.Date()`"
+  description: |
+    This lesson provides an overview of subsetting, sorting, and combining data frames in R using indexing, logical operations, the filter() function from dplyr, as well as sorting with arrange() and combining data frames with bind_rows().
+lesson:
+  number: 3
+  id: 3-Subsetting-Sorting-and-Combining
+  next: 4-Writing-Functions-Conditionals-and-Loops
+introduction: |
+  This lesson covers how to subset data using indexing, logical operators, and the `filter()` function from `dplyr`. It also covers how to sort and combine data frames.
+content:
+  - type: section
+    title: Prerequisites
+    content:
+      - type: paragraph
+        content: |
+          This lesson assumes you are familiar with the material in the previous lesson on [Functions and Importing Data](../2-Functions-and_Importing-Data/readme.md).
+      - type: paragraph
+        content: |
+          The example data for exercises in this lesson is available directly from this package. It is assumed that this package is already installed and loaded into your R session.
+      - type: paragraph
+        content: |
+          To load the `chicago_air` data frame we will be using in the lesson, simply use the `data()` function to load the data frame.
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Load `chicago_air` Data Frame"
+        content: |
+          data(chicago_air)
+      - type: paragraph
+        content: |
+          You should see the `chicago_air` variable in the top right panel of RStudio, which means the data frame has been loaded to your R session from this package.
+      - type: paragraph
+        content: |
+          We will also use some functions from the `dplyr` package. You will need to install the package if you haven't already.
+      - type: code
+        language: r
+        options:
+          exercise: false
+          exercise.eval: false
+          eval: false
+          exercise.cap: "Install `dplyr` Package"
+        content: |
+          install.packages("dplyr")
+  - type: section
+    title: Viewing Data Frames
+    content:
+      - type: paragraph
+        content: |
+          We always want to make sure our data looks the way it is supposed to before we begin working with it.
+      - type: paragraph
+        content: |
+          The best way to take a quick look at the first few rows of a data frame is to use the `head()` function.
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "View the First Few Rows of `chicago_air`"
+        content: |
+          data(chicago_air)
+          head(chicago_air)
+      - type: paragraph
+        content: |
+          You can specify the number of lines to display by using the `n` parameter.
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Specify Number of Lines with `head()`"
+        content: |
+          data(chicago_air)
+          head(chicago_air, n = 3)
+      - type: paragraph
+        content: |
+          You can also look at the bottom of the data frame by using the `tail()` function.
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "View the Last Few Rows of `chicago_air`"
+        content: |
+          data(chicago_air)
+          tail(chicago_air)
+      - type: paragraph
+        content: |
+          In RStudio, you can either click on the name of the data frame in the top right panel or use the `View()` function to generate a web based table of the data in the top left panel.
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: false
+          exercise.cap: "Use `View()` to Inspect `chicago_air`"
+        content: |
+          data(chicago_air)
+          View(chicago_air)
+      - type: image
+        src: "images/view.png"
+        alt: "View function output in RStudio"
+      - type: paragraph
+        content: |
+          By inspecting the data frame this way, you can see that the records are daily values of ozone, temperature, and solar radiation. For more information about the data set you can type a question mark in from the name of the data frame variable in the console.
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: false
+          exercise.cap: "Learn More About `chicago_air`"
+        content: |
+          ?chicago_air
+      - type: paragraph
+        content: |
+          From the `Description` section of the help page, the `chicago_air` data frame is:
+          > A dataset containing daily values of ozone, temperature, and solar radiation from a Chicago monitor between January 1, 2021 and December 31, 2021.
+  - type: section
+    title: Subsetting
+    content:
+      - type: paragraph
+        content: |
+          If we want to work with a particular subset of a data frame, we need to know how to select particular records. We will cover how to subset using numeric indexing, logical conditions, and the `filter()` function.
+      - type: section
+        title: Indexing
+        content:
+          - type: paragraph
+            content: |
+              Values in a data frame can be selected, individually or in a group, based on their index values. These are integers that represent the locations in the data frame. If there is a 2 x 2 table, then there are 2 rows and 2 columns. Each cell can be represented by two numbers, like coordinates on a map. For a data frame, the format is `[row, column]`. Below is a table that shows the index values in each cell.
+              |Column 1 | Column 2|
+              |---      |---      |
+              | `[1, 1]`| `[1, 2]`|
+              | `[2, 1]`| `[2, 2]`|
+          - type: paragraph
+            content: |
+              Below is a data frame called `my_data` that has 3 rows and 2 columns.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Explore Data Frame Indexing with `my_data`"
+            content: |
+              my_data <- data.frame(colors = c("red", "green", "yellow"),
+                                    fruit = c("apple", "grape", "banana"))
+
+              my_data
+          - type: paragraph
+            content: |
+              To select a particular cell from the `my_data` data frame, we use the `[row, column]` construction. We place those square brackets at the end of the data frame variable `my_data[]` and use integers to select a value. If we wanted to select the "green" value, we would use `my_data[2, 1]`.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Select a Specific Value Using Indexing"
+            content: |
+              my_data[2, 1]
+          - type: paragraph
+            content: |
+              To select "banana", we use `my_data[3, 2]`.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Access Another Specific Value Using Indexing"
+            content: |
+              my_data[3, 2]
+          - type: paragraph
+            content: |
+              We can also access data from a vector using the same indexing idea. In this case, you don’t need the comma to separate the rows and columns since you are accessing one dimensional data. Below is a vector of numbers.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Vector Indexing Example"
+            content: |
+              x <- c(1, 3, 2, 7, 25.3, 6)
+              x
+          - type: paragraph
+            content: |
+              If we want to access the 5th element of the vector, we would use `x[5]`.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Access a Vector Element by Index"
+            content: |
+              x[5]
+          - type: paragraph
+            content: |
+              Now that we understand indexing we can subset the `chicago_air` data frame by using the brackets `[ , ]` function. (This is a rare example of a function in R that does not have the form `function_name()`.)
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Subset `chicago_air` Data Frame Using Indexing"
+            content: |
+              data(chicago_air)
+              chicago_air[1, ]
+          - type: paragraph
+            content: |
+              If you want more than one row, you can supply a vector of row numbers. Below, the vector access the 1st, 2nd, and 5th rows of the data frame.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Access Multiple Rows with a Vector of Row Numbers"
+            content: |
+              data(chicago_air)
+              chicago_air[c(1, 2, 5), ]
+          - type: paragraph
+            content: |
+              To get a column from the data frame, specify the column number in the brackets, to the right of the comma. By leaving the row value blank, you are telling it to return all rows associated with column 1. Below, we wrap the output in the `head()` function to limit the number of rows printed.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Access a Single Column"
+            content: |
+              data(chicago_air)
+              head(chicago_air[, 1])
+          - type: paragraph
+            content: |
+              As you can see, a vector is returned. When a column of a data frame is selected a data frame is not returned. This is because a column in a data frame is all the same data type, and a vector is a simpler representation of the values. But if a row is selected, the values will not necessarily be the same data type, so a data frame is returned.
+          - type: paragraph
+            content: |
+              You can also obtain more than one column by supplying a vector of column numbers.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Access Multiple Columns"
+            content: |
+              data(chicago_air)
+              head(chicago_air[, c(3, 4, 6)])
+          - type: paragraph
+            content: |
+              Since more than one column is selected, then a data frame is returned.
+          - type: paragraph
+            content: |
+              A column name can be used to select a vector.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Access a Column by Name"
+            content: |
+              data(chicago_air)
+              head(chicago_air[, "solar"])
+          - type: paragraph
+            content: |
+              Or a vector of column names can subset to a slimmed down data frame.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Subset to Specific Columns by Name"
+            content: |
+              data(chicago_air)
+              head(chicago_air[, c("ozone", "temp", "month")])
+          - type: paragraph
+            content: |
+              Both rows and columns can be specified at the same time. The example below returns the first 5 rows of the temperature and solar columns.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Specify Both Rows and Columns for Subsetting"
+            content: |
+              chicago_air[1:5, c("temp", "solar")]
+      - type: section
+        title: Access a Column with `$`
+        content:
+          - type: paragraph
+            content: |
+              In R, the dollar sign `$` is a special character that can be used to access a data frame column by name. The dollar sign is placed immediately after the variable name. For example, if we wanted to access the temperature values in the `chicago_air` data frame, then we would use `chicago_air$temp`.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Access a Column with `$`"
+            content: |
+              data(chicago_air)
+              head(chicago_air$temp)
+          - type: paragraph
+            content: |
+              Again, a vector is returned because a single column is being accessed. Using `$` is a convenient way to grab a column from a data frame, and we will use it throughout the rest of these lessons.
+      - type: section
+        title: Logical Expressions
+        content:
+          - type: paragraph
+            content: |
+              It's useful to understand how numeric indexing works with data frames. But often, if we want a subset of data, we want to use a logical expression to keep data (or discard it).
+          - type: paragraph
+            content: |
+              Below is a table of logical operators in R that can be used to create logical conditions.
+          - type: paragraph
+            content: |
+              ### Reference Table of Logical Operators
+              |Operator |Description |
+              | :---    | :---       |
+              | <	      | less than  |
+              | <=	    | less than or equal to|
+              | >	      | greater than |
+              | >=	    | greater than or equal to |
+              | ==	    | exactly equal to |
+              | !=	    | not equal to |
+              | !x      | not x |
+              | x & y   | x AND y |
+              | x | y   | x OR y|
+          - type: paragraph
+            content: |
+              The result of a logical expression is a logical data type, a boolean value `TRUE` or `FALSE`.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Logical Expressions Example 1"
+            content: |
+              1 + 1 == 2
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Logical Expressions Example 2"
+            content: |
+              10 > 20
+          - type: paragraph
+            content: |
+              Vectors can also be used in a logical expression. A vector of values on the left hand side of a logical operator will return a vector of the same length with boolean values.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Vector Logical Expression"
+            content: |
+              c(25, 80, 55) > 60
+          - type: paragraph
+            content: |
+              This concept can be used to subset a data frame. A logical vector can be used in a similar way to an index vector in the brackets of a data frame `data_frame[rows, columns]`. Instead of providing a numeric vector that corresponds to row numbers, a logical vector that is as long as the data frame can be used to keep records (`TRUE`) and drop records (`FALSE`).
+          - type: paragraph
+            content: |
+              We can use the data frame of colors and fruit again to demonstrate.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Create a Logical Vector for Subsetting"
+            content: |
+              my_data <- data.frame(colors = c("red", "green", "yellow"),
+                                    fruit = c("apple", "grape", "banana"))
+
+              my_data
+          - type: paragraph
+            content: |
+              If we only wanted records with the "yellow" color, we could use the vector `c(FALSE, FALSE, TRUE)`. Place this vector in the brackets of the data frame, where we select rows.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Subset Using a Logical Vector"
+            content: |
+              my_data[c(FALSE, FALSE, TRUE), ]
+          - type: paragraph
+            content: |
+              A data frame is returned. The only record is from the 3rd row of the logical vector, because that was the only `TRUE` value in the logical vector.
+          - type: paragraph
+            content: |
+              But a more useful way of creating the logical vector is with a logical expression. Below we access the "color" column as a vector using the `$` operator. Then we create a logical vector using a logical expression.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Create a Logical Vector with a Logical Expression"
+            content: |
+              colors <- my_data$colors
+
+              colors
+
+              yellow <- colors == "yellow"
+
+              yellow
+          - type: paragraph
+            content: |
+              Now we can use the logical vector `yellow` to subset the data frame down to records that have the color yellow.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Subset Data Frame Using Logical Vector"
+            content: |
+              my_data[yellow, ]
+          - type: paragraph
+            content: |
+              The `chicago_air` data frame can be subset in a similar way. Below, a logical vector `hot` is created to represent hot days above 90 degrees. The data frame is subset down to records with hot days.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Subset `chicago_air` for Hot Days"
+            content: |
+              data(chicago_air)
+              hot <- chicago_air$temp > 90
+
+              chicago_air[hot, ]
+      - type: section
+        title: Subset with filter()
+        content:
+          - type: paragraph
+            content: |
+              A logical vector can also be used in combination with the function `filter()`.
+          - type: paragraph
+            content: |
+              The `filter()` function is from a package called `dplyr` which provides many functions for manipulating data frames.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Load `dplyr` and Explore `filter()`"
+            content: |
+              # if you have not installed dplyr
+
+
+              # install.packages("dplyr")
+
+              library(dplyr)
+          - type: paragraph
+            content: |
+              The benefit of using `filter()` is that it works the way other functions in R typically work. It used braces with parameters, and not brackets `[ , ]`. The first parameter is the data frame you want to subset, and the second parameter is a logical expression. It also allows you to reference the columns in the data frame by name, without having to access the column using `$`.
+          - type: paragraph
+            content: |
+              If we want to filter down to records in the `chicago_air` data frame where ozone was above 60 ppb (.060 ppm), we would use the following code.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Filter `chicago_air` for High Ozone Levels"
+            content: |
+              data(chicago_air)
+              high_ozone <- filter(chicago_air, ozone > 0.060)
+
+              high_ozone
+          - type: paragraph
+            content: |
+              If we wanted all of the high ozone days in the 6th month, we add another expression separated by a comma.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Filter for High Ozone Levels in June"
+            content: |
+              data(chicago_air)
+              high_ozone_june <- filter(chicago_air, ozone > 0.060, month == 6)
+
+              high_ozone_june
+          - type: paragraph
+            content: |
+              Additional logical expressions can be added by separating each expression with a comma. The comma serves as a logical AND. Below is an equivalent output to the output above, using `&` instead of a comma.
+          - type: code
+            language: r
+            options:
+              exercise: true
+              exercise.eval: true
+              exercise.cap: "Alternative `filter()` Syntax Using `&`"
+            content: |
+              data(chicago_air)
+              high_ozone_june <- filter(chicago_air, ozone > 0.060 & month == 6)
+
+              high_ozone_june
+  - type: section
+    title: Sorting
+    content:
+      - type: paragraph
+        content: |
+          The `dplyr` package also has a function named `arrange()` that will sort a data frame. It also takes a data frame as the first parameter. The output will be sorted by the column names that are provided as additional parameters.
+      - type: paragraph
+        content: |
+          Below, the `chicago_air` data frame is ordered by the `ozone` column. The default is ascending order.
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Sort `chicago_air` by `ozone`"
+        content: |
+          # if the dplyr library is not already loaded
+          library(dplyr)
+          data(chicago_air)
+
+          ozone_ordered <- arrange(chicago_air, ozone)
+
+          head(ozone_ordered)
+      - type: paragraph
+        content: |
+          To use descending order, wrap the column in the `desc()` function (also from the `dplyr` package).
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Sort `chicago_air` in Descending Order by `ozone`"
+        content: |
+          data(chicago_air)
+          ozone_descending <- arrange(chicago_air, desc(ozone))
+
+          head(ozone_descending)
+      - type: paragraph
+        content: |
+          Additional columns can be used to sort the data frame, separated by a comma.
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Sort `chicago_air` by Multiple Columns"
+        content: |
+          data(chicago_air)
+          ozone_temp <- arrange(chicago_air, desc(ozone), desc(temp))
+
+          head(ozone_temp)
+  - type: section
+    title: Combining Data Frames
+    content:
+      - type: paragraph
+        content: |
+          If we are working with multiple data frames in R, it is sometimes useful to combine two or more. The `dplyr` package has another convenient function called `bind_rows()` that will let you attach two data frames together that have the same columns.
+      - type: paragraph
+        content: |
+          To illustrate, we will make two subsets of the `chicago_air` data frame, then combine them together using the `bind_rows()` function. Below, the original number of records in the `chicago_air` data frame is shown using the `nrow()` function. We will split the data frame and recombine to a data frame with the original number of records.
+      - type: code
+
+
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Count Rows in `chicago_air`"
+        content: |
+          # if you have not loaded the dplyr package
+          library(dplyr)
+          data(chicago_air)
+
+          nrow(chicago_air)
+      - type: paragraph
+        content: |
+          Now we split the data frame into warm and cool data frames using the `filter()` function.
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Split `chicago_air` into Warm and Cool Subsets"
+        content: |
+          data(chicago_air)
+
+          warm <- filter(chicago_air, temp > 80)
+
+          nrow(warm)
+
+          cool <- filter(chicago_air, temp <= 80) # get cool air records
+
+          nrow(cool)
+      - type: paragraph
+        content: |
+          We can confirm that the rows from these two data frames add up to the original data frame.
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Verify Row Counts Before Combining"
+        content: |
+          nrow(warm) + nrow(cool) == nrow(chicago_air)
+      - type: paragraph
+        content: |
+          Now we combine using the `bind_rows()` function and confirm that the new `recombined` data frame has the same number of records as the original data frame.
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Recombine Data Frames and Verify Row Count"
+        content: |
+          data(chicago_air)
+
+          recombined <- bind_rows(warm, cool)
+
+          nrow(recombined) == nrow(chicago_air)
+exercises:
+  - instructions: "Load the `chicago_air` dataset from this package and display the first 10 rows of the dataset using the numeric index."
+    hints:
+      - "# Use the `data()` function to load datasets from packages. Use `data('chicago_air')` to load the `chicago_air` dataset."
+      - "# After loading the dataset, use `chicago_air[1:10, ]` to select the first 10 rows."
+    solution:
+      explanation: |
+        Use the `data()` function to load the data frame into your R session and a vector from 1 to 10 in the first position of the brackets `[ , ]` to select the first 10 rows. This will allow you to work directly with the `chicago_air` dataset and easily access its initial rows for inspection.
+      code: |
+        data("chicago_air")
+
+        chicago_air[1:10, ]
+  - instructions: "Use the `filter()` function to subset the `chicago_air` data frame to values where ozone is above 0.060 ppm and the temperature is above 90 degrees."
+    hints:
+      - "# Make sure the `dplyr` package is loaded with `library(dplyr)` before using `filter()`."
+      - "# To filter for multiple conditions, separate each condition with a comma within the `filter()` function."
+      - "# Use `filter(chicago_air, ozone > 0.06, temp > 90)` to select rows meeting both conditions."
+    solution:
+      explanation: |
+        Load the `dplyr` package using `library()` and use logical expressions to get records where `ozone` is greater than 0.06 and `temp` is greater than 90. This approach allows for targeted analysis on specific conditions of air quality and temperature within the `chicago_air` dataset, showcasing the power of the `dplyr` package for data manipulation.
+      code: |
+        library(dplyr)
+        data(chicago_air)
+
+        filter(chicago_air, ozone > .06, temp > 90)
+  - instructions: "Use the `arrange()` function to sort the `chicago_air` data frame in descending chronological order."
+    hints:
+      - "# Use `library(dplyr)` to load the package required for `arrange()`."
+      - "# The `desc()` function is used inside `arrange()` to sort a column in descending order. For example, `arrange(data, desc(column))`."
+      - "# To sort the `chicago_air` dataset by the `date` column in descending order, use `arrange(chicago_air, desc(date))`."
+    solution:
+      explanation: |
+        Wrap the `date` column in the `desc()` function to sort the `chicago_air` data frame in descending chronological order. This method is useful for analyzing the dataset from the most recent to the earliest date, allowing for an intuitive understanding of trends over time.
+      code: |
+        data(chicago_air)
+
+        descending <- arrange(chicago_air, desc(date))
+
+        head(descending)

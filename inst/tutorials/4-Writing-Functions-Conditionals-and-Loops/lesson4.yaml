@@ -1,0 +1,462 @@
+title: "Writing Functions, Conditionals, and Loops"
+metadata:
+  author: Fluent Data, LLC
+  date: "`r Sys.Date()`"
+  description: |
+    This lesson teaches how to create custom R functions, use conditional statements to make decisions in your code, loop through data with for loops, and efficiently apply functions to data structures using the apply function.
+lesson:
+  number: 4
+  id: 4-Writing-Functions-Conditionals-and-Loops
+  next: 5-Plotting
+introduction: |
+  This lesson covers how to write your own R functions. It also explains how to automate
+  your code using `if()` and `ifelse()` functions, for loops, and the `apply`
+  function.
+content:
+  - type: section
+    title: Prerequisites
+    content:
+      - type: paragraph
+        content: |
+          This lesson assumes you are familiar with the material in the previous lessons:
+
+          - [Functions and Importing Data](../2-Functions-and_Importing-Data/readme.md)
+          - [Subsetting, Sorting, and Combining Data Frames](../3-Subsetting-Sorting-and-Combining/readme.md).
+
+          The data for these lessons is available from this package. It is assumed that this package is already installed and loaded into the R session. If you need to refer to the package, simply refer to it as "this package".
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Load Data from This Package"
+        content: |
+          # Assuming the package is already loaded
+
+          data(chicago_air)
+  - type: section
+    title: Writing Functions
+    content:
+      - type: paragraph
+        content: |
+          As discussed in the [second lesson on functions](../2-Functions-and_Importing-Data/readme.md),
+          R can execute a saved chunk of code by running the name of a function, like `mean()`.
+          The name `mean` is saved like a variable name, but since the name refers to a function,
+          the thing that's saved is not a data object but lines of R code.
+
+          To save your own function, use this construction:
+      - type: code
+        language: r
+        options:
+          eval: false
+          exercise: true
+          exercise.cap: "Creating Your Own Function"
+        content: |
+          my_function_name <- function() {
+
+            # lines of R code
+
+          }
+      - type: paragraph
+        content: |
+          We can write a simple function that prints something to the console. Here is a
+          function named `print_hello`.
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Simple Function to Print Hello"
+        content: |
+          print_hello <- function() {
+
+            print("Hello")
+
+          }
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Testing the print_hello Function"
+        content: |
+          print_hello()
+  - type: section
+    title: Arguments
+    content:
+      - type: paragraph
+        content: |
+          Most of the functions we have used in these lessons have had at least one argument
+          inside of the parentheses. The `print_hello()` function did not have any arguments,
+          so we could run it without putting anything inside `()`. We could modify the
+          function to take an argument that pastes some text to the printed message.
+
+          Here we recreate the same function, but this time we add an argument `text` inside
+          of the parentheses.
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Function with an Argument"
+        content: |
+          print_hello <- function(text) {
+
+            message <- paste("Hello", text)
+
+            print(message)
+
+          }
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Testing the Modified print_hello Function"
+        content: |
+          print_hello(text = "everybody!")
+  - type: section
+    title: Default Values
+    content:
+      - type: paragraph
+        content: |
+          We can create a function with more than one argument, and set default values when
+          needed. Suppose we would like to make a function that checks if a measurement is below
+          a criteria pollutant standard. We could make simple function that takes two arguments:
+          one for the measurement value, and one for the standard value.
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Function with Two Arguments"
+        content: |
+          check_standard <- function(measurement, standard) {
+
+            measurement > standard
+
+          }
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Testing check_standard Function"
+        content: |
+          check_standard(measurement = 84, standard = 70)
+      - type: paragraph
+        content: |
+          We could write a more specific function for checking a value against the ozone
+          standard. For this function, we want to keep the `standard` parameter but make sure
+          the default is `70`. It may be that we typically want to use this function to
+          check against the current 8-hour ozone standard in parts per billion, but have
+          then flexibility to use a different value.
+
+          To set a default value, we use `= 70` when we create the function.
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Function with Default Value"
+        content: |
+          check_standard <- function(measurement, standard = 70) {
+
+            measurement > standard
+
+          }
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Testing check_standard with Default Value"
+        content: |
+          check_standard(measurement = 50)
+  - type: section
+    title: Positional Arguments
+    content:
+      - type: paragraph
+        content: |
+          One final note on functions in R. When a function is created, the order of the
+          arguments are important. The user can supply values for the arguments in the order
+          they appeared in the parentheses of the `function( ){}` call, without writing out
+          the argument names.
+
+          For example, we can supply two numbers to the `check_standard()` function that we
+          created above, without writing out the `measurement` and `standard` arguments.
+          When R executes the function, it will assign the numbers to the arguments
+          based on the position in the parentheses.
+
+          Here we show that using two numbers in a different order will return different
+          outputs.
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Testing Positional Arguments"
+        content: |
+          check_standard(60, 70)
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Testing Positional Arguments in Reverse Order"
+        content: |
+          check_standard(70, 60)
+  - type: section
+    title: if Functions
+    content:
+      - type: paragraph
+        content: |
+          Writing custom functions is a good way to standardize some R code that can be reused
+          on different data sets. It's also helpful to write code that will execute different
+          lines of code depending on different scenarios. The functions `if()` and `ifelse()`
+          allow you to control what code is executed based on a logical condition.
+
+          The `if()` function takes the logical condition in the parentheses. The code that
+          will run if the logical expression is `TRUE` is placed inside curly braces. Below
+          is the outline (not actual R code).
+      - type: code
+        language: r
+        options:
+          eval: false
+          exercise: true
+          exercise.cap: "if Function Outline"
+        content: |
+          if(logical expression>) {
+
+            <code that will run if the logical expression is TRUE>
+
+          }
+      - type: code
+        language: r
+        options:
+          eval: false
+          exercise: true
+          exercise.cap: "if-else Function Outline"
+        content: |
+          if(<logical expression>) {
+
+            <code that will run if the logical expression is true>
+
+          } else {
+
+            <code that will run if the logical expression is false>
+
+          }
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "if Function Example"
+        content: |
+          ozone <- 0.075
+
+          if(ozone > 0.065) {
+
+            print("Potential Health Effects")
+
+          } else {
+
+            print("All Good")
+
+          }
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Another if Function Example"
+        content: |
+          ozone <- 0.06
+
+          if(ozone > 0.065) {
+
+            print("Potential Health Effects")
+
+          } else {
+
+            print("All Good")
+
+          }
+      - type: code
+        language: r
+        options:
+          eval: false
+          exercise: true
+          exercise.cap: "ifelse Function Outline"
+        content: |
+          ifelse(<test>, <yes>, <no>)
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "ifelse Function Example"
+        content: |
+          ozone_value <- 0.06
+
+          message <- ifelse(ozone_value > 0.065, "Potential Health Effects", "All Good")
+
+          print(message)
+  - type: section
+    title: For loop
+    content:
+      - type: paragraph
+        content: |
+          Like most programming languages, R has for and while loops. This tutorial will
+          cover just for loops and move on to `apply()` functions, which are more commonly
+          used in R.
+
+          For loops are used to repeat an operation a set number of times. Here is the
+          basic outline:
+      - type: code
+        language: r
+        options:
+          eval: false
+          exercise: true
+          exercise.cap: "For Loop Outline"
+        content: |
+          for(i in sequence){
+
+            <code that will run a set number of times>
+
+          }
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "For Loop Example"
+        content: |
+          for(i in c(1, 2, 3)) {
+
+            print(i)
+
+          }
+      - type: paragraph
+        content: |
+          Typically when we use loops, we want to perform the same operation on different
+          sets of data and save the results. To do this using the `for()` function in R,
+          we need to create an empty vector (or list or data frame) and save the results
+          during each iteration.
+
+          Here is an example data frame we will use. It represents a few values from three
+          monitors.
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "For Loop with Data Frame"
+        content: |
+          monitors <- data.frame(monitor1 = c(50, 60, 58, 52),
+                                 monitor2 = c(55, 59, 65, 61),
+                                 monitor3 = c(70, 62, 68, 71))
+
+          monitors
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: true
+          exercise.cap: "Finding Maximum Values with For Loop"
+        content: |
+          max_values <- c()
+
+          for(i in c(1, 2, 3)) {
+
+            max_values[i] <- max(monitors[, i])
+
+          }
+
+          max_values
+  - type: section
+    title: apply function
+    content:
+      - type: paragraph
+        content: |
+          Although the for loop is common in programming languages, it is not the most
+          efficient way to apply a function to different sets of data in R. The most efficient
+          way to do loops in R is with the `apply()` family of functions, including `lapply()`,
+          `tapply()`, and `mapply()`. This section will demonstrate how to use the `apply()`
+          function.
+
+          The `apply()` function takes a data frame (or matrix) as the first argument. The
+          second argument determines if each loop will apply to the rows (`1`) or columns
+          (`2`). And the third argument is the function you want to apply to each row or column.
+          Additional arguments can be used to pass on to the function being applied to each
+          row or column.
+
+          The example below applies the `max()` function to the `monitors` data frame from
+          the previous section.
+      - type: code
+        language: r
+        options:
+          eval: false
+          exercise: true
+          exercise.cap: "apply Function Example"
+        content: |
+          monitors_max <- apply(monitors, MARGIN = 2, FUN = max)
+
+          monitors_max
+exercises:
+  - instructions: "Write a function named `ppm_to_ppb` that converts a value from parts per million to parts per billion."
+    hints:
+      - "# Define the function `ppm_to_ppb` with one argument for the value you want to convert."
+      - "# Inside the function, multiply the input value by 1000 to convert it to parts per billion."
+      - "# Return the converted value."
+    solution:
+      explanation: |
+        The function `ppm_to_ppb` converts a given value from parts per million (ppm) to parts per billion (ppb) by multiplying the value by 1000, since 1 ppm is equal to 1000 ppb.
+      code: |
+        ppm_to_ppb <- function(value) {
+          value * 1000
+        }
+  - instructions: "Write a function named `check_value` that prints \"warning\" if a value is above a threshold, and \"OK\" if it's below. Make the threshold an argument in the function."
+    hints:
+      - "# Define the function `check_value` with two arguments: `value` and `threshold`."
+      - "# Use an `if` statement to check if `value` is greater than `threshold`."
+      - "# Print \"warning\" if the value is above the threshold, otherwise print \"OK\"."
+    solution:
+      explanation: |
+        The function `check_value` takes two arguments: a value and a threshold. It uses an if-else statement to print "warning" if the value is greater than the threshold, and "OK" if it's not, effectively monitoring values against a set benchmark.
+      code: |
+        check_value <- function(value, threshold) {
+          if(value > threshold) {
+            print("warning")
+          } else {
+            print("OK")
+          }
+        }
+  - instructions: "Use the `for()` function to loop through the `temp` column of the data from this package and print any value that is above 90 degrees."
+    hints:
+      - "# Access the `temp` column of the data frame within the loop."
+      - "# Use a `for` loop to iterate over each value in the `temp` column."
+      - "# Inside the loop, use an `if` statement to check if the current temperature value is greater than 90."
+      - "# If a value is above 90, use `print()` to display it."
+    solution:
+      explanation: |
+        This loop iterates over each value in the `temp` column of the data frame, checking each temperature against the criterion of being greater than 90 degrees. If a temperature exceeds this threshold, it is printed, allowing for a simple scan of unusually high temperatures.
+      code: |
+        for (i in chicago_air$temp) {
+          if(i > 90) {
+            print(i)
+          }
+        }
+  - instructions: "Use the `apply()` function to create a vector of the mean values from the numeric columns in the data from this package."
+    hints:
+      - "# First, subset the data frame to include only the numeric columns you wish to analyze."
+      - "# Use the `apply()` function with the subsetted data frame, specifying `MARGIN = 2` to apply the function across columns."
+      - "# Use the `mean` function as the `FUN` argument, including `na.rm = TRUE` to handle missing values."
+    solution:
+      explanation: |
+        To compute the mean values of the numeric columns in the data frame, we first isolate these columns into a new data frame. Then, the `apply()` function is used to calculate the mean of each, ensuring to remove any `NA` values with `na.rm = TRUE`. This produces a vector of mean values for the columns specified.
+      code: |
+        chicago_numeric <- chicago_air[, c("ozone", "temp", "pressure")]
+        mean_values <- apply(chicago_numeric, MARGIN = 2, FUN = mean, na.rm = TRUE)
+        mean_values
