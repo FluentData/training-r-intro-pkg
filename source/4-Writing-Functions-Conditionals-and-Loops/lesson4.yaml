@@ -28,7 +28,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Load Data from This Package"
         content: |
           # Assuming the package is already loaded
@@ -65,7 +65,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Simple Function to Print Hello"
         content: |
           print_hello <- function() {
@@ -77,7 +77,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Testing the print_hello Function"
         content: |
           print_hello()
@@ -97,7 +97,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Function with an Argument"
         content: |
           print_hello <- function(text) {
@@ -111,7 +111,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Testing the Modified print_hello Function"
         content: |
           print_hello(text = "everybody!")
@@ -128,7 +128,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Function with Two Arguments"
         content: |
           check_standard <- function(measurement, standard) {
@@ -140,7 +140,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Testing check_standard Function"
         content: |
           check_standard(measurement = 84, standard = 70)
@@ -157,7 +157,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Function with Default Value"
         content: |
           check_standard <- function(measurement, standard = 70) {
@@ -169,7 +169,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Testing check_standard with Default Value"
         content: |
           check_standard(measurement = 50)
@@ -194,7 +194,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Testing Positional Arguments"
         content: |
           check_standard(60, 70)
@@ -202,7 +202,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Testing Positional Arguments in Reverse Order"
         content: |
           check_standard(70, 60)
@@ -251,7 +251,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "if Function Example"
         content: |
           ozone <- 0.075
@@ -269,7 +269,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Another if Function Example"
         content: |
           ozone <- 0.06
@@ -295,7 +295,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "ifelse Function Example"
         content: |
           ozone_value <- 0.06
@@ -330,7 +330,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "For Loop Example"
         content: |
           for(i in c(1, 2, 3)) {
@@ -351,7 +351,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "For Loop with Data Frame"
         content: |
           monitors <- data.frame(monitor1 = c(50, 60, 58, 52),
@@ -363,7 +363,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Finding Maximum Values with For Loop"
         content: |
           max_values <- c()

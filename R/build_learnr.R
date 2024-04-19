@@ -1,7 +1,13 @@
 #'@export
-build_learnr <- function(template_file_path, save = FALSE) {
+build_learnr <- function(template_file_path) {
 
   template <- yaml::yaml.load_file(template_file_path)
+  template_dir <- dirname(template_file_path)
+  lesson_dir <- file.path("inst", "tutorials", basename(template_dir))
+
+  if(!dir.exists(lesson_dir)) {
+    dir.create(lesson_dir, recursive = TRUE)
+  }
 
   metadata <- template$metadata
   metadata$title <- template$title
@@ -26,11 +32,18 @@ library(shiny)
 
   op <- paste(metadata, setup, intro, content, exercises, next_lesson, sep = "\n")
 
-  if(save) {
-    file_path <- paste0(tools::file_path_sans_ext(template_file_path), ".Rmd")
-    writeLines(op, file_path)
-    return(file_path)
+  op_path <- paste0(lesson_dir, "/lesson.Rmd")
+  writeLines(op, op_path)
+
+  dirs_to_copy <- list.dirs(template_dir, full.names = TRUE, recursive = FALSE)
+  for (dir in dirs_to_copy) {
+    dest_dir <- file.path(lesson_dir, basename(dir))
+    if (!dir.exists(dest_dir)) {
+      dir.create(dest_dir, recursive = TRUE)
+    }
+    file.copy(list.files(dir, full.names = TRUE, recursive = TRUE), dest_dir, recursive = TRUE)
   }
+
 
   return(invisible(op))
 
@@ -98,6 +111,12 @@ build_content <- function(content, depth = 1, section = 0) {
   prefix <- paste(rep("#", depth + 1), collapse = "") # Adjusts section level based on depth
 
   for (item in content) {
+
+    # Check if 'skip' exists and contains 'learnr'
+    if (!is.null(item$skip) && "learnr" %in% item$skip) {
+      next  # Skip this item
+    }
+
     if (item$type == "paragraph") {
       markdownText <- paste0(markdownText, item$content, "\n\n")
     } else if (item$type == "section") {

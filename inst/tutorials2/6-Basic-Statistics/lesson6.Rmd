@@ -1,0 +1,452 @@
+---
+author: Fluent Data, LLC
+date: '`r Sys.Date()`'
+description: |
+  This lesson introduces basic statistical analysis in R, covering descriptive statistics, measures of central tendency and dispersion, statistical tests like the t-test and Shapiro-Wilk test for normality, correlation analysis with the cor() and cor.test() functions, and visualization of relationships between variables using pairwise plots.
+title: Basic Statistics
+output:
+  learnr::tutorial:
+    allow_skip: yes
+runtime: shiny_prerendered
+---
+
+
+```{r setup, include=FALSE}
+library(learnr)
+library(gradethis)
+library(trainingRIntro)
+library(shiny)
+```
+
+R was originally developed as a statistical programming language and its built-in functions are commonly used for basic statistics. There are also many community developed packages that make it easy to perform statistical analyses. This tutorial will cover descriptive statistics functions and some statistical tests that might be used on environmental data.
+
+## Basic Statistics
+
+## Prerequisites
+
+This lesson assumes you are familiar with the material in the lesson on [Functions and Importing Data](../2-Functions-and-Importing-Data/readme.md).
+
+Statistical functions are used in this lesson that require installation of the following packages.
+
+
+```{r ex-2UMzC-1, eval = FALSE}
+install.packages("envstats")
+
+```
+
+The data used throughout these lessons is available from this package.
+
+
+## Descriptive Statistics
+
+R has many built-in functions for descriptive statistics. We will use these
+functions to understand the example environmental data available in this package.
+
+
+```{r ex-ZqRtB-1, exercise = TRUE, exercise.cap = 'Extract example data'}
+data <- example_data  # Assuming example_data is available in this package
+
+```
+
+Most of the functions we'll be using have an argument named `na.rm` that stands
+for `NA` remove. If the argument is set to `TRUE` then the function will remove
+all missing values from the data set. Otherwise, the function will error.
+
+These functions let us know the range of the data values, i.e., the highest and
+lowest values.
+
+
+```{r ex-8EO70-2, exercise = TRUE, exercise.cap = 'Find minimum value'}
+min(data, na.rm=TRUE)
+
+```
+
+```{r ex-A6prs-3, exercise = TRUE, exercise.cap = 'Find maximum value'}
+max(data, na.rm=TRUE)
+
+```
+
+```{r ex-yr4JW-4, exercise = TRUE, exercise.cap = 'Find range of values'}
+range(data, na.rm=TRUE)
+
+```
+
+We can also get the mean and the quartile values from the `summary()` function.
+
+
+```{r ex-aTfou-5, exercise = TRUE, exercise.cap = 'Summary statistics'}
+summary(data)
+
+```
+
+The `IQR()` function gives us the interquartile range, which lets us know how large
+the spread is for the values in the central range of the distribution, i.e., between
+the 1st quartile and the 3rd quartile.
+
+
+```{r ex-k0n2i-6, exercise = TRUE, exercise.cap = 'Calculate IQR'}
+IQR(data, na.rm=TRUE)
+
+```
+
+We can use the `boxplot()` function to visualize the interquartile range. The outline
+of the box itself shows the first and third quartile, while the line in the middle
+of the box shows the median.
+
+
+```{r ex-8sric-7, exercise = TRUE, exercise.cap = 'Visualize IQR with boxplot'}
+boxplot(data)
+
+```
+
+## Measures of Central Tendency and Dispersion
+
+R has functions for finding the mean and median of a set of values.
+
+
+```{r ex-z0nhT-1, exercise = TRUE, exercise.cap = 'Calculate mean'}
+mean(data, na.rm=TRUE)
+
+```
+
+```{r ex-SKY0Q-2, exercise = TRUE, exercise.cap = 'Calculate median'}
+median(data, na.rm=TRUE)
+
+```
+
+The functions `var()` and `sd()` calculate the variance and standard
+deviation, respectively.
+
+
+```{r ex-fo54i-3, exercise = TRUE, exercise.cap = 'Calculate variance'}
+var(data, na.rm=TRUE)
+
+```
+
+```{r ex-mnQcM-4, exercise = TRUE, exercise.cap = 'Calculate standard deviation'}
+sd(data, na.rm=TRUE)
+
+```
+
+## Statistical Tests
+
+R has many built-in functions for statistical tests. As an example, we'll use
+the `t.test()` function to perform a two-sample t-test on the example data.
+
+First, let's visualize our dataset.
+
+
+```{r ex-QIlwk-1, warning = FALSE, message = FALSE, exercise = TRUE, exercise.cap = 'Visualize dataset'}
+ggplot(data, aes(factor(variable), value)) + geom_boxplot()
+
+```
+
+We could compare values between two groups within our data and see if there is a significant
+difference in concentrations. Below is a plot of those two groups side by
+side.
+
+
+```{r ex-bNIUR-2, warning = FALSE, message = FALSE, exercise = TRUE, exercise.cap = 'Compare two groups'}
+filtered_data <- filter(data, group == "Group1" | group == "Group2")
+
+ggplot(filtered_data, aes(factor(group), value)) + geom_boxplot()
+
+```
+
+We should also check for normality before doing any statistical tests. Below
+are histograms of the datasets.
+
+
+```{r ex-i5Rj0-3, exercise = TRUE, exercise.cap = 'Check for normality with histograms'}
+ggplot(filtered_data, aes(value)) +
+  facet_grid(rows = vars(group)) +
+  geom_histogram()
+
+```
+
+If plotting does not obviously show normality, we can use the built-in function
+`shapiro.test()`. This function performs the Shapiro-Wilk test on a dataset, which
+assumes that the dataset is normal. So the null hypothesis is that the dataset
+comes from a normal distribution. If the p-value of the test is less than .05,
+we reject the null hypothesis and conclude the data is not normal.
+
+
+```{r ex-n8nPA-4, exercise = TRUE, exercise.cap = 'Shapiro-Wilk test for Group1'}
+group1_data <- filter(data, group == "Group1")
+
+shapiro.test(group1_data$value)
+
+```
+
+```{r ex-5a6F0-5, exercise = TRUE, exercise.cap = 'Shapiro-Wilk test for Group2'}
+group2_data <- filter(data, group == "Group2")
+
+shapiro.test(group2_data$value)
+
+```
+
+The p-values for the tests are well above 0.05, so we assume the null hypothesis
+is true. Meaning, we can assume the distributions of values in the two groups
+are normal.
+
+Now we can do some comparisons between these 2 groups of readings using the
+Student's t-test. The test is meant to determine if the two means from the two
+datasets are from the same distribution or not. The assumption, or null hypothesis,
+is that they are, in fact, mean values from the same distribution.
+
+
+```{r ex-LeaNy-6, exercise = TRUE, exercise.cap = 'Student's t-test between two groups'}
+t.test(group1_data$value, group2_data$value)
+
+```
+
+The `t.test()` output shows a p-value well below .05, so we reject the null hypothesis.
+Meaning, the two means are not from the same distribution, and we can consider the
+two data sets significantly different in that sense.
+
+
+## Other Statistical Tests
+
+Below is a reference table of a few popular tests for categorical data analysis in R.
+
+
+| test | function |
+| --- | --- |
+| Chi Square Test | `chisq.test()` |
+| Fisher's Test | `fisher.test()` |
+| Analysis of Variance | `aov()` |
+
+The `EnvStats` package has a comprehensive list of basic and more advanced statistical
+tests for Environmental Data.
+
+
+```{r ex-sVd6d-1, eval = FALSE}
+library(EnvStats)
+
+?FcnsByCatHypothTests
+
+```
+
+## Correlation Analysis
+
+If we are interested in how closely the variables in our dataset are related
+to each other, we can perform a correlation analysis.
+
+A correlation matrix tells us how positively or negatively correlated each variable
+is to the other variables. Below, we use the `cor()` function to print a correlation
+matrix of the numeric columns in our example data frame, specifying in the
+arguments that we only want to include complete observations and the Pearson method
+of finding correlations.
+
+
+```{r ex-yuR5R-1, exercise = TRUE, exercise.cap = 'Correlation matrix of select variables'}
+cor(data[, c("Variable1", "Variable2", "Variable3")],
+    use = "complete.obs",
+    method ="pearson")
+
+```
+
+Along the diagonal, the correlation value is 1, because each variable is perfectly
+correlated with itself. The closer the other values are to 1 or -1, the more
+correlated the two variables are. A correlation value of 0 means the two variables
+are not correlated at all. The matrix above shows relationships between the variables.
+
+
+We could also perform a correlation test using the `cor.test()` function. Here
+we test the correlation between two variables.
+
+
+```{r ex-msgSM-2, exercise = TRUE, exercise.cap = 'Test correlation between two variables'}
+cor.test(data$Variable1, data$Variable2, method = "pearson")
+
+```
+
+The null hypothesis of the test is that the correlation is 0, there is no
+correlation at all. The p-value is well below .05 so we reject the null hypothesis
+and conclude that the two variables are correlated to some degree.
+
+Running the test between two other variables gives a p-value above .05 so we
+do not reject the null hypothesis. We conclude there is no correlation between
+these two variables.
+
+
+```{r ex-VUJTs-3, exercise = TRUE, exercise.cap = 'Test correlation between another set of two variables'}
+cor.test(data$Variable1, data$Variable3, method = "pearson")
+
+```
+
+It's also useful to see pairwise plots for numeric values to see the relationships
+between the variables. The built-in `pairs()` function will display a scatter
+plot between each pair of columns in the data frame. Setting `lower.panel = panel.smooth`
+will draw a smooth line through the scatter plots on the lower panels.
+
+
+```{r ex-lvyKT-4, exercise = TRUE, exercise.cap = 'Pairwise plots of select variables'}
+pairs(data[, c("Variable1", "Variable2", "Variable3")], lower.panel = panel.smooth)
+
+```
+
+
+## Exercises {data-progressive=TRUE}
+
+### Exercise 1
+
+Find the mean and median of a specific column in the example data frame and compare the two values.
+
+```{r exercise1, exercise = TRUE}
+# Your code here
+```
+
+```{r exercise1-hint-1}
+# Use the `mean()` function to calculate the mean of a specific column in a data frame. For example, `mean(data_frame$column_name)`.
+```
+
+```{r exercise1-hint-2}
+# Similarly, use the `median()` function to find the median: `median(data_frame$column_name)`.
+```
+
+```{r exercise1-hint-3}
+# To compare the mean and median, calculate the absolute difference between them using `abs(mean - median)`.
+```
+
+```{r exercise1-solution}
+column_mean <- mean(data$column)
+
+column_mean
+
+column_median <- median(data$column)
+
+column_median
+
+abs(column_mean - column_median)
+
+```
+
+```{r exercise1-check}
+grade_this_code(
+  correct = c(gradethis::random_praise(), "Use the `mean()` and `median()` functions to calculate the mean and median of a specific column in the example data frame, respectively. To compare these two statistics, the absolute difference between them can be found using the `abs()` function. This comparison can help in understanding the distribution of the data. ")
+)
+```
+
+
+### Exercise 2
+
+Use the Shapiro-Wilk normality test to see if a specific column in the example data frame is normally distributed.
+
+```{r exercise2, exercise = TRUE}
+# Your code here
+```
+
+```{r exercise2-hint-1}
+# To perform a Shapiro-Wilk test, use the `shapiro.test()` function on the column of interest.
+```
+
+```{r exercise2-hint-2}
+# For a specific column in the example data frame, the syntax is `shapiro.test(data_frame$column)`.
+```
+
+```{r exercise2-hint-3}
+# Evaluate the p-value in the test's result to infer normality. A common threshold for normality is a p-value greater than .05.
+```
+
+```{r exercise2-solution}
+shapiro.test(data$column)
+
+```
+
+```{r exercise2-check}
+grade_this_code(
+  correct = c(gradethis::random_praise(), "The Shapiro-Wilk normality test, applied with the `shapiro.test()` function, checks the hypothesis that a sample comes from a normally distributed population. In this case, applying it to a specific column in the example data frame provides a p-value, which, if above .05, suggests that the data can be considered normally distributed. ")
+)
+```
+
+
+### Exercise 3
+
+Create a correlation matrix of the numeric columns in the built-in `airquality` data frame. Use `data("airquality")` to load the data frame.
+
+```{r exercise3, exercise = TRUE}
+# Your code here
+```
+
+```{r exercise3-hint-1}
+# First, load the `airquality` data frame into your R session using `data("airquality")`.
+```
+
+```{r exercise3-hint-2}
+# Use the `cor()` function to calculate correlations among numeric columns. For selected columns, use `data_frame[, c("Column1", "Column2")]`.
+```
+
+```{r exercise3-hint-3}
+# To handle missing values, add the argument `use = "complete.obs"` within the `cor()` function.
+```
+
+```{r exercise3-solution}
+data("airquality")
+
+cor(airquality[, c("Ozone", "Solar.R", "Wind", "Temp")],
+    use = "complete.obs",
+    method = "pearson")
+
+```
+
+```{r exercise3-check}
+grade_this_code(
+  correct = c(gradethis::random_praise(), "To explore the relationships among the numeric variables in the `airquality` data frame, a correlation matrix can be generated using the `cor()` function. This matrix helps in identifying potential relationships between variables like Ozone, Solar.R, Wind, and Temp, considering only rows with complete observations. ")
+)
+```
+
+
+### Exercise 4
+
+Create pairwise plots for all of the numeric columns in the `airquality` data frame. Have the lower-panel plots generate a smooth line representing relationship between the two variables.
+
+```{r exercise4, exercise = TRUE}
+# Your code here
+```
+
+```{r exercise4-hint-1}
+# Use the `pairs()` function to create pairwise plots for selected numeric columns in a data frame.
+```
+
+```{r exercise4-hint-2}
+# To include a smooth line in the lower-panel plots, specify the argument `lower.panel = panel.smooth` in your `pairs()` function call.
+```
+
+```{r exercise4-hint-3}
+# Select the numeric columns you want to plot by using `data_frame[, c("Column1", "Column2")]` syntax.
+```
+
+```{r exercise4-solution}
+pairs(airquality[, c("Ozone", "Solar.R", "Wind", "Temp")], lower.panel = panel.smooth)
+```
+
+```{r exercise4-check}
+grade_this_code(
+  correct = c(gradethis::random_praise(), "Pairwise plots offer a comprehensive view of the relationships between all pairs of numeric variables in a dataset. In this case, applying the `pairs()` function to the `airquality` data frame, with the addition of a smooth line in the lower-panel plots using `panel.smooth`, provides insights into how variables like Ozone, Solar.R, Wind, and Temp interact with each other. ")
+)
+```
+
+
+
+
+## Next Lesson
+
+
+You have completed Lesson {lesson$no}. Click the button below to mark it as complete and move on to the next lesson.
+
+```{r example-button, echo=FALSE}
+  actionButton("complete_lesson", "Mark Lesson 6 Complete")
+```
+
+
+```{r, context = "server"}
+  observeEvent(input$complete_lesson, {
+    shiny::stopApp()
+    trainingRIntro::set_user_state(lesson_6_complete=TRUE)
+  })
+```
+
+
+
+

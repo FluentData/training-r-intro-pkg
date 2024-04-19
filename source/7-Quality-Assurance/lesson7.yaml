@@ -24,7 +24,7 @@ content:
         options:
           eval: true
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Load Example Data Frame"
         content: |
           # Assuming this package is already loaded into your R session
@@ -43,7 +43,7 @@ content:
             options:
               eval: true
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Inspect Example Dataset Data Types"
             content: |
               str(example_dataset)
@@ -55,7 +55,7 @@ content:
             options:
               eval: true
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Check Data Types"
             content: |
               sample_data <- read.csv(text = "
@@ -73,7 +73,7 @@ content:
             options:
               eval: true
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Correcting Data Types with colClasses"
             content: |
               sample_data <- read.csv(colClasses = c("Date", "numeric"), text = "
@@ -94,7 +94,7 @@ content:
             options:
               eval: true
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Identify and Correct Unallowed Data"
             content: |
               # Example of correcting unallowed values
@@ -113,7 +113,7 @@ content:
             options:
               eval: true
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Identify and Handle Outliers"
             content: |
               # Example of identifying and handling outliers
@@ -130,7 +130,7 @@ content:
         options:
           eval: true
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Examples of Common Syntax Mistakes"
         content: |
           # Example of a common syntax mistake: missing commas

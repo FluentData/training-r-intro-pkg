@@ -49,6 +49,8 @@ content:
           - Predictive modeling that is not available in BI tools, or only in a rudimentary way, can be done in R.
   - type: section
     title: Install R and RStudio
+    skip:
+      - learnr
     content:
       - type: paragraph
         content: |
@@ -172,7 +174,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Understanding Order of Operations"
             content: |
               10 - 3 / 5
@@ -180,7 +182,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Practicing Grouping with Parentheses"
             content: |
               (10 - 3) / 5
@@ -198,7 +200,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Experiment with Comments"
         content: |
           # Full line comment
@@ -211,7 +213,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Code and Output Example"
         content: |
           1+1
@@ -222,7 +224,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Console Code Execution"
         content: |
           1 + 1
@@ -237,7 +239,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Creating Variables"
         content: |
           x <- 10
@@ -256,7 +258,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Exploring Variable Assignment"
         content: |
           x
@@ -264,7 +266,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Updating Variable Values"
         content: |
           x <- 20
@@ -290,7 +292,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Variable Naming Rules"
         content: |
           x <- 5
@@ -345,7 +347,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Creating Numeric Vectors"
             content: |
               x <- c(1, 2, 3, 4, 5)
@@ -354,7 +356,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Creating Character Vectors"
             content: |
               fruit <- c("apples", "bananas", "oranges")
@@ -380,7 +382,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Accessing Vector Elements"
             content: |
               fruit[3]
@@ -394,7 +396,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Creating Lists"
             content: |
               x <- list("Benzene", 1.3, TRUE)
@@ -408,7 +410,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Accessing List Elements"
             content: |
               x[[2]]
@@ -419,7 +421,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Lists Containing Vectors and Lists"
             content: |
               my_vector <- c(1, 2, 3)
@@ -434,7 +436,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Nested List Access"
             content: |
               y[[3]][[2]]
@@ -449,7 +451,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Creating Data Frames"
             content: |
               pollutant <- c("Benzene", "Toluene", "Xylenes")
@@ -509,9 +511,7 @@ exercises:
         We use the `c()` function in R to combine elements into a vector. To create consecutive integers, you can also use the colon `:` operator, which is a convenient way to create sequences of numbers.
       code: |
         v <- c(1, 2, 3, 4, 5)
-  - instructions: "Create a list `l` that contains a number (e.g., 5), a string (e.g., 'apple'), and a logical value (e.g., TRUE).
-
-"
+  - instructions: "Create a list `l` that contains a number (e.g., 5), a string (e.g., 'apple'), and a logical value (e.g., TRUE)."
     hints:
       - "# Use the `list()` function to create a list that can contain elements of different types."
       - "# To create a list with a number, a string, and a logical value, you can use `list(5, 'apple', TRUE)`."

@@ -30,7 +30,7 @@ YAML Input:
     language: r
     options:
       exercise: true
-      exercise.eval: true
+      exercise.eval: false
     code: |
       x <- c(1.3, 3.5, 2.6, 3.4, 6.4)
       serialCorrelationTest(x)

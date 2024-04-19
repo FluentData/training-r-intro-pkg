@@ -30,7 +30,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.lines: 5
           exercise.cap: "Calculate Mean"
         content: |
@@ -43,7 +43,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.lines: 5
           exercise.cap: "Calculate Natural Logarithm"
         content: |
@@ -52,7 +52,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.lines: 5
           exercise.cap: "Calculate Base 10 Logarithm"
         content: |
@@ -61,7 +61,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.lines: 5
           exercise.cap: "Calculate Square Root"
         content: |
@@ -70,7 +70,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.lines: 5
           exercise.cap: "Calculate Absolute Value"
         content: |
@@ -103,7 +103,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.lines: 5
           exercise.cap: "Round to Zero Digits"
         content: |
@@ -112,7 +112,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.lines: 5
           exercise.cap: "Round to Three Digits"
         content: |
@@ -121,7 +121,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.lines: 5
           exercise.cap: "Round to One Digit"
         content: |
@@ -142,7 +142,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.lines: 5
               exercise.cap: "Sum of Values"
             content: |
@@ -157,7 +157,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.lines: 5
               exercise.cap: "Minimum Value"
             content: |
@@ -172,7 +172,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.lines: 5
               exercise.cap: "Maximum Value"
             content: |
@@ -187,7 +187,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.lines: 5
               exercise.cap: "Create Sequence with `seq()`"
             content: |
@@ -199,7 +199,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.lines: 5
               exercise.cap: "Create Sequence with Colon Operator"
             content: |
@@ -214,7 +214,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.lines: 5
               exercise.cap: "Concatenate Strings"
             content: |
@@ -228,7 +228,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.lines: 5
               exercise.cap: "Concatenate Strings with Numbers"
             content: |
@@ -249,7 +249,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.lines: 5
               exercise.cap: "Extract Site Number"
             content: |
@@ -281,7 +281,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.lines: 5
           exercise.cap: "Calculate Mean in Two Steps"
         content: |
@@ -292,7 +292,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.lines: 5
           exercise.cap: "Calculate Mean in One Step"
         content: |
@@ -314,7 +314,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.lines: 5
           exercise.cap: "Inspect `airquality` Data"
         content: |
@@ -327,7 +327,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.lines: 5
           exercise.cap: "Mean with NA Values"
         content: |
@@ -339,7 +339,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.lines: 5
           exercise.cap: "Mean with NA Removal"
         content: |
@@ -397,7 +397,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Use `serialCorrelationTest` from EnvStats"
         content: |
           x <- c(1.3, 3.5, 2.6, 3.4, 6.4)
@@ -462,7 +462,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.lines: 5
               exercise.cap: "Read and Inspect Excel Data"
             content: |

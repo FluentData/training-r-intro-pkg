@@ -27,7 +27,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Load `chicago_air` Data Frame"
         content: |
           data(chicago_air)
@@ -59,7 +59,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "View the First Few Rows of `chicago_air`"
         content: |
           data(chicago_air)
@@ -71,7 +71,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Specify Number of Lines with `head()`"
         content: |
           data(chicago_air)
@@ -83,7 +83,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "View the Last Few Rows of `chicago_air`"
         content: |
           data(chicago_air)
@@ -141,7 +141,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Explore Data Frame Indexing with `my_data`"
             content: |
               my_data <- data.frame(colors = c("red", "green", "yellow"),
@@ -155,7 +155,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Select a Specific Value Using Indexing"
             content: |
               my_data[2, 1]
@@ -166,7 +166,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Access Another Specific Value Using Indexing"
             content: |
               my_data[3, 2]
@@ -177,7 +177,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Vector Indexing Example"
             content: |
               x <- c(1, 3, 2, 7, 25.3, 6)
@@ -189,7 +189,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Access a Vector Element by Index"
             content: |
               x[5]
@@ -200,7 +200,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Subset `chicago_air` Data Frame Using Indexing"
             content: |
               data(chicago_air)
@@ -212,7 +212,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Access Multiple Rows with a Vector of Row Numbers"
             content: |
               data(chicago_air)
@@ -224,7 +224,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Access a Single Column"
             content: |
               data(chicago_air)
@@ -239,7 +239,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Access Multiple Columns"
             content: |
               data(chicago_air)
@@ -254,7 +254,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Access a Column by Name"
             content: |
               data(chicago_air)
@@ -266,7 +266,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Subset to Specific Columns by Name"
             content: |
               data(chicago_air)
@@ -278,7 +278,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Specify Both Rows and Columns for Subsetting"
             content: |
               chicago_air[1:5, c("temp", "solar")]
@@ -292,7 +292,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Access a Column with `$`"
             content: |
               data(chicago_air)
@@ -330,7 +330,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Logical Expressions Example 1"
             content: |
               1 + 1 == 2
@@ -338,7 +338,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Logical Expressions Example 2"
             content: |
               10 > 20
@@ -349,7 +349,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Vector Logical Expression"
             content: |
               c(25, 80, 55) > 60
@@ -363,7 +363,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Create a Logical Vector for Subsetting"
             content: |
               my_data <- data.frame(colors = c("red", "green", "yellow"),
@@ -377,7 +377,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Subset Using a Logical Vector"
             content: |
               my_data[c(FALSE, FALSE, TRUE), ]
@@ -391,7 +391,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Create a Logical Vector with a Logical Expression"
             content: |
               colors <- my_data$colors
@@ -408,7 +408,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Subset Data Frame Using Logical Vector"
             content: |
               my_data[yellow, ]
@@ -419,7 +419,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Subset `chicago_air` for Hot Days"
             content: |
               data(chicago_air)
@@ -439,7 +439,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Load `dplyr` and Explore `filter()`"
             content: |
               # if you have not installed dplyr
@@ -458,7 +458,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Filter `chicago_air` for High Ozone Levels"
             content: |
               data(chicago_air)
@@ -472,7 +472,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Filter for High Ozone Levels in June"
             content: |
               data(chicago_air)
@@ -486,7 +486,7 @@ content:
             language: r
             options:
               exercise: true
-              exercise.eval: true
+              exercise.eval: false
               exercise.cap: "Alternative `filter()` Syntax Using `&`"
             content: |
               data(chicago_air)
@@ -506,7 +506,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Sort `chicago_air` by `ozone`"
         content: |
           # if the dplyr library is not already loaded
@@ -523,7 +523,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Sort `chicago_air` in Descending Order by `ozone`"
         content: |
           data(chicago_air)
@@ -537,7 +537,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Sort `chicago_air` by Multiple Columns"
         content: |
           data(chicago_air)
@@ -559,7 +559,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Count Rows in `chicago_air`"
         content: |
           # if you have not loaded the dplyr package
@@ -574,7 +574,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Split `chicago_air` into Warm and Cool Subsets"
         content: |
           data(chicago_air)
@@ -593,7 +593,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Verify Row Counts Before Combining"
         content: |
           nrow(warm) + nrow(cool) == nrow(chicago_air)
@@ -604,7 +604,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: true
+          exercise.eval: false
           exercise.cap: "Recombine Data Frames and Verify Row Count"
         content: |
           data(chicago_air)
