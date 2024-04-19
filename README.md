@@ -98,9 +98,26 @@ than one line at a time by highlighting and clicking the "Run" button on the scr
 The bottom right panel can be used to find and open files, view plots, load packages, and look at help pages. The top right panel gives you information
 about what variables you're working with during your R session.
 
-## View Content on Github
+## Viewing Content
+
+### View on GitHub
 
 You can view the first lesson here: [Introduction to R](./docs/1-Introduction/readme.md). Each lesson is contained in a separate folder and includes a README file with detailed instructions and code examples.
+
+### View as interactive tutorials
+
+This repository is also an R package. It can be installed and ran by following the instructions below. This will allow you to run the tutorials interactively in RStudio.
+
+```r
+
+install.packages("remotes")
+
+remotes::install_github("FluentData/training-r-intro")
+
+library(training-r-intro)
+
+start_training()
+
 
 ## Contributing
 
