@@ -100,7 +100,7 @@ about what variables you're working with during your R session.
 
 ## View Content on Github
 
-You can view the first lesson here: [Introduction to R](./docs/1-Introduction-to-R). Each lesson is contained in a separate folder and includes a README file with detailed instructions and code examples.
+You can view the first lesson here: [Introduction to R](./docs/1-Introduction). Each lesson is contained in a separate folder and includes a README file with detailed instructions and code examples.
 
 ## Contributing
 
