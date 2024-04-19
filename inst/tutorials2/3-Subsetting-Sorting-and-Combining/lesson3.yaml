@@ -7,7 +7,7 @@ metadata:
 lesson:
   number: 3
   id: 3-Subsetting-Sorting-and-Combining
-  next: 4-Writing-Functions-Conditionals-and-Loops
+  next_lesson: 4-Writing-Functions-Conditionals-and-Loops
 introduction: |
   This lesson covers how to subset data using indexing, logical operators, and the `filter()` function from `dplyr`. It also covers how to sort and combine data frames.
 content:

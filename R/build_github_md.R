@@ -20,7 +20,7 @@ build_github_md <- function(template_file_path) {
   title <- paste("#", template$title, "\n")
   intro <- paste(template$introduction, "\n")
   toc <- generate_toc(template$content)  # Table of contents
-  content <- build_content(template$content)
+  content <- build_github_content(template$content)
   exercises <- process_github_exercises(template$exercises)
   next_lesson <- build_github_next_lesson(template$lesson)
   full_content <- paste(title, intro, toc, content, exercises, next_lesson, sep = "\n")
@@ -46,7 +46,7 @@ build_github_md <- function(template_file_path) {
   }
 
   # Return the path to the saved markdown file
-  return(file.path(lesson_dir, basename(md_file_path)))
+  return(invisible(file.path(lesson_dir, basename(md_file_path))))
 
 }
 
@@ -87,7 +87,7 @@ build_github_next_lesson <- function(lesson) {
   next_lesson_markdown <- paste0(
     "## Next Lesson\n\n",
     "Continue to the next part of this series:\n\n",
-    "[Next Lesson: ", lesson, "](../", gsub(" ", "-", lesson$next_lesson), "/readme.md)\n\n"
+    "[Next Lesson:](../", gsub(" ", "-", lesson$next_lesson), "/readme.md)\n\n"
   )
 
   return(next_lesson_markdown)
@@ -101,7 +101,7 @@ build_github_next_lesson <- function(lesson) {
 #' @return A character string containing formatted Markdown text.
 #' @export
 #' @noRd
-build_content <- function(content) {
+build_github_content <- function(content) {
   markdownText <- ""
 
   for (item in content) {
@@ -149,29 +149,33 @@ process_github_exercises <- function(exercise_objects) {
 
   for (i in seq_along(exercise_objects)) {
     exercise <- exercise_objects[[i]]
-    exercise_markdown <- paste0(
-      "### Exercise ", i, "\n\n",
-      exercise$instructions, "\n\n",
-      if (!is.null(exercise$hint)) {
-        paste0(
+    exercise_markdown <- paste0("### Exercise ", i, "\n\n", exercise$instructions, "\n\n")
+
+    if (!is.null(exercise$hints)) {
+      for(h in seq_along(exercise$hints)) {
+        exercise_markdown <- paste0(exercise_markdown,
           "<details><summary>Click for Hint</summary>\n\n",
-          "> ", exercise$hint, "\n\n",
+          "> ", exercise$hints[h], "\n\n",
           "</details>\n\n"
         )
-      },
-      if (!is.null(exercise$solution)) {
-        paste0(
+      }
+    }
+    if (!is.null(exercise$solution)) {
+      exercise_markdown <- paste0(exercise_markdown,
           "<details><summary>Click for Solution</summary>\n\n",
           "#### Solution\n\n",
+          exercise$solution$explanation, "\n\n",
           "```r\n",
-          exercise$solution, "\n",
+          exercise$solution$code, "\n",
           "```\n\n",
           "</details>\n\n"
         )
-      },
-      "---\n\n"
-    )
-    markdown_content <- paste(markdown_content, exercise_markdown, sep = "")
+    }
+
+    exercise_markdown <- paste0(exercise_markdown, "---\n\n")
+
+    markdown_content <- paste(markdown_content, exercise_markdown, sep = "\n")
+
   }
 
   return(markdown_content)

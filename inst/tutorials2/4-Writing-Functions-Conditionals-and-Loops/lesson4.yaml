@@ -7,7 +7,7 @@ metadata:
 lesson:
   number: 4
   id: 4-Writing-Functions-Conditionals-and-Loops
-  next: 5-Plotting
+  next_lesson: 5-Plotting
 introduction: |
   This lesson covers how to write your own R functions. It also explains how to automate
   your code using `if()` and `ifelse()` functions, for loops, and the `apply`

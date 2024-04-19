@@ -7,7 +7,7 @@ metadata:
 lesson:
   number: 6
   id: 6-Basic-Statistics
-  next: 7-Quality-Assurance
+  next_lesson: 7-Quality-Assurance
 introduction: |
   R was originally developed as a statistical programming language and its built-in functions are commonly used for basic statistics. There are also many community developed packages that make it easy to perform statistical analyses. This tutorial will cover descriptive statistics functions and some statistical tests that might be used on environmental data.
 content:

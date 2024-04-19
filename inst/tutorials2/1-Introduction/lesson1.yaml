@@ -9,7 +9,7 @@ metadata:
 lesson:
   number: 1
   id: 1-Introduction
-  next: 2-Functions-and-Importing-Data
+  next_lesson: 2-Functions-and-Importing-Data
 introduction: |
   This lesson is a part of the Introduction to R for Air Quality Data Science. The sections below provide a basic introduction to R, including how to install and set up R and RStudio, an overview of R syntax, and how to perform simple operations.
 content:

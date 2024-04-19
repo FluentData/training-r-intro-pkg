@@ -24,9 +24,6 @@ build_lessons <- function(source_dir = file.path(getwd(), "source"), learnr = TR
   for (yaml_file in yaml_files) {
     print(paste("Processing file:", yaml_file))
 
-    # Read the YAML file
-    file_content <- yaml::read_yaml(yaml_file)
-
     # Process for learnR if enabled
     if (learnr) {
       results[[paste0(basename(yaml_file), "_learnr")]] <- build_learnr(yaml_file)
@@ -38,5 +35,5 @@ build_lessons <- function(source_dir = file.path(getwd(), "source"), learnr = TR
     }
   }
 
-  return(results)
+  return(invisible(results))
 }
