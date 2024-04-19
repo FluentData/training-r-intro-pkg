@@ -31,7 +31,7 @@ The example data for exercises in this lesson is available directly from this pa
 To load the `chicago_air` data frame we will be using in the lesson, simply use the `data()` function to load the data frame.
 
 
-```{r ex-A9ifp-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Load `chicago_air` Data Frame'}
+```{r ex-V0UKu-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Load `chicago_air` Data Frame'}
 data(chicago_air)
 
 ```
@@ -42,7 +42,7 @@ You should see the `chicago_air` variable in the top right panel of RStudio, whi
 We will also use some functions from the `dplyr` package. You will need to install the package if you haven't already.
 
 
-```{r ex-kzu95-2, exercise = FALSE, exercise.eval = FALSE, eval = FALSE, exercise.cap = 'Install `dplyr` Package'}
+```{r ex-m65s2-2, exercise = FALSE, exercise.eval = FALSE, eval = FALSE, exercise.cap = 'Install `dplyr` Package'}
 install.packages("dplyr")
 
 ```
@@ -55,7 +55,7 @@ We always want to make sure our data looks the way it is supposed to before we b
 The best way to take a quick look at the first few rows of a data frame is to use the `head()` function.
 
 
-```{r ex-A93tN-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'View the First Few Rows of `chicago_air`'}
+```{r ex-jS5BI-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'View the First Few Rows of `chicago_air`'}
 data(chicago_air)
 head(chicago_air)
 
@@ -64,7 +64,7 @@ head(chicago_air)
 You can specify the number of lines to display by using the `n` parameter.
 
 
-```{r ex-OWZAL-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Specify Number of Lines with `head()`'}
+```{r ex-eYeSa-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Specify Number of Lines with `head()`'}
 data(chicago_air)
 head(chicago_air, n = 3)
 
@@ -73,7 +73,7 @@ head(chicago_air, n = 3)
 You can also look at the bottom of the data frame by using the `tail()` function.
 
 
-```{r ex-IFSLG-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'View the Last Few Rows of `chicago_air`'}
+```{r ex-iNyBl-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'View the Last Few Rows of `chicago_air`'}
 data(chicago_air)
 tail(chicago_air)
 
@@ -82,7 +82,7 @@ tail(chicago_air)
 In RStudio, you can either click on the name of the data frame in the top right panel or use the `View()` function to generate a web based table of the data in the top left panel.
 
 
-```{r ex-PCH1p-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Use `View()` to Inspect `chicago_air`'}
+```{r ex-ztSGB-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Use `View()` to Inspect `chicago_air`'}
 data(chicago_air)
 View(chicago_air)
 
@@ -93,7 +93,7 @@ View(chicago_air)
 By inspecting the data frame this way, you can see that the records are daily values of ozone, temperature, and solar radiation. For more information about the data set you can type a question mark in from the name of the data frame variable in the console.
 
 
-```{r ex-lO3BP-5, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Learn More About `chicago_air`'}
+```{r ex-yaDLj-5, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Learn More About `chicago_air`'}
 ?chicago_air
 
 ```
@@ -119,7 +119,7 @@ Values in a data frame can be selected, individually or in a group, based on the
 Below is a data frame called `my_data` that has 3 rows and 2 columns.
 
 
-```{r ex-JmIRt-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Explore Data Frame Indexing with `my_data`'}
+```{r ex-ZlKMC-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Explore Data Frame Indexing with `my_data`'}
 my_data <- data.frame(colors = c("red", "green", "yellow"),
                       fruit = c("apple", "grape", "banana"))
 
@@ -130,7 +130,7 @@ my_data
 To select a particular cell from the `my_data` data frame, we use the `[row, column]` construction. We place those square brackets at the end of the data frame variable `my_data[]` and use integers to select a value. If we wanted to select the "green" value, we would use `my_data[2, 1]`.
 
 
-```{r ex-JsS8i-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Select a Specific Value Using Indexing'}
+```{r ex-tZkMp-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Select a Specific Value Using Indexing'}
 my_data[2, 1]
 
 ```
@@ -138,7 +138,7 @@ my_data[2, 1]
 To select "banana", we use `my_data[3, 2]`.
 
 
-```{r ex-Fb0R2-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Access Another Specific Value Using Indexing'}
+```{r ex-TeTjy-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Access Another Specific Value Using Indexing'}
 my_data[3, 2]
 
 ```
@@ -146,7 +146,7 @@ my_data[3, 2]
 We can also access data from a vector using the same indexing idea. In this case, you don’t need the comma to separate the rows and columns since you are accessing one dimensional data. Below is a vector of numbers.
 
 
-```{r ex-kiIzq-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Vector Indexing Example'}
+```{r ex-aUPaG-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Vector Indexing Example'}
 x <- c(1, 3, 2, 7, 25.3, 6)
 x
 
@@ -155,7 +155,7 @@ x
 If we want to access the 5th element of the vector, we would use `x[5]`.
 
 
-```{r ex-N3jgg-5, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Access a Vector Element by Index'}
+```{r ex-ieIcZ-5, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Access a Vector Element by Index'}
 x[5]
 
 ```
@@ -163,7 +163,7 @@ x[5]
 Now that we understand indexing we can subset the `chicago_air` data frame by using the brackets `[ , ]` function. (This is a rare example of a function in R that does not have the form `function_name()`.)
 
 
-```{r ex-8s1oR-6, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Subset `chicago_air` Data Frame Using Indexing'}
+```{r ex-vzNTE-6, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Subset `chicago_air` Data Frame Using Indexing'}
 data(chicago_air)
 chicago_air[1, ]
 
@@ -172,7 +172,7 @@ chicago_air[1, ]
 If you want more than one row, you can supply a vector of row numbers. Below, the vector access the 1st, 2nd, and 5th rows of the data frame.
 
 
-```{r ex-t66JD-7, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Access Multiple Rows with a Vector of Row Numbers'}
+```{r ex-eCOIn-7, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Access Multiple Rows with a Vector of Row Numbers'}
 data(chicago_air)
 chicago_air[c(1, 2, 5), ]
 
@@ -181,7 +181,7 @@ chicago_air[c(1, 2, 5), ]
 To get a column from the data frame, specify the column number in the brackets, to the right of the comma. By leaving the row value blank, you are telling it to return all rows associated with column 1. Below, we wrap the output in the `head()` function to limit the number of rows printed.
 
 
-```{r ex-KUqC5-8, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Access a Single Column'}
+```{r ex-HpAgp-8, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Access a Single Column'}
 data(chicago_air)
 head(chicago_air[, 1])
 
@@ -193,7 +193,7 @@ As you can see, a vector is returned. When a column of a data frame is selected 
 You can also obtain more than one column by supplying a vector of column numbers.
 
 
-```{r ex-0As2z-9, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Access Multiple Columns'}
+```{r ex-Vdbe5-9, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Access Multiple Columns'}
 data(chicago_air)
 head(chicago_air[, c(3, 4, 6)])
 
@@ -205,7 +205,7 @@ Since more than one column is selected, then a data frame is returned.
 A column name can be used to select a vector.
 
 
-```{r ex-RvVDM-10, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Access a Column by Name'}
+```{r ex-5imUG-10, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Access a Column by Name'}
 data(chicago_air)
 head(chicago_air[, "solar"])
 
@@ -214,7 +214,7 @@ head(chicago_air[, "solar"])
 Or a vector of column names can subset to a slimmed down data frame.
 
 
-```{r ex-rv3Wm-11, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Subset to Specific Columns by Name'}
+```{r ex-9HNMT-11, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Subset to Specific Columns by Name'}
 data(chicago_air)
 head(chicago_air[, c("ozone", "temp", "month")])
 
@@ -223,7 +223,7 @@ head(chicago_air[, c("ozone", "temp", "month")])
 Both rows and columns can be specified at the same time. The example below returns the first 5 rows of the temperature and solar columns.
 
 
-```{r ex-Q97Yy-12, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Specify Both Rows and Columns for Subsetting'}
+```{r ex-zVLsd-12, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Specify Both Rows and Columns for Subsetting'}
 chicago_air[1:5, c("temp", "solar")]
 
 ```
@@ -233,7 +233,7 @@ chicago_air[1:5, c("temp", "solar")]
 In R, the dollar sign `$` is a special character that can be used to access a data frame column by name. The dollar sign is placed immediately after the variable name. For example, if we wanted to access the temperature values in the `chicago_air` data frame, then we would use `chicago_air$temp`.
 
 
-```{r ex-2LBY8-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Access a Column with `$`'}
+```{r ex-xxkpq-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Access a Column with `$`'}
 data(chicago_air)
 head(chicago_air$temp)
 
@@ -267,12 +267,12 @@ Below is a table of logical operators in R that can be used to create logical co
 The result of a logical expression is a logical data type, a boolean value `TRUE` or `FALSE`.
 
 
-```{r ex-vBOGx-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Logical Expressions Example 1'}
+```{r ex-KUVEy-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Logical Expressions Example 1'}
 1 + 1 == 2
 
 ```
 
-```{r ex-e2XwN-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Logical Expressions Example 2'}
+```{r ex-sW9E7-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Logical Expressions Example 2'}
 10 > 20
 
 ```
@@ -280,7 +280,7 @@ The result of a logical expression is a logical data type, a boolean value `TRUE
 Vectors can also be used in a logical expression. A vector of values on the left hand side of a logical operator will return a vector of the same length with boolean values.
 
 
-```{r ex-Tpwfq-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Vector Logical Expression'}
+```{r ex-rGePa-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Vector Logical Expression'}
 c(25, 80, 55) > 60
 
 ```
@@ -291,7 +291,7 @@ This concept can be used to subset a data frame. A logical vector can be used in
 We can use the data frame of colors and fruit again to demonstrate.
 
 
-```{r ex-dHL3h-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Create a Logical Vector for Subsetting'}
+```{r ex-q6eZv-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Create a Logical Vector for Subsetting'}
 my_data <- data.frame(colors = c("red", "green", "yellow"),
                       fruit = c("apple", "grape", "banana"))
 
@@ -302,7 +302,7 @@ my_data
 If we only wanted records with the "yellow" color, we could use the vector `c(FALSE, FALSE, TRUE)`. Place this vector in the brackets of the data frame, where we select rows.
 
 
-```{r ex-jn9LM-5, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Subset Using a Logical Vector'}
+```{r ex-jUWa9-5, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Subset Using a Logical Vector'}
 my_data[c(FALSE, FALSE, TRUE), ]
 
 ```
@@ -313,7 +313,7 @@ A data frame is returned. The only record is from the 3rd row of the logical vec
 But a more useful way of creating the logical vector is with a logical expression. Below we access the "color" column as a vector using the `$` operator. Then we create a logical vector using a logical expression.
 
 
-```{r ex-uRx1w-6, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Create a Logical Vector with a Logical Expression'}
+```{r ex-Vgi5s-6, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Create a Logical Vector with a Logical Expression'}
 colors <- my_data$colors
 
 colors
@@ -327,7 +327,7 @@ yellow
 Now we can use the logical vector `yellow` to subset the data frame down to records that have the color yellow.
 
 
-```{r ex-P23SW-7, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Subset Data Frame Using Logical Vector'}
+```{r ex-V1e3J-7, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Subset Data Frame Using Logical Vector'}
 my_data[yellow, ]
 
 ```
@@ -335,7 +335,7 @@ my_data[yellow, ]
 The `chicago_air` data frame can be subset in a similar way. Below, a logical vector `hot` is created to represent hot days above 90 degrees. The data frame is subset down to records with hot days.
 
 
-```{r ex-iD32e-8, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Subset `chicago_air` for Hot Days'}
+```{r ex-Q5XvW-8, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Subset `chicago_air` for Hot Days'}
 data(chicago_air)
 hot <- chicago_air$temp > 90
 
@@ -351,7 +351,7 @@ A logical vector can also be used in combination with the function `filter()`.
 The `filter()` function is from a package called `dplyr` which provides many functions for manipulating data frames.
 
 
-```{r ex-eN9Nb-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Load `dplyr` and Explore `filter()`'}
+```{r ex-b0WgF-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Load `dplyr` and Explore `filter()`'}
 # if you have not installed dplyr
 
 
@@ -367,7 +367,7 @@ The benefit of using `filter()` is that it works the way other functions in R ty
 If we want to filter down to records in the `chicago_air` data frame where ozone was above 60 ppb (.060 ppm), we would use the following code.
 
 
-```{r ex-s651r-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Filter `chicago_air` for High Ozone Levels'}
+```{r ex-hY8PL-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Filter `chicago_air` for High Ozone Levels'}
 data(chicago_air)
 high_ozone <- filter(chicago_air, ozone > 0.060)
 
@@ -378,7 +378,7 @@ high_ozone
 If we wanted all of the high ozone days in the 6th month, we add another expression separated by a comma.
 
 
-```{r ex-QFNEh-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Filter for High Ozone Levels in June'}
+```{r ex-lw1Jw-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Filter for High Ozone Levels in June'}
 data(chicago_air)
 high_ozone_june <- filter(chicago_air, ozone > 0.060, month == 6)
 
@@ -389,7 +389,7 @@ high_ozone_june
 Additional logical expressions can be added by separating each expression with a comma. The comma serves as a logical AND. Below is an equivalent output to the output above, using `&` instead of a comma.
 
 
-```{r ex-kLmaK-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Alternative `filter()` Syntax Using `&`'}
+```{r ex-oaDbu-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Alternative `filter()` Syntax Using `&`'}
 data(chicago_air)
 high_ozone_june <- filter(chicago_air, ozone > 0.060 & month == 6)
 
@@ -405,7 +405,7 @@ The `dplyr` package also has a function named `arrange()` that will sort a data 
 Below, the `chicago_air` data frame is ordered by the `ozone` column. The default is ascending order.
 
 
-```{r ex-2WA3M-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Sort `chicago_air` by `ozone`'}
+```{r ex-ebGDs-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Sort `chicago_air` by `ozone`'}
 # if the dplyr library is not already loaded
 library(dplyr)
 data(chicago_air)
@@ -419,7 +419,7 @@ head(ozone_ordered)
 To use descending order, wrap the column in the `desc()` function (also from the `dplyr` package).
 
 
-```{r ex-0SfTh-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Sort `chicago_air` in Descending Order by `ozone`'}
+```{r ex-0dILl-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Sort `chicago_air` in Descending Order by `ozone`'}
 data(chicago_air)
 ozone_descending <- arrange(chicago_air, desc(ozone))
 
@@ -430,7 +430,7 @@ head(ozone_descending)
 Additional columns can be used to sort the data frame, separated by a comma.
 
 
-```{r ex-VdjNL-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Sort `chicago_air` by Multiple Columns'}
+```{r ex-X4ytE-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Sort `chicago_air` by Multiple Columns'}
 data(chicago_air)
 ozone_temp <- arrange(chicago_air, desc(ozone), desc(temp))
 
@@ -446,7 +446,7 @@ If we are working with multiple data frames in R, it is sometimes useful to comb
 To illustrate, we will make two subsets of the `chicago_air` data frame, then combine them together using the `bind_rows()` function. Below, the original number of records in the `chicago_air` data frame is shown using the `nrow()` function. We will split the data frame and recombine to a data frame with the original number of records.
 
 
-```{r ex-2g40D-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Count Rows in `chicago_air`'}
+```{r ex-jPLYk-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Count Rows in `chicago_air`'}
 # if you have not loaded the dplyr package
 library(dplyr)
 data(chicago_air)
@@ -458,7 +458,7 @@ nrow(chicago_air)
 Now we split the data frame into warm and cool data frames using the `filter()` function.
 
 
-```{r ex-5k4LM-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Split `chicago_air` into Warm and Cool Subsets'}
+```{r ex-A3T3G-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Split `chicago_air` into Warm and Cool Subsets'}
 data(chicago_air)
 
 warm <- filter(chicago_air, temp > 80)
@@ -474,7 +474,7 @@ nrow(cool)
 We can confirm that the rows from these two data frames add up to the original data frame.
 
 
-```{r ex-Ik1b8-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Verify Row Counts Before Combining'}
+```{r ex-HLCSY-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Verify Row Counts Before Combining'}
 nrow(warm) + nrow(cool) == nrow(chicago_air)
 
 ```
@@ -482,7 +482,7 @@ nrow(warm) + nrow(cool) == nrow(chicago_air)
 Now we combine using the `bind_rows()` function and confirm that the new `recombined` data frame has the same number of records as the original data frame.
 
 
-```{r ex-1eU0S-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Recombine Data Frames and Verify Row Count'}
+```{r ex-Wn3Wu-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Recombine Data Frames and Verify Row Count'}
 data(chicago_air)
 
 recombined <- bind_rows(warm, cool)

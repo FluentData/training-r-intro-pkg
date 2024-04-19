@@ -31,7 +31,7 @@ This lesson assumes you are familiar with the material in the previous lessons:
 The data for these lessons is available from this package. It is assumed that this package is already installed and loaded into the R session. If you need to refer to the package, simply refer to it as "this package".
 
 
-```{r ex-hfhxm-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Load Data from This Package'}
+```{r ex-tCCqN-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Load Data from This Package'}
 # Assuming the package is already loaded
 
 data(chicago_air)
@@ -48,7 +48,7 @@ the thing that's saved is not a data object but lines of R code.
 To save your own function, use this construction:
 
 
-```{r ex-ftAOr-1, eval = FALSE, exercise = TRUE, exercise.cap = 'Creating Your Own Function'}
+```{r ex-u9JJY-1, eval = FALSE, exercise = TRUE, exercise.cap = 'Creating Your Own Function'}
 my_function_name <- function() {
 
   # lines of R code
@@ -61,7 +61,7 @@ We can write a simple function that prints something to the console. Here is a
 function named `print_hello`.
 
 
-```{r ex-hMFvc-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Simple Function to Print Hello'}
+```{r ex-9UHUQ-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Simple Function to Print Hello'}
 print_hello <- function() {
 
   print("Hello")
@@ -70,7 +70,7 @@ print_hello <- function() {
 
 ```
 
-```{r ex-4ru6l-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Testing the print_hello Function'}
+```{r ex-HvwPT-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Testing the print_hello Function'}
 print_hello()
 
 ```
@@ -86,7 +86,7 @@ Here we recreate the same function, but this time we add an argument `text` insi
 of the parentheses.
 
 
-```{r ex-yC84D-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Function with an Argument'}
+```{r ex-Xwz1u-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Function with an Argument'}
 print_hello <- function(text) {
 
   message <- paste("Hello", text)
@@ -97,7 +97,7 @@ print_hello <- function(text) {
 
 ```
 
-```{r ex-y1v9T-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Testing the Modified print_hello Function'}
+```{r ex-EoMGY-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Testing the Modified print_hello Function'}
 print_hello(text = "everybody!")
 
 ```
@@ -110,7 +110,7 @@ a criteria pollutant standard. We could make simple function that takes two argu
 one for the measurement value, and one for the standard value.
 
 
-```{r ex-pK7lg-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Function with Two Arguments'}
+```{r ex-WfnOi-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Function with Two Arguments'}
 check_standard <- function(measurement, standard) {
 
   measurement > standard
@@ -119,7 +119,7 @@ check_standard <- function(measurement, standard) {
 
 ```
 
-```{r ex-XP97p-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Testing check_standard Function'}
+```{r ex-6z3K3-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Testing check_standard Function'}
 check_standard(measurement = 84, standard = 70)
 
 ```
@@ -133,7 +133,7 @@ then flexibility to use a different value.
 To set a default value, we use `= 70` when we create the function.
 
 
-```{r ex-rWKer-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Function with Default Value'}
+```{r ex-RDVGD-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Function with Default Value'}
 check_standard <- function(measurement, standard = 70) {
 
   measurement > standard
@@ -142,7 +142,7 @@ check_standard <- function(measurement, standard = 70) {
 
 ```
 
-```{r ex-ff9ZM-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Testing check_standard with Default Value'}
+```{r ex-1dri8-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Testing check_standard with Default Value'}
 check_standard(measurement = 50)
 
 ```
@@ -163,12 +163,12 @@ Here we show that using two numbers in a different order will return different
 outputs.
 
 
-```{r ex-iOGU3-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Testing Positional Arguments'}
+```{r ex-yRNTd-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Testing Positional Arguments'}
 check_standard(60, 70)
 
 ```
 
-```{r ex-Mz79j-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Testing Positional Arguments in Reverse Order'}
+```{r ex-uSbY3-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Testing Positional Arguments in Reverse Order'}
 check_standard(70, 60)
 
 ```
@@ -185,7 +185,7 @@ will run if the logical expression is `TRUE` is placed inside curly braces. Belo
 is the outline (not actual R code).
 
 
-```{r ex-F0ldG-1, eval = FALSE, exercise = TRUE, exercise.cap = 'if Function Outline'}
+```{r ex-JqqhA-1, eval = FALSE, exercise = TRUE, exercise.cap = 'if Function Outline'}
 if(logical expression>) {
 
   <code that will run if the logical expression is TRUE>
@@ -194,7 +194,7 @@ if(logical expression>) {
 
 ```
 
-```{r ex-FjZGZ-2, eval = FALSE, exercise = TRUE, exercise.cap = 'if-else Function Outline'}
+```{r ex-IR16v-2, eval = FALSE, exercise = TRUE, exercise.cap = 'if-else Function Outline'}
 if(<logical expression>) {
 
   <code that will run if the logical expression is true>
@@ -207,7 +207,7 @@ if(<logical expression>) {
 
 ```
 
-```{r ex-v1Oo3-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'if Function Example'}
+```{r ex-zeNFr-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'if Function Example'}
 ozone <- 0.075
 
 if(ozone > 0.065) {
@@ -222,7 +222,7 @@ if(ozone > 0.065) {
 
 ```
 
-```{r ex-xqWGr-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Another if Function Example'}
+```{r ex-KlrX8-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Another if Function Example'}
 ozone <- 0.06
 
 if(ozone > 0.065) {
@@ -237,12 +237,12 @@ if(ozone > 0.065) {
 
 ```
 
-```{r ex-dOrpb-5, eval = FALSE, exercise = TRUE, exercise.cap = 'ifelse Function Outline'}
+```{r ex-IxhE3-5, eval = FALSE, exercise = TRUE, exercise.cap = 'ifelse Function Outline'}
 ifelse(<test>, <yes>, <no>)
 
 ```
 
-```{r ex-MkY7v-6, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'ifelse Function Example'}
+```{r ex-8LMYz-6, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'ifelse Function Example'}
 ozone_value <- 0.06
 
 message <- ifelse(ozone_value > 0.065, "Potential Health Effects", "All Good")
@@ -261,7 +261,7 @@ For loops are used to repeat an operation a set number of times. Here is the
 basic outline:
 
 
-```{r ex-DPyL2-1, eval = FALSE, exercise = TRUE, exercise.cap = 'For Loop Outline'}
+```{r ex-zfyff-1, eval = FALSE, exercise = TRUE, exercise.cap = 'For Loop Outline'}
 for(i in sequence){
 
   <code that will run a set number of times>
@@ -270,7 +270,7 @@ for(i in sequence){
 
 ```
 
-```{r ex-yGVbo-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'For Loop Example'}
+```{r ex-ERYIB-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'For Loop Example'}
 for(i in c(1, 2, 3)) {
 
   print(i)
@@ -288,7 +288,7 @@ Here is an example data frame we will use. It represents a few values from three
 monitors.
 
 
-```{r ex-GtggD-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'For Loop with Data Frame'}
+```{r ex-Tc6UH-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'For Loop with Data Frame'}
 monitors <- data.frame(monitor1 = c(50, 60, 58, 52),
                        monitor2 = c(55, 59, 65, 61),
                        monitor3 = c(70, 62, 68, 71))
@@ -297,7 +297,7 @@ monitors
 
 ```
 
-```{r ex-bnR76-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Finding Maximum Values with For Loop'}
+```{r ex-cObbo-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Finding Maximum Values with For Loop'}
 max_values <- c()
 
 for(i in c(1, 2, 3)) {
@@ -328,7 +328,7 @@ The example below applies the `max()` function to the `monitors` data frame from
 the previous section.
 
 
-```{r ex-31BgB-1, eval = FALSE, exercise = TRUE, exercise.cap = 'apply Function Example'}
+```{r ex-G0Hie-1, eval = FALSE, exercise = TRUE, exercise.cap = 'apply Function Example'}
 monitors_max <- apply(monitors, MARGIN = 2, FUN = max)
 
 monitors_max

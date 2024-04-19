@@ -10,7 +10,7 @@ build_learnr <- function(template_file_path) {
   }
 
   metadata <- template$metadata
-  metadata$title <- template$title
+  metadata$title <- paste(template$lesson$number, ". ",template$title)
 
   metadata <- build_metadata(metadata, "learnr")
 

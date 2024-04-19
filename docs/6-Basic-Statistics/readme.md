@@ -26,7 +26,7 @@ This lesson assumes you are familiar with the material in the lesson on [Functio
 Statistical functions are used in this lesson that require installation of the following packages.
 
 
-```{r ex-cGsyp-1, eval = FALSE}
+```{r ex-kEu82-1, eval = FALSE}
 install.packages("envstats")
 
 ```
@@ -40,7 +40,7 @@ R has many built-in functions for descriptive statistics. We will use these
 functions to understand the example environmental data available in this package.
 
 
-```{r ex-mIyfo-1, exercise = TRUE, exercise.cap = 'Extract example data'}
+```{r ex-sZibE-1, exercise = TRUE, exercise.cap = 'Extract example data'}
 data <- example_data  # Assuming example_data is available in this package
 
 ```
@@ -53,17 +53,17 @@ These functions let us know the range of the data values, i.e., the highest and
 lowest values.
 
 
-```{r ex-tPdgw-2, exercise = TRUE, exercise.cap = 'Find minimum value'}
+```{r ex-QIVup-2, exercise = TRUE, exercise.cap = 'Find minimum value'}
 min(data, na.rm=TRUE)
 
 ```
 
-```{r ex-NU59I-3, exercise = TRUE, exercise.cap = 'Find maximum value'}
+```{r ex-6Ct7O-3, exercise = TRUE, exercise.cap = 'Find maximum value'}
 max(data, na.rm=TRUE)
 
 ```
 
-```{r ex-pBkX3-4, exercise = TRUE, exercise.cap = 'Find range of values'}
+```{r ex-ulsae-4, exercise = TRUE, exercise.cap = 'Find range of values'}
 range(data, na.rm=TRUE)
 
 ```
@@ -71,7 +71,7 @@ range(data, na.rm=TRUE)
 We can also get the mean and the quartile values from the `summary()` function.
 
 
-```{r ex-qmzQA-5, exercise = TRUE, exercise.cap = 'Summary statistics'}
+```{r ex-RGwdi-5, exercise = TRUE, exercise.cap = 'Summary statistics'}
 summary(data)
 
 ```
@@ -81,7 +81,7 @@ the spread is for the values in the central range of the distribution, i.e., bet
 the 1st quartile and the 3rd quartile.
 
 
-```{r ex-Qfarp-6, exercise = TRUE, exercise.cap = 'Calculate IQR'}
+```{r ex-tWmQ7-6, exercise = TRUE, exercise.cap = 'Calculate IQR'}
 IQR(data, na.rm=TRUE)
 
 ```
@@ -91,7 +91,7 @@ of the box itself shows the first and third quartile, while the line in the midd
 of the box shows the median.
 
 
-```{r ex-RSckz-7, exercise = TRUE, exercise.cap = 'Visualize IQR with boxplot'}
+```{r ex-kMf08-7, exercise = TRUE, exercise.cap = 'Visualize IQR with boxplot'}
 boxplot(data)
 
 ```
@@ -101,12 +101,12 @@ boxplot(data)
 R has functions for finding the mean and median of a set of values.
 
 
-```{r ex-wRTCH-1, exercise = TRUE, exercise.cap = 'Calculate mean'}
+```{r ex-jHChv-1, exercise = TRUE, exercise.cap = 'Calculate mean'}
 mean(data, na.rm=TRUE)
 
 ```
 
-```{r ex-cTBVs-2, exercise = TRUE, exercise.cap = 'Calculate median'}
+```{r ex-gpKV1-2, exercise = TRUE, exercise.cap = 'Calculate median'}
 median(data, na.rm=TRUE)
 
 ```
@@ -115,12 +115,12 @@ The functions `var()` and `sd()` calculate the variance and standard
 deviation, respectively.
 
 
-```{r ex-VYiDH-3, exercise = TRUE, exercise.cap = 'Calculate variance'}
+```{r ex-LtqaD-3, exercise = TRUE, exercise.cap = 'Calculate variance'}
 var(data, na.rm=TRUE)
 
 ```
 
-```{r ex-CYA95-4, exercise = TRUE, exercise.cap = 'Calculate standard deviation'}
+```{r ex-DBhEl-4, exercise = TRUE, exercise.cap = 'Calculate standard deviation'}
 sd(data, na.rm=TRUE)
 
 ```
@@ -133,7 +133,7 @@ the `t.test()` function to perform a two-sample t-test on the example data.
 First, let's visualize our dataset.
 
 
-```{r ex-ARCR0-1, warning = FALSE, message = FALSE, exercise = TRUE, exercise.cap = 'Visualize dataset'}
+```{r ex-6PxiC-1, warning = FALSE, message = FALSE, exercise = TRUE, exercise.cap = 'Visualize dataset'}
 ggplot(data, aes(factor(variable), value)) + geom_boxplot()
 
 ```
@@ -143,7 +143,7 @@ difference in concentrations. Below is a plot of those two groups side by
 side.
 
 
-```{r ex-qoVUu-2, warning = FALSE, message = FALSE, exercise = TRUE, exercise.cap = 'Compare two groups'}
+```{r ex-0vyqv-2, warning = FALSE, message = FALSE, exercise = TRUE, exercise.cap = 'Compare two groups'}
 filtered_data <- filter(data, group == "Group1" | group == "Group2")
 
 ggplot(filtered_data, aes(factor(group), value)) + geom_boxplot()
@@ -154,7 +154,7 @@ We should also check for normality before doing any statistical tests. Below
 are histograms of the datasets.
 
 
-```{r ex-CHBfF-3, exercise = TRUE, exercise.cap = 'Check for normality with histograms'}
+```{r ex-qKmkV-3, exercise = TRUE, exercise.cap = 'Check for normality with histograms'}
 ggplot(filtered_data, aes(value)) +
   facet_grid(rows = vars(group)) +
   geom_histogram()
@@ -168,14 +168,14 @@ comes from a normal distribution. If the p-value of the test is less than .05,
 we reject the null hypothesis and conclude the data is not normal.
 
 
-```{r ex-oCXS5-4, exercise = TRUE, exercise.cap = 'Shapiro-Wilk test for Group1'}
+```{r ex-fmFSx-4, exercise = TRUE, exercise.cap = 'Shapiro-Wilk test for Group1'}
 group1_data <- filter(data, group == "Group1")
 
 shapiro.test(group1_data$value)
 
 ```
 
-```{r ex-w6YEa-5, exercise = TRUE, exercise.cap = 'Shapiro-Wilk test for Group2'}
+```{r ex-0MQAR-5, exercise = TRUE, exercise.cap = 'Shapiro-Wilk test for Group2'}
 group2_data <- filter(data, group == "Group2")
 
 shapiro.test(group2_data$value)
@@ -192,7 +192,7 @@ datasets are from the same distribution or not. The assumption, or null hypothes
 is that they are, in fact, mean values from the same distribution.
 
 
-```{r ex-Dijcy-6, exercise = TRUE, exercise.cap = 'Student's t-test between two groups'}
+```{r ex-1KzfZ-6, exercise = TRUE, exercise.cap = 'Student's t-test between two groups'}
 t.test(group1_data$value, group2_data$value)
 
 ```
@@ -217,7 +217,7 @@ The `EnvStats` package has a comprehensive list of basic and more advanced stati
 tests for Environmental Data.
 
 
-```{r ex-uTgHd-1, eval = FALSE}
+```{r ex-zhTAo-1, eval = FALSE}
 library(EnvStats)
 
 ?FcnsByCatHypothTests
@@ -236,7 +236,7 @@ arguments that we only want to include complete observations and the Pearson met
 of finding correlations.
 
 
-```{r ex-32uJk-1, exercise = TRUE, exercise.cap = 'Correlation matrix of select variables'}
+```{r ex-4sCkU-1, exercise = TRUE, exercise.cap = 'Correlation matrix of select variables'}
 cor(data[, c("Variable1", "Variable2", "Variable3")],
     use = "complete.obs",
     method ="pearson")
@@ -253,7 +253,7 @@ We could also perform a correlation test using the `cor.test()` function. Here
 we test the correlation between two variables.
 
 
-```{r ex-NzCyY-2, exercise = TRUE, exercise.cap = 'Test correlation between two variables'}
+```{r ex-I2kAN-2, exercise = TRUE, exercise.cap = 'Test correlation between two variables'}
 cor.test(data$Variable1, data$Variable2, method = "pearson")
 
 ```
@@ -267,7 +267,7 @@ do not reject the null hypothesis. We conclude there is no correlation between
 these two variables.
 
 
-```{r ex-hDGEe-3, exercise = TRUE, exercise.cap = 'Test correlation between another set of two variables'}
+```{r ex-PgGD2-3, exercise = TRUE, exercise.cap = 'Test correlation between another set of two variables'}
 cor.test(data$Variable1, data$Variable3, method = "pearson")
 
 ```
@@ -278,7 +278,7 @@ plot between each pair of columns in the data frame. Setting `lower.panel = pane
 will draw a smooth line through the scatter plots on the lower panels.
 
 
-```{r ex-jumpr-4, exercise = TRUE, exercise.cap = 'Pairwise plots of select variables'}
+```{r ex-YxGjd-4, exercise = TRUE, exercise.cap = 'Pairwise plots of select variables'}
 pairs(data[, c("Variable1", "Variable2", "Variable3")], lower.panel = panel.smooth)
 
 ```
