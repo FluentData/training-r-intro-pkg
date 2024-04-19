@@ -117,7 +117,7 @@ remotes::install_github("FluentData/training-r-intro")
 library(training-r-intro)
 
 start_training()
-
+```
 
 ## Contributing
 
