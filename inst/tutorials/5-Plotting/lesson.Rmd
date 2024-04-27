@@ -29,7 +29,7 @@ This lesson assumes you are familiar with the material in the lesson on
 It also uses functions from the `ggplot2` package which needs to be installed.
 
 
-```{r ex-Fwg8X-1, eval = FALSE}
+```{r ex-8sfdI-1, eval = FALSE}
 install.packages("ggplot2")
 
 ```
@@ -37,7 +37,7 @@ install.packages("ggplot2")
 The example data for the exercises is available from this package. To load the `chicago_air` data frame we will be using in the lesson, simply use the `data()` function.
 
 
-```{r ex-gB1KA-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Loading Data'}
+```{r ex-aXr0c-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Loading Data'}
 data(chicago_air)
 
 ```
@@ -49,7 +49,7 @@ will be displayed on the y-axis of a coordinate graph, with the index number of 
 vector taking the x-axis values.
 
 
-```{r ex-A2RBs-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Basic Plot'}
+```{r ex-VoMZI-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Basic Plot'}
 benzene <- c(1.3, 4.5, 2.6, 3.4, 6.4)
 
 plot(benzene)
@@ -62,7 +62,7 @@ the `chicago_air` data frame to create a scatterplot of temperature on the x-axi
 and ozone on the y-axis.
 
 
-```{r ex-rgEB7-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Scatter Plot'}
+```{r ex-2ZeNC-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Scatter Plot'}
 plot(x = chicago_air$temp, y = chicago_air$ozone)
 
 ```
@@ -71,7 +71,7 @@ To see data plotted over time, we need to convert the `date` column to a `Date`
 data type.
 
 
-```{r ex-KSvM5-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Converting Date Column'}
+```{r ex-x6rUw-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Converting Date Column'}
 chicago_air$date <- as.Date(chicago_air$date)
 
 ```
@@ -79,7 +79,7 @@ chicago_air$date <- as.Date(chicago_air$date)
 Here is ozone plotted by day as a line graph.
 
 
-```{r ex-d6zoh-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Line Graph'}
+```{r ex-qobUB-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Line Graph'}
 plot(x = chicago_air$date, y = chicago_air$ozone, type = 'l')
 
 ```
@@ -89,7 +89,7 @@ to control the look of the graph. The plot below demonstrates a few of these
 options. Run `?plot` to see a list of all the arguments in the help file.
 
 
-```{r ex-aVnUD-5, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Customized Plot'}
+```{r ex-IzNJV-5, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Customized Plot'}
 plot(x = chicago_air$date, y = chicago_air$ozone,
      type='l',
      pch = 16,
@@ -108,7 +108,7 @@ of a data set as a histogram. Below is the default output of the ozone data
 from the `chicago_air` data frame.
 
 
-```{r ex-6siGd-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Default Histogram'}
+```{r ex-GRaK9-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Default Histogram'}
 hist(chicago_air$ozone)
 
 ```
@@ -118,7 +118,7 @@ each bar, with the `breaks` argument. For example, supplying `breaks = 20` will
 make a histogram with 20 bars. Other arguments allow you to control the titles and colors of the plot. Run `?hist` to see a complete list of arguments on the help page.
 
 
-```{r ex-pRpic-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Customized Histogram'}
+```{r ex-RO2ag-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Customized Histogram'}
 hist(chicago_air$ozone,
      breaks = 20,
      main = "Histogram of Ozone",
@@ -135,7 +135,7 @@ argument. If a data frame is used, then the columns can be referenced without th
 `$` operator, and a formula must be used.
 
 
-```{r ex-e9R4i-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Simple Box Plot'}
+```{r ex-oqO8i-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Simple Box Plot'}
 boxplot(chicago_air$ozone)
 
 ```
@@ -158,7 +158,7 @@ column in the data frame is being plotted, and which column is used to do the
 grouping. We can make a plot of ozone by month using the `chicago_air` data frame.
 
 
-```{r ex-B2wt0-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Box Plot by Month'}
+```{r ex-C9rP6-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Box Plot by Month'}
 boxplot(ozone ~ month, data = chicago_air)
 
 ```
@@ -184,7 +184,7 @@ To use `ggplot2`, we typically follow this sequence of steps:
 Let's begin by loading the `ggplot2` package.
 
 
-```{r ex-rxsKI-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Loading ggplot2 Package'}
+```{r ex-y5bMX-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Loading ggplot2 Package'}
 library(ggplot2)
 
 ```
@@ -196,7 +196,7 @@ is short for aesthetic. The primary arguments in the `aes( )` function are `x`
 and `y`. These determine which column from the data frame is used on the x and y axes.
 
 
-```{r ex-UCuu5-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Base ggplot'}
+```{r ex-rZGGh-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Base ggplot'}
 ggplot(chicago_air, aes(x = temp, y = ozone))
 
 ```
@@ -207,14 +207,14 @@ to the plot, which is done by adding a function using the `+` sign. For a point
 plot, we add the `geom_point()` function.
 
 
-```{r ex-sUCGG-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'ggplot Scatter Plot'}
+```{r ex-EMp9A-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'ggplot Scatter Plot'}
 ggplot(chicago_air, aes(x = temp, y = ozone)) + geom_point()
 
 ```
 
 Additional modifications can be made. Customize it by adding color, title, and labels.
 
-```{r ex-RN8sI-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Customized ggplot Scatter Plot'}
+```{r ex-pUDJf-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Customized ggplot Scatter Plot'}
 ggplot(chicago_air, aes(x = temp, y = ozone)) +
   geom_point(color = "forestgreen") +
   ggtitle('Relationship between Ozone and Temperature') +
@@ -229,7 +229,7 @@ on the month. To do this, we need to make the month column a factor and use the
 argument `color` in the `aes( )` function.
 
 
-```{r ex-IJnw2-5, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Color Coded Scatter Plot'}
+```{r ex-HFIjR-5, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Color Coded Scatter Plot'}
 ggplot(chicago_air, aes(x = temp, y = ozone, color = factor(month))) +
   geom_point() +
   ggtitle('Relationship between Ozone and Temperature') +
@@ -248,7 +248,7 @@ To create a line plot of ozone over time, we use the `as.Date()` function on the
 column and replace the `geom_point( )` function with the `geom_line( )` function.
 
 
-```{r ex-zoGks-6, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Line Plot Over Time'}
+```{r ex-kqYgY-6, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Line Plot Over Time'}
 ggplot(chicago_air, aes(x = as.Date(date), y = ozone)) + geom_line()
 
 ```
@@ -258,7 +258,7 @@ the width of each bar, the `fill` argument the color of the bars, and the `color
 argument the outline of the bars.
 
 
-```{r ex-6VLkg-7, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'ggplot Histogram'}
+```{r ex-ryF4b-7, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'ggplot Histogram'}
 ggplot(chicago_air, aes(ozone)) +
   geom_histogram(binwidth=0.005, fill='darkorange', color='black')
 
@@ -267,7 +267,7 @@ ggplot(chicago_air, aes(ozone)) +
 The `geom_boxplot()` function will create a box plot.
 
 
-```{r ex-f3W71-8, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Simple ggplot Box Plot'}
+```{r ex-PJz74-8, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Simple ggplot Box Plot'}
 ggplot(chicago_air, aes(ozone)) + geom_boxplot()
 
 ```
@@ -276,7 +276,7 @@ Using the `y` argument can split the data into groups. Here we use the `factor()
 function on the month column to create 12 box plots on the graph.
 
 
-```{r ex-M0JuT-9, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Grouped Box Plot'}
+```{r ex-aeCuC-9, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Grouped Box Plot'}
 ggplot(chicago_air, aes(x = ozone, y = factor(month))) + geom_boxplot()
 
 ```
@@ -292,7 +292,7 @@ multiple plots or facets. The `facet_wrap()` function allows you to use a column
 to choose the facets. Below is a faceted histogram of ozone values.
 
 
-```{r ex-MoOh5-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Faceted Histogram'}
+```{r ex-0Fva3-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Faceted Histogram'}
 ggplot(chicago_air, aes(ozone)) +
   geom_histogram() +
   facet_wrap("month")
@@ -308,7 +308,7 @@ represented as a shaded area. Below, the argument `method` is given the value
 `lm` which stands for a linear model.
 
 
-```{r ex-uHhcH-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Linear Model Fitted Line', message = FALSE, warning = FALSE}
+```{r ex-fRNCC-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Linear Model Fitted Line', message = FALSE, warning = FALSE}
 ggplot(chicago_air, aes(temp, ozone) ) +
   geom_point() +
   geom_smooth(method=lm)
@@ -320,7 +320,7 @@ argument will draw a nonlinear curve which represents localized relationships be
 the x and y variables.
 
 
-```{r ex-AksR0-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Nonlinear Curve Fitting', message = FALSE, warning = FALSE}
+```{r ex-njElP-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Nonlinear Curve Fitting', message = FALSE, warning = FALSE}
 ggplot(chicago_air, aes(temp, ozone) ) +
   geom_point() +
   geom_smooth(method=loess)
@@ -338,7 +338,7 @@ pane.
 You can also save a plot made by `ggplot2` using the `ggsave()` function.
 
 
-```{r ex-IKuqR-1, eval = FALSE}
+```{r ex-dlAjr-1, eval = FALSE}
 my_plot <- ggplot(chicago_air, aes(temp, ozone) ) +
   geom_point() +
   geom_smooth(method=loess)

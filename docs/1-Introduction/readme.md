@@ -12,7 +12,7 @@ This lesson is a part of the Introduction to R for Air Quality Data Science. The
 - [Basic Math](#basic-math)
   - [Order of Operations](#order-of-operations)
 
-- [Note on Comments and Code Blocks](#note-on-comments-and-code-blocks)
+- [Comments and Code Blocks](#comments-and-code-blocks)
 
 - [Variables](#variables)
 
@@ -55,7 +55,7 @@ To download R, [see this page](https://cran.r-project.org/). You will need to se
 system (PC or Mac). Accept the default options during the installation.
 
 
-Once you have installed R, you can open the program itself. On PC, if you have selected the desktop shortcut during installation, the R icon
+Once you have installed R, you can open the program itself. On a PC, if you have selected the desktop shortcut during installation, the R icon
 will look like this:
 
 
@@ -108,7 +108,7 @@ Open up a script if you haven't already (“File” -> “New File” -> “R Sc
 the lines into your script.
 
 
-```{r ex-eiHaz-1, exercise = FALSE, eval = TRUE, exercise.cap = 'Practice Basic Math Operations'}
+```{r ex-bXHav-1, exercise = FALSE, eval = TRUE, exercise.cap = 'Practice Basic Math Operations'}
 10 + 5
 10 - 5
 10 * 5
@@ -135,17 +135,17 @@ R follows the usual order of arithmetical operations and uses parentheses for gr
 see the different values that are returned.
 
 
-```{r ex-C58km-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Understanding Order of Operations'}
+```{r ex-oWkbF-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Understanding Order of Operations'}
 10 - 3 / 5
 
 ```
 
-```{r ex-2P9sT-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Practicing Grouping with Parentheses'}
+```{r ex-tpqM5-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Practicing Grouping with Parentheses'}
 (10 - 3) / 5
 
 ```
 
-## Note on Comments and Code Blocks
+## Comments and Code Blocks
 
 To write a comment in your script that will not be evaluated, type `#` in front of your comment. The text after `#` will not be evaluated. There is
 no multi-line commenting in R, so every comment line must begin with the `#` character.
@@ -154,17 +154,17 @@ no multi-line commenting in R, so every comment line must begin with the `#` cha
 Run all of the code below and see what gets returned in the R console (bottom left panel in RStudio).
 
 
-```{r ex-7hEfM-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Experiment with Comments'}
+```{r ex-vnjMK-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Experiment with Comments'}
 # Full line comment
 5^2 # partial line comment
 
 ```
 
-In the example above and the previous section, you have seen the R code and its output. The code blocks with output look like this, with `1+1` being
+In the example above and the previous section, you can see the R code and its output. The code blocks with output look like this, with `1+1` being
 the R code and `## [1] 2` being the output:
 
 
-```{r ex-l629B-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Code and Output Example'}
+```{r ex-ygOvs-2, exercise = FALSE, eval = TRUE, exercise.cap = 'Code and Output Example'}
 1+1
 
 ```
@@ -172,8 +172,9 @@ the R code and `## [1] 2` being the output:
 However, in the R console the code and output would look like this:
 
 
-```{r ex-hkQIj-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Console Code Execution'}
-1 + 1
+```{r ex-sjM7J-3, exercise = FALSE, eval = FALSE, echo = TRUE, exercise.cap = 'Console Code Execution'}
+> 1 + 1
+[1] 2
 
 ```
 
@@ -183,7 +184,7 @@ A variable is a letter or combination of alphanumeric characters that is used to
 with the dash to create an arrow symbol pointing left `<-`. Below, the variables `x` and `y` are created by assigning some numbers to them.
 
 
-```{r ex-JADmU-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Creating Variables'}
+```{r ex-6kwt4-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Creating Variables'}
 x <- 10
 y <- 5
 x + y
@@ -198,12 +199,12 @@ In RStudio, you will see the variables we created in the top right panel.
 If you've already created a variable, you can replace the value with another value.
 
 
-```{r ex-Y1soB-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Exploring Variable Assignment'}
+```{r ex-QTvM3-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Exploring Variable Assignment'}
 x
 
 ```
 
-```{r ex-O0ucr-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Updating Variable Values'}
+```{r ex-licIL-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Updating Variable Values'}
 x <- 20
 x
 
@@ -220,9 +221,9 @@ There are 3 important rules to remember when creating variable names:
 Try running the following code and you will see that in your global environment there are two different objects listed.
 
 
-```{r ex-5emEn-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Variable Naming Rules'}
-x <- 5
-X <- 5
+```{r ex-E0eQ3-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Variable Naming Rules'}
+y <- 5
+Y <- 10
 
 ```
 
@@ -237,13 +238,14 @@ R has three main data types:
 | numeric | numbers | `1`, `3.14`, `log(10)` |
 | logical | binary | `TRUE`, `FALSE` |
 
-The `character` type requires single or double quotes. The logical values
-`TRUE` and `FALSE` should not be quoted and require full caps.
+The `character` type requires single or double quotes. The numeric type
+must be unquoted numbers, and the full-caps logical values `TRUE` and
+`FALSE` must also be unquoted.
 
 
 ## Grouping Data
 
-There are several ways to group data to make them easier to work with:
+There are several ways to store groups of data to make them easier to work with:
 
 
 ## Vectors
@@ -251,13 +253,13 @@ There are several ways to group data to make them easier to work with:
 A vector variable can contain only one type of data (numeric, character, or logical). We use `c()` to create vectors.
 
 
-```{r ex-7qwhu-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Creating Numeric Vectors'}
+```{r ex-4EGWf-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Creating Numeric Vectors'}
 x <- c(1, 2, 3, 4, 5)
 x
 
 ```
 
-```{r ex-f4koA-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Creating Character Vectors'}
+```{r ex-HSgMf-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Creating Character Vectors'}
 fruit <- c("apples", "bananas", "oranges")
 fruit
 
@@ -267,7 +269,7 @@ If you try to type in text without using quotations marks for character values (
 running the code below.
 
 
-```{r ex-kAAyQ-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Error Without Quotes'}
+```{r ex-BKUZJ-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Error Without Quotes'}
 fruit <- c(apples, bananas, oranges)
 
 ```
@@ -277,7 +279,7 @@ find them and it returns an error. The members of a vector can be accessed by us
 `fruit` vector, you can use the single bracket with the number 3:
 
 
-```{r ex-cYSCq-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Accessing Vector Elements'}
+```{r ex-zbMt9-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Accessing Vector Elements'}
 fruit[3]
 
 ```
@@ -287,7 +289,7 @@ fruit[3]
 Lists are like vectors but can contain any mix of data types. We use `list()` to create a list variable.
 
 
-```{r ex-3RJPl-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Creating Lists'}
+```{r ex-oQfOX-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Creating Lists'}
 x <- list("Benzene", 1.3, TRUE)
 x
 
@@ -298,7 +300,7 @@ is the second value in the list, so it is shown below the double bracket `[[2]]`
 list.
 
 
-```{r ex-NeQlK-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Accessing List Elements'}
+```{r ex-fn20s-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Accessing List Elements'}
 x[[2]]
 
 ```
@@ -306,7 +308,7 @@ x[[2]]
 Lists can also contain vectors and other lists.
 
 
-```{r ex-ZvztJ-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Lists Containing Vectors and Lists'}
+```{r ex-ws3nw-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Lists Containing Vectors and Lists'}
 my_vector <- c(1, 2, 3)
 my_list <- list("Benzene", 1.3, TRUE)
 y <- list(TRUE, my_vector, my_list)
@@ -318,7 +320,7 @@ In this example, you can use two double brackets to access the value `1.3` by se
 `my_list`:
 
 
-```{r ex-w7rur-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Nested List Access'}
+```{r ex-TuTmm-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Nested List Access'}
 y[[3]][[2]]
 
 ```
@@ -329,7 +331,7 @@ Data frames are data tables in R. We use `data.frame()` to create a data frame o
 vectors of the same length and use them to create a data frame.
 
 
-```{r ex-w74nJ-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Creating Data Frames'}
+```{r ex-SWmKd-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Creating Data Frames'}
 pollutant <- c("Benzene", "Toluene", "Xylenes")
 concentration <- c(1.3, 5.5, 6.0)
 carcinogen <- c(TRUE, FALSE, FALSE)
@@ -342,7 +344,7 @@ The output above shows a table with the vector variable names as column names, a
 create a data frame where the vectors are not all the same length, you will see the error shown below.
 
 
-```{r ex-ExWhT-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Data Frame Dimension Mismatch Error'}
+```{r ex-kWXeH-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Data Frame Dimension Mismatch Error'}
 pollutant <- c("Benzene", "Toluene")
 concentration <- c(1.3, 5.5, 6.0)
 carcinogen <- c(TRUE, FALSE, FALSE)
@@ -463,7 +465,7 @@ v <- c(1, 2, 3, 4, 5)
 
 ### Exercise 4
 
-Create a list `l` that contains a number (e.g., 5), a string (e.g., 'apple'), and a logical value (e.g., TRUE).
+Create a list `l` that contains the number 5, the string 'apple', and the logical value `TRUE`.
 
 <details><summary>Click for Hint</summary>
 

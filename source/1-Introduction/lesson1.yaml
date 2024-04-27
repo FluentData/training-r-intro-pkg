@@ -43,7 +43,7 @@ content:
       - type: list
         bullets:
           - If you cannot access data easily in your BI tool, R can read just about any data source.
-          - If you need to save a large number of files, R can automate that process in a way that BI tools cannot.
+          - If you need to download, save, or otherwise process a large number of files, R can automate those tasks in a way that BI tools cannot.
           - Custom data transformations that are not possible in BI tools can be done with R.
           - Custom data visualizations that are not available in BI tools can be done with R.
           - Predictive modeling that is not available in BI tools, or only in a rudimentary way, can be done in R.
@@ -62,7 +62,7 @@ content:
           system (PC or Mac). Accept the default options during the installation.
       - type: paragraph
         content: |
-          Once you have installed R, you can open the program itself. On PC, if you have selected the desktop shortcut during installation, the R icon
+          Once you have installed R, you can open the program itself. On a PC, if you have selected the desktop shortcut during installation, the R icon
           will look like this:
       - type: image
         src: "./images/r_icon.png"
@@ -187,7 +187,7 @@ content:
             content: |
               (10 - 3) / 5
   - type: section
-    title: Note on Comments and Code Blocks
+    title: Comments and Code Blocks
     content:
       - type: paragraph
         content: |
@@ -207,13 +207,13 @@ content:
           5^2 # partial line comment
       - type: paragraph
         content: |
-          In the example above and the previous section, you have seen the R code and its output. The code blocks with output look like this, with `1+1` being
+          In the example above and the previous section, you can see the R code and its output. The code blocks with output look like this, with `1+1` being
           the R code and `## [1] 2` being the output:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          eval: true
           exercise.cap: "Code and Output Example"
         content: |
           1+1
@@ -223,11 +223,13 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          eval: false
+          echo: true
           exercise.cap: "Console Code Execution"
         content: |
-          1 + 1
+          > 1 + 1
+          [1] 2
   - type: section
     title: Variables
     content:
@@ -282,9 +284,9 @@ content:
           There are 3 important rules to remember when creating variable names:
       - type: list
         numbers:
-          - You can't start your variable with a number.
+          - You can't start your variable name with a number.
           - You can't use spaces or special characters ($,%,#,-). Periods `.` and underscores  `_` are ok.
-          - Capitalization __DOES__ matter in R. That is, R will consider `x` and  `X` to be different variables.
+          - Capitalization __DOES__ matter in R. That is, R will consider `y` and  `Y` to be different variables.
       - type: paragraph
         content: |
           Try running the following code and you will see that in your global environment there are two different objects listed.
@@ -295,8 +297,8 @@ content:
           exercise.eval: false
           exercise.cap: "Variable Naming Rules"
         content: |
-          x <- 5
-          X <- 5
+          y <- 5
+          Y <- 10
   - type: section
     title: Data Types
     content:
@@ -323,14 +325,15 @@ content:
             - "`TRUE`, `FALSE`"
       - type: paragraph
         content: |
-          The `character` type requires single or double quotes. The logical values
-          `TRUE` and `FALSE` should not be quoted and require full caps.
+          The `character` type requires single or double quotes. The numeric type
+          must be unquoted numbers, and the full-caps logical values `TRUE` and
+          `FALSE` must also be unquoted.
   - type: section
     title: Grouping Data
     content:
       - type: paragraph
         content: |
-          There are several ways to group data to make them easier to work with:
+          There are several ways to store groups of data to make them easier to work with:
       - type: list
         bullets:
           - A __vector__ stores multiple values of the same type (e.g. all numeric values).
@@ -511,7 +514,7 @@ exercises:
         We use the `c()` function in R to combine elements into a vector. To create consecutive integers, you can also use the colon `:` operator, which is a convenient way to create sequences of numbers.
       code: |
         v <- c(1, 2, 3, 4, 5)
-  - instructions: "Create a list `l` that contains a number (e.g., 5), a string (e.g., 'apple'), and a logical value (e.g., TRUE)."
+  - instructions: "Create a list `l` that contains the number 5, the string 'apple', and the logical value `TRUE`."
     hints:
       - "# Use the `list()` function to create a list that can contain elements of different types."
       - "# To create a list with a number, a string, and a logical value, you can use `list(5, 'apple', TRUE)`."

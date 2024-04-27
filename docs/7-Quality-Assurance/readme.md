@@ -21,7 +21,7 @@ This lesson assumes you are familiar with the material in the lesson on [Functio
 The data used throughout these lessons is provided by this package. To access the data, simply use the `data()` function with the name of the dataset provided by this package.
 
 
-```{r ex-eepns-1, eval = TRUE, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Load Example Data Frame'}
+```{r ex-mLauk-1, eval = TRUE, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Load Example Data Frame'}
 # Assuming this package is already loaded into your R session
 data("example_dataset")
 
@@ -34,7 +34,7 @@ data("example_dataset")
 Data types are the first thing to consider when using data in R. Many errors can happen if we assume that our data is a certain type, when in reality it is not. After reading data into R, we should look at the data types in RStudio or using the function `str()`.
 
 
-```{r ex-uGfyE-1, eval = TRUE, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Inspect Example Dataset Data Types'}
+```{r ex-8Z93E-1, eval = TRUE, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Inspect Example Dataset Data Types'}
 str(example_dataset)
 
 ```
@@ -42,7 +42,7 @@ str(example_dataset)
 Here is an example of text that is read into R, and a certain column might be `character` when we expected it to be `Date`.
 
 
-```{r ex-pYBYE-2, eval = TRUE, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Check Data Types'}
+```{r ex-UHgmY-2, eval = TRUE, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Check Data Types'}
 sample_data <- read.csv(text = "
 date,value
 2022-08-01,100
@@ -56,7 +56,7 @@ str(sample_data)
 We can use the `as.Date()` function to transform the column after reading the data, or we can use the `colClasses` argument in the `read.csv` function to ensure it's read correctly.
 
 
-```{r ex-jeoAo-3, eval = TRUE, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Correcting Data Types with colClasses'}
+```{r ex-j5i0t-3, eval = TRUE, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Correcting Data Types with colClasses'}
 sample_data <- read.csv(colClasses = c("Date", "numeric"), text = "
 date,value
 2022-08-01,100
@@ -72,7 +72,7 @@ str(sample_data)
 For both character and numeric data types, there may be values that should not be allowed.
 
 
-```{r ex-IvYci-1, eval = TRUE, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Identify and Correct Unallowed Data'}
+```{r ex-iUtMe-1, eval = TRUE, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Identify and Correct Unallowed Data'}
 # Example of correcting unallowed values
 values <- c(1, 2, -1, 3, -2, 4)
 values[values < 0] <- NA
@@ -86,7 +86,7 @@ values
 Handling outliers is difficult because we do not necessarily want to remove data that may be uncommon but within the realm of possibility.
 
 
-```{r ex-Q1tvb-1, eval = TRUE, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Identify and Handle Outliers'}
+```{r ex-ZvmnZ-1, eval = TRUE, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Identify and Handle Outliers'}
 # Example of identifying and handling outliers
 data("example_dataset")
 boxplot(example_dataset$value)
@@ -98,7 +98,7 @@ boxplot(example_dataset$value)
 If you run a command and get an error, then R should print an error message. Common syntax mistakes include missing commas, unmatched parentheses, and the wrong type of closing brace.
 
 
-```{r ex-ps7vH-1, eval = TRUE, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Examples of Common Syntax Mistakes'}
+```{r ex-ME5GN-1, eval = TRUE, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Examples of Common Syntax Mistakes'}
 # Example of a common syntax mistake: missing commas
 x <- c("a", "b" "c")
 
