@@ -38,7 +38,8 @@ content:
           mean(x)
       - type: paragraph
         content: |
-          As you would expect, R has many built-in math functions. Below are a series of examples.
+          As you would expect, R has many built-in math functions. Below are a few
+          examples.
       - type: code
         language: r
         options:
@@ -176,7 +177,7 @@ content:
               exercise.lines: 5
               exercise.cap: "Maximum Value"
             content: |
-              max(c(6, 9, 3, 11, -2))
+              max(c(15, 2, 8.3, -10, 21))
       - type: section
         title: "4. `seq()`"
         content:
@@ -306,7 +307,7 @@ content:
     content:
       - type: paragraph
         content: |
-          Most of the statistical summary functions in R have the argument `na.rm`. This stands for `NA` remove. `NA` value is how R represents a missing value, similar to the NULL value in a SQL database.
+          Most of the statistical summary functions in R have the argument `na.rm`. This stands for `NA` remove. The `NA` value is how R represents a missing value, similar to the NULL value in a SQL database.
       - type: paragraph
         content: |
           For example, there is a built-in data frame in R called `airquality` with daily measurements from a monitor in New York from 1973 (see `?airquality`). If we load the data frame using the `data()` function and take a look at the top 6 rows using the `head()` function, we can see some missing values represented as `NA`.
@@ -407,7 +408,7 @@ content:
           Here is a link to a page that lists many useful packages for environmental data analysis: https://cran.r-project.org/web/views/Environmetrics.html
       - type: paragraph
         content: |
-          Remember, when you close down RStudio, then start it up again, you don’t have to download the package again. But you do have to load the package to use any function that's not in the R core functionality (this is very easy to forget).
+          Remember, when you close down RStudio, then start it up again, you don’t have to download the package again. But you do have to use the `library()` function to load the package before you can use any function that's not in the R core functionality (this is very easy to forget).
   - type: section
     title: Importing Data
     content:
@@ -470,7 +471,7 @@ content:
               emissions <- read_excel("./data/emissions_IL_2022.xlsx", sheet = "UNIT_DATA", skip = 6)
               head(emissions)
 exercises:
-  - instructions: "Use the `seq()` function to create a vector from 1 to 20 by 2. For help with the parameters, run `?seq()` in the console and use the documentation."
+  - instructions: "Use the `seq()` function to create a vector from 1 to 20 by 2. For help with the parameters, run `?seq()` in the console and consult the documentation."
     hints:
       - "# To create a sequence, use the `seq()` function with `from`, `to`, and `by` parameters."
       - "# `from` specifies the starting number, `to` the ending number, and `by` how much to increment. For example, `seq(from = 1, to = 20, by = 2)`."

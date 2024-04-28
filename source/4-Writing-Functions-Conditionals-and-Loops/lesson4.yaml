@@ -121,9 +121,9 @@ content:
       - type: paragraph
         content: |
           We can create a function with more than one argument, and set default values when
-          needed. Suppose we would like to make a function that checks if a measurement is below
-          a criteria pollutant standard. We could make simple function that takes two arguments:
-          one for the measurement value, and one for the standard value.
+          needed. Suppose we would like to make a function that checks if a measurement is
+          greater than a criteria pollutant standard. We could make a simple function that
+          takes two arguments: one for the measurement value, and one for the standard value.
       - type: code
         language: r
         options:
@@ -131,7 +131,7 @@ content:
           exercise.eval: false
           exercise.cap: "Function with Two Arguments"
         content: |
-          check_standard <- function(measurement, standard) {
+          standard_violated <- function(measurement, standard) {
 
             measurement > standard
 
@@ -141,16 +141,16 @@ content:
         options:
           exercise: true
           exercise.eval: false
-          exercise.cap: "Testing check_standard Function"
+          exercise.cap: "Testing standard_violated Function"
         content: |
-          check_standard(measurement = 84, standard = 70)
+          standard_violated(measurement = 84, standard = 70)
       - type: paragraph
         content: |
           We could write a more specific function for checking a value against the ozone
           standard. For this function, we want to keep the `standard` parameter but make sure
           the default is `70`. It may be that we typically want to use this function to
           check against the current 8-hour ozone standard in parts per billion, but have
-          then flexibility to use a different value.
+          the flexibility to use a different value.
 
           To set a default value, we use `= 70` when we create the function.
       - type: code
@@ -160,7 +160,7 @@ content:
           exercise.eval: false
           exercise.cap: "Function with Default Value"
         content: |
-          check_standard <- function(measurement, standard = 70) {
+          standard_violated <- function(measurement, standard = 70) {
 
             measurement > standard
 
@@ -170,9 +170,9 @@ content:
         options:
           exercise: true
           exercise.eval: false
-          exercise.cap: "Testing check_standard with Default Value"
+          exercise.cap: "Testing standard_violated with Default Value"
         content: |
-          check_standard(measurement = 50)
+          standard_violated(measurement = 50)
   - type: section
     title: Positional Arguments
     content:
@@ -183,7 +183,7 @@ content:
           they appeared in the parentheses of the `function( ){}` call, without writing out
           the argument names.
 
-          For example, we can supply two numbers to the `check_standard()` function that we
+          For example, we can supply two numbers to the `standard_violated()` function that we
           created above, without writing out the `measurement` and `standard` arguments.
           When R executes the function, it will assign the numbers to the arguments
           based on the position in the parentheses.
@@ -197,7 +197,7 @@ content:
           exercise.eval: false
           exercise.cap: "Testing Positional Arguments"
         content: |
-          check_standard(60, 70)
+          standard_violated(60, 70)
       - type: code
         language: r
         options:
@@ -205,7 +205,7 @@ content:
           exercise.eval: false
           exercise.cap: "Testing Positional Arguments in Reverse Order"
         content: |
-          check_standard(70, 60)
+          standard_violated(70, 60)
   - type: section
     title: if Functions
     content:
@@ -304,7 +304,7 @@ content:
 
           print(message)
   - type: section
-    title: For loop
+    title: For loops
     content:
       - type: paragraph
         content: |
@@ -359,6 +359,12 @@ content:
                                  monitor3 = c(70, 62, 68, 71))
 
           monitors
+      - type: paragraph
+        content: |
+          In the code below, we create an empty vector called max_values. As the
+          for() function loops through the vector c(1, 2, 3), the data frame columns
+          are accessed using square brackets [ , i]. Each max value is saved to
+          the max_values vector using square brackets [i].
       - type: code
         language: r
         options:
@@ -404,6 +410,24 @@ content:
           monitors_max <- apply(monitors, MARGIN = 2, FUN = max)
 
           monitors_max
+      - type: paragraph
+        content: |
+          The MARGIN argument is set to 2 because we are applying the max() function
+          to the columns of the data frame. Also notice that we do not need to create
+          an initial empty vector, as we did with the for() function. The returned
+          value is a named vector that is as long as the number of columns in the
+          data frame.
+
+          We could also find the mean of each row in the `monitors` data frame.
+          To do this, we would set the `MARGIN` argument to `1`.
+      - type: code
+        language: r
+        options:
+          eval: false
+          exercise: true
+          exercise.cap: "apply Function Example with MARGIN = 1"
+        content: |
+          apply(monitors, MARGIN = 1, FUN = mean)
 exercises:
   - instructions: "Write a function named `ppm_to_ppb` that converts a value from parts per million to parts per billion."
     hints:

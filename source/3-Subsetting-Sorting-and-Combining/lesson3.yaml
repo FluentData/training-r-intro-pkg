@@ -123,7 +123,7 @@ content:
     content:
       - type: paragraph
         content: |
-          If we want to work with a particular subset of a data frame, we need to know how to select particular records. We will cover how to subset using numeric indexing, logical conditions, and the `filter()` function.
+          If we want to work with a particular subset of a data frame, we need to know how to select those records. We will cover how to subset using numeric indexing, logical conditions, and the `filter()` function.
       - type: section
         title: Indexing
         content:
@@ -196,6 +196,9 @@ content:
           - type: paragraph
             content: |
               Now that we understand indexing we can subset the `chicago_air` data frame by using the brackets `[ , ]` function. (This is a rare example of a function in R that does not have the form `function_name()`.)
+          - type: paragraph
+            content: |
+              To get one row of the data frame, specify the row number you would like in the brackets, on the left side of the comma. If you leave   the column value on the right side of the comma blank, it returns all the columns associated with row number 1.
           - type: code
             language: r
             options:
@@ -287,7 +290,7 @@ content:
         content:
           - type: paragraph
             content: |
-              In R, the dollar sign `$` is a special character that can be used to access a data frame column by name. The dollar sign is placed immediately after the variable name. For example, if we wanted to access the temperature values in the `chicago_air` data frame, then we would use `chicago_air$temp`.
+              In R, the dollar sign `$` is a special character that can be used to access a data frame column by name. The dollar sign is placed immediately after the variable name. For example, if we wanted to access the temperature values in the `chicago_air` data frame, then we could use `chicago_air$temp`.
           - type: code
             language: r
             options:
@@ -345,6 +348,9 @@ content:
           - type: paragraph
             content: |
               Vectors can also be used in a logical expression. A vector of values on the left hand side of a logical operator will return a vector of the same length with boolean values.
+          - type: paragraph
+            content: |
+              Here, we check if any of the integers in the vector on the left are above 60. A logical vector is returned.
           - type: code
             language: r
             options:
@@ -450,7 +456,7 @@ content:
               library(dplyr)
           - type: paragraph
             content: |
-              The benefit of using `filter()` is that it works the way other functions in R typically work. It used braces with parameters, and not brackets `[ , ]`. The first parameter is the data frame you want to subset, and the second parameter is a logical expression. It also allows you to reference the columns in the data frame by name, without having to access the column using `$`.
+              The benefit of using `filter()` is that it works the way other functions in R typically work. It used parentheses with parameters `( )`, and not brackets `[ , ]`. The first parameter is the data frame you want to subset, and the second parameter is a logical expression. It also allows you to reference the columns in the data frame by name, without having to access the column using `$`.
           - type: paragraph
             content: |
               If we want to filter down to records in the `chicago_air` data frame where ozone was above 60 ppb (.060 ppm), we would use the following code.
@@ -651,3 +657,13 @@ exercises:
         descending <- arrange(chicago_air, desc(date))
 
         head(descending)
+  - instructions: "Create two data frames using the `data.frame()` function. The first data frame should have the columns `monitor_id` and `state` and at least one record. The second data frame should have the same column names and at least one record. Use the `dplyr` function `bind_rows()` to combine the two data frames."
+    solution:
+      code: |
+        library(dplyr)
+
+        monitors_1 <- data.frame(monitor_id = c(1, 2, 3), state = c("IL", "IN", "WI"))
+
+        monitors_2 <- data.frame(monitor_id = c(4, 5, 6), state = c("MI", "OH", "MN"))
+
+        bind_rows(monitors_1, monitors_2)

@@ -41,31 +41,32 @@ Functions are similar to variables in that they are short names that reference s
 R has many built-in functions that perform common tasks. When you open RStudio you can immediately use a function called `mean( )`. Here is an example of using the `mean( )` function to find the average of a vector of integers. We first save a vector of integers in the `x` variable then put the variable inside the parentheses of the function.
 
 
-```{r ex-eLRXQ-1, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Calculate Mean'}
+```{r ex-ldqeB-1, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Calculate Mean'}
 x <- c(4, 8, 1, 14, 34)
 mean(x)
 
 ```
 
-As you would expect, R has many built-in math functions. Below are a series of examples.
+As you would expect, R has many built-in math functions. Below are a few
+examples.
 
 
-```{r ex-Q8bC4-2, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Calculate Natural Logarithm'}
+```{r ex-LJu2c-2, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Calculate Natural Logarithm'}
 log(27)  #Natural logarithm
 
 ```
 
-```{r ex-ZaVwW-3, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Calculate Base 10 Logarithm'}
+```{r ex-5gmln-3, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Calculate Base 10 Logarithm'}
 log10(100) #base 10 logarithm
 
 ```
 
-```{r ex-IKBqr-4, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Calculate Square Root'}
+```{r ex-RMHxy-4, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Calculate Square Root'}
 sqrt(225) # Square root
 
 ```
 
-```{r ex-CUuAz-5, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Calculate Absolute Value'}
+```{r ex-JAkxX-5, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Calculate Absolute Value'}
 abs(-5) #Absolute value
 
 ```
@@ -76,7 +77,7 @@ All of the examples show that the general form is `function_name( )`. The name o
 Many functions also have additional options you can choose, which are called the _arguments_. To see what needs to go inside `( )`, type a question mark in front of the function and run it in the R console.
 
 
-```{r ex-C7zVQ-6, eval = FALSE}
+```{r ex-yDYm5-6, eval = FALSE}
 ?mean()
 
 ```
@@ -92,17 +93,17 @@ On the help page, under `Usage`, you see `mean(x, ...)`. This means that the onl
 Many built-in functions in R have multiple arguments. This allows you to give the function some more information to perform calculation you want. The example below shows how to use the `digits` argument in the `round( )` function. Providing different values to the `digits` argument will return different values.
 
 
-```{r ex-E9a5s-7, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Round to Zero Digits'}
+```{r ex-tHLQ7-7, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Round to Zero Digits'}
 round(12.3456)
 
 ```
 
-```{r ex-tOKoE-8, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Round to Three Digits'}
+```{r ex-ycGBk-8, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Round to Three Digits'}
 round(12.3456, digits=3)
 
 ```
 
-```{r ex-I6qbQ-9, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Round to One Digit'}
+```{r ex-E1DYK-9, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Round to One Digit'}
 round(12.3456, digits=1)
 
 ```
@@ -117,7 +118,7 @@ When you start an R session there are many built-in functions that are immediate
 Returns the sum of a vector of numeric values.
 
 
-```{r ex-K4ObJ-1, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Sum of Values'}
+```{r ex-4sYL0-1, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Sum of Values'}
 sum(c(2.3, 7.5, 9, -10))
 
 ```
@@ -127,7 +128,7 @@ sum(c(2.3, 7.5, 9, -10))
 Get the minimum value from a numeric vector.
 
 
-```{r ex-q812b-1, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Minimum Value'}
+```{r ex-dZn5n-1, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Minimum Value'}
 min(c(6, 9, 3, 11, -2))
 
 ```
@@ -137,8 +138,8 @@ min(c(6, 9, 3, 11, -2))
 Get the maximum value from a numeric vector.
 
 
-```{r ex-hfNKR-1, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Maximum Value'}
-max(c(6, 9, 3, 11, -2))
+```{r ex-3HUXM-1, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Maximum Value'}
+max(c(15, 2, 8.3, -10, 21))
 
 ```
 
@@ -147,7 +148,7 @@ max(c(6, 9, 3, 11, -2))
 Create a numeric vector with a certain sequence. The example below creates a vector of integers from 1 to 5.
 
 
-```{r ex-9JUH0-1, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Create Sequence with `seq()`'}
+```{r ex-2OWF6-1, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Create Sequence with `seq()`'}
 seq(from = 1, to = 5, by = 1)
 
 ```
@@ -155,7 +156,7 @@ seq(from = 1, to = 5, by = 1)
 Another way to create a sequence of integers is to use the colon.
 
 
-```{r ex-0u96f-2, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Create Sequence with Colon Operator'}
+```{r ex-pLwp3-2, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Create Sequence with Colon Operator'}
 1:5
 
 ```
@@ -165,7 +166,7 @@ Another way to create a sequence of integers is to use the colon.
 Concatenate two or more strings.
 
 
-```{r ex-mPcrl-1, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Concatenate Strings'}
+```{r ex-CSTmi-1, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Concatenate Strings'}
 x <- "Hello"
 y <- "world!"
 paste(x, y, sep = " ")
@@ -175,7 +176,7 @@ paste(x, y, sep = " ")
 Any numbers will be converted to strings.
 
 
-```{r ex-Pm6eO-2, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Concatenate Strings with Numbers'}
+```{r ex-8kS7p-2, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Concatenate Strings with Numbers'}
 x <- "You're number "
 y <- 1
 z <- "!"
@@ -191,7 +192,7 @@ The `substr()` function allows you to pull out a section from a string based on 
 For example, in AQS data a monitor ID may be written in the following format: [State code - County code - Site number - Parameter code - POC]. If we only wanted to pull out the site number for this monitor ID we could do the following:
 
 
-```{r ex-eHDmM-1, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Extract Site Number'}
+```{r ex-6Uwcp-1, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Extract Site Number'}
 wisconsin_monitor <- c('55-021-0015-44201-2')  # Ozone monitor in Columbia County, WI
 site_id <- substr(wisconsin_monitor, start = 8, stop = 11)  # start and stop position within the character string.
 site_id
@@ -206,14 +207,14 @@ R allows you to place a function inside another function to perform multiple tas
 For instance, if you want to create a sequence of numbers and then take the mean of that sequence, you could either do it in a couple of steps, or all at once.
 
 
-```{r ex-T8pZq-1, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Calculate Mean in Two Steps'}
+```{r ex-6U2qd-1, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Calculate Mean in Two Steps'}
 #Two steps
 x <- seq(from=1, to=10, by=3)
 mean(x)
 
 ```
 
-```{r ex-Kj09K-2, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Calculate Mean in One Step'}
+```{r ex-NJbfk-2, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Calculate Mean in One Step'}
 #One step
 mean(seq(from=1, to=10, by=3))
 
@@ -224,13 +225,13 @@ _Note: Typically you don’t want to have too many nested functions because it b
 
 ## NA Values
 
-Most of the statistical summary functions in R have the argument `na.rm`. This stands for `NA` remove. `NA` value is how R represents a missing value, similar to the NULL value in a SQL database.
+Most of the statistical summary functions in R have the argument `na.rm`. This stands for `NA` remove. The `NA` value is how R represents a missing value, similar to the NULL value in a SQL database.
 
 
 For example, there is a built-in data frame in R called `airquality` with daily measurements from a monitor in New York from 1973 (see `?airquality`). If we load the data frame using the `data()` function and take a look at the top 6 rows using the `head()` function, we can see some missing values represented as `NA`.
 
 
-```{r ex-9R5U8-1, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Inspect `airquality` Data'}
+```{r ex-VgwFX-1, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Inspect `airquality` Data'}
 data("airquality")
 head(airquality)
 
@@ -239,7 +240,7 @@ head(airquality)
 The `mean()` function, for example, has the argument `na.rm` set to `FALSE`. This means that the `NA` values will not be removed from the vector for which it is calculating the mean. As a result, it will return an `NA` because it cannot properly calculate the average. Here we use the `Ozone` column from the `airquality` data frame.
 
 
-```{r ex-zcdjA-2, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Mean with NA Values'}
+```{r ex-YUYny-2, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Mean with NA Values'}
 mean(airquality$Ozone)
 
 ```
@@ -247,7 +248,7 @@ mean(airquality$Ozone)
 To get the mean value, we set `na.rm = TRUE`.
 
 
-```{r ex-7SSID-3, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Mean with NA Removal'}
+```{r ex-Rd5ZH-3, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Mean with NA Removal'}
 mean(airquality$Ozone, na.rm = TRUE)
 
 ```
@@ -269,7 +270,7 @@ For example, if you wanted to find serial correlation in an environmental data s
 First, you might try to use the function.
 
 
-```{r ex-qhfaw-1, error = TRUE}
+```{r ex-Kdkm9-1, error = TRUE}
 x <- c(1.3, 3.5, 2.6, 3.4, 6.4)
 serialCorrelationTest(x)
 
@@ -291,12 +292,12 @@ A window will pop up. Start typing "EnvStats" into the "Packages" box, select th
 Now that we've installed the package, we still can't use the function we want. We need to load the package first (opening the app). We use the `library()` function to do this.
 
 
-```{r ex-iDDVR-2, message = FALSE}
+```{r ex-ZPGae-2, message = FALSE}
 library(EnvStats)
 
 ```
 
-```{r ex-k8gbf-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Use `serialCorrelationTest` from EnvStats'}
+```{r ex-SIGlj-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Use `serialCorrelationTest` from EnvStats'}
 x <- c(1.3, 3.5, 2.6, 3.4, 6.4)
 serialCorrelationTest(x)
 
@@ -305,7 +306,7 @@ serialCorrelationTest(x)
 Here is a link to a page that lists many useful packages for environmental data analysis: https://cran.r-project.org/web/views/Environmetrics.html
 
 
-Remember, when you close down RStudio, then start it up again, you don’t have to download the package again. But you do have to load the package to use any function that's not in the R core functionality (this is very easy to forget).
+Remember, when you close down RStudio, then start it up again, you don’t have to download the package again. But you do have to use the `library()` function to load the package before you can use any function that's not in the R core functionality (this is very easy to forget).
 
 
 ## Importing Data
@@ -318,7 +319,7 @@ R can import data from just about any format, including CSV, Excel, Databases, G
 R has a built-in function called `read.csv()` for reading `.csv` files. Download the `chicago_daily.csv` file [here](../data/chicago_daily.csv) and save it to your working directory. If you don't know what your working directory is, run this code in R and it will tell you.
 
 
-```{r ex-CSl8K-1, eval = FALSE}
+```{r ex-KBipD-1, eval = FALSE}
 getwd()
 
 ```
@@ -326,7 +327,7 @@ getwd()
 Use `read.csv()` by providing the location and name of the file as the first argument. If the file is in your working directory, simply supply the name of the file. Below, the data from the file is read into R and saved as a data frame, which is the data type for storing tables. The function `head()` will show the first few lines.
 
 
-```{r ex-Ibwgs-2, eval = FALSE}
+```{r ex-fRIyU-2, eval = FALSE}
 chicago_daily <- read.csv("chicago_daily.csv")
 head(chicago_daily)
 
@@ -337,7 +338,7 @@ head(chicago_daily)
 There are several packages that can be used to import data from an Excel file, such as `xlsx`, `XLConnect`, and `readxl`. In this example, we'll use the `readxl` package. If you do not have the package installed, you can use RStudio to install as described in the section above on packages. You can also use the function `install.packages( )`.
 
 
-```{r ex-3ilbk-1, eval = FALSE}
+```{r ex-vGMD9-1, eval = FALSE}
 install.packages("readxl")
 
 ```
@@ -353,7 +354,7 @@ library(readxl)
 Use the `read_excel()` function from the `readxl` package to read emissions data from [this Excel workbook](./data/emissions_IL_2022.xlsx). Download the file to your working directory and read the first worksheet (named "UNIT_DATA"), skipping the first 6 rows.
 
 
-```{r ex-ZKauj-3, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Read and Inspect Excel Data'}
+```{r ex-21K7t-3, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Read and Inspect Excel Data'}
 library(readxl)
 emissions <- read_excel("./data/emissions_IL_2022.xlsx", sheet = "UNIT_DATA", skip = 6)
 head(emissions)
@@ -366,7 +367,7 @@ head(emissions)
 
 ### Exercise 1
 
-Use the `seq()` function to create a vector from 1 to 20 by 2. For help with the parameters, run `?seq()` in the console and use the documentation.
+Use the `seq()` function to create a vector from 1 to 20 by 2. For help with the parameters, run `?seq()` in the console and consult the documentation.
 
 <details><summary>Click for Hint</summary>
 
