@@ -8,9 +8,9 @@
 #' @param github Logical, if TRUE, builds GitHub markdown files from the YAML files.
 #' @return A list containing the results of processing each YAML file.
 #' @export
-build_lessons <- function(source_dir = file.path(getwd(), "source"), learnr = TRUE, github = TRUE) {
+build_all_lessons <- function(source_dir = file.path(getwd(), "source"), learnr = TRUE, github = TRUE) {
   # Validate base directory
-  if (!dir.exists(base_dir)) {
+  if (!dir.exists(source_dir)) {
     stop("The specified base directory does not exist.")
   }
 
