@@ -21,7 +21,7 @@ content:
         content: |
           This lesson assumes you are familiar with the material in the lesson on [Functions and Importing Data](../2-Functions-and-Importing-Data/readme.md).
 
-          Statistical functions are used in this lesson that require installation of the following packages.
+          Statistical functions are used in this lesson that require installation of the `envstats` package.
       - type: code
         language: r
         options:
@@ -51,7 +51,7 @@ content:
           for `NA` remove. If the argument is set to `TRUE` then the function will remove
           all missing values from the data set. Otherwise, the function will error.
 
-          These functions let us know the range of the data values, i.e., the highest and
+          These functions tell us the range of the data values, i.e., the highest and
           lowest values.
       - type: code
         language: r
@@ -87,8 +87,8 @@ content:
       - type: paragraph
         content: |
           The `IQR()` function gives us the interquartile range, which lets us know how large
-          the spread is for the values in the central range of the distribution, i.e., between
-          the 1st quartile and the 3rd quartile.
+          the spread is for the values in the central range of the distribution, i.e. between
+          the 25th percentile and the 75th percentile.
       - type: code
         language: r
         options:
@@ -99,7 +99,7 @@ content:
       - type: paragraph
         content: |
           We can use the `boxplot()` function to visualize the interquartile range. The outline
-          of the box itself shows the first and third quartile, while the line in the middle
+          of the box itself shows the middle 50% of the data, while the line in the middle
           of the box shows the median.
       - type: code
         language: r
@@ -224,8 +224,8 @@ content:
           is true. Meaning, we can assume the distributions of values in the two groups
           are normal.
 
-          Now we can do some comparisons between these 2 groups of readings using the
-          Student's t-test. The test is meant to determine if the two means from the two
+          Now we can do some comparisons between these 2 months of measurements
+          using the Student's t-test. The test is meant to determine if the two means from the two
           datasets are from the same distribution or not. The assumption, or null hypothesis,
           is that they are, in fact, mean values from the same distribution.
       - type: code
@@ -337,6 +337,11 @@ content:
           exercise.cap: "Pairwise plots of select variables"
         content: |
           pairs(data[, c("Variable1", "Variable2", "Variable3")], lower.panel = panel.smooth)
+      - type: paragraph
+        content: |
+          You can see from the lower panel plots the increasing slope of the line
+          for ozone and temp; a decreasing slope for temp and pressure; and a flat
+          line for ozone and pressure.
 exercises:
   - instructions: "Find the mean and median of a specific column in the example data frame and compare the two values."
     hints:

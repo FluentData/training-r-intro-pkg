@@ -107,7 +107,13 @@ content:
         content:
           - type: paragraph
             content: |
-              Handling outliers is difficult because we do not necessarily want to remove data that may be uncommon but within the realm of possibility.
+              Handling outliers is difficult because we do not necessarily want
+              to remove data that may be uncommon but within the realm of possibility.
+              The best way to detect extreme values is to look at the summary of
+              your data and pay attention to min and max values. You can plot the
+              data to see if you can detect anything weird through visual inspection.
+              Boxplots with outliers plotted as points are handy for this. Below
+              is a boxplot of the ozone column in the `chicago_air` data frame.
           - type: code
             language: r
             options:
@@ -116,9 +122,21 @@ content:
               exercise.eval: false
               exercise.cap: "Identify and Handle Outliers"
             content: |
-              # Example of identifying and handling outliers
-              data("example_dataset")
-              boxplot(example_dataset$value)
+              boxplot(chicago_air$ozone)
+          - type: paragraph
+            content: |
+              We can see that two values are printed as points on the high end of the distribution.
+              We can use the `boxplot.stats()` function to get the values used in the `boxplot()`
+              function. The `out` values are the outliers.
+          - type: code
+            language: r
+            options:
+              eval: true
+              exercise: true
+              exercise.eval: false
+              exercise.cap: "Return Outlier Values from Boxplot"
+            content: |
+              boxplot.stats(chicago_air$ozone)$out
   - type: section
     title: Common Mistakes
     content:
@@ -170,7 +188,7 @@ exercises:
         monitors[monitors == "site two"] <- "site 2"
 
         monitors
-  - instructions: "Use the boxplot to check for outliers in the ozone column of the built-in `airquality` data frame."
+  - instructions: "Use a boxplot to check for outliers in the ozone column of the built-in `airquality` data frame."
     hints:
       - "# First, load the `airquality` data frame using `data(\"airquality\")`."
       - "# Use the `boxplot()` function and specify `airquality$Ozone` as the argument to plot the ozone column."
