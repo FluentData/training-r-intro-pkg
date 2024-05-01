@@ -8,7 +8,7 @@
 #'        learnr tutorial template.
 #'
 #' @return A character string containing the compiled markdown content, invisibly.
-build_learnr <- function(template_file_path) {
+build_learnr <- function(template_file_path, packages = c("learnr", "gradethis", "trainingRIntro", "shiny")) {
 
   template <- yaml::yaml.load_file(template_file_path)
   template_dir <- dirname(template_file_path)
@@ -23,13 +23,11 @@ build_learnr <- function(template_file_path) {
 
   metadata <- build_metadata(metadata, "learnr")
 
-  setup <- "```{r setup, include=FALSE}
-library(learnr)
-library(gradethis)
-library(trainingRIntro)
-library(shiny)
-```
-"
+  if("packages" %in% names(template)) {
+    packages <- c(packages, template$packages)
+  }
+
+  setup <- paste("```{r setup, include=FALSE}\n", paste("library(", packages, ")", sep = "", collapse = "\n"), "\n```\n")
 
   intro <- template$introduction
 
@@ -79,8 +77,7 @@ build_next_lesson <- function(lesson) {
 '  })\n',
 '```\n\n')
 
-  return(paste0("\n## Next Lesson\n\n
-You have completed Lesson {lesson$no}. Click the button below to mark it as complete and move on to the next lesson.\n\n", nlui, "\n", nls, "\n\n"))
+  return(paste0("\n## Next Lesson\n\nYou have completed Lesson ", lesson$no, ". Click the button below to mark it as complete and move on to the next lesson.\n\n", nlui, "\n", nls, "\n\n"))
 
 }
 
@@ -119,20 +116,23 @@ build_metadata <- function(metadata, type) {
 
 }
 
-#' Generate a random name for a code block
+#' Generate a consistent name for a code block based on its content
 #'
-#' This function creates a random string that can be used as a name for R code chunks.
-#' It's useful for dynamically generating unique names for code chunks in markdown.
+#' This function creates a hash from the content of the code block which can be used as a name.
+#' This ensures that the name is consistent across rebuilds unless the content changes.
 #'
-#' @return A character string containing a randomly generated code block name.
-generateCodeBlockName <- function() {
-  # Create a character vector containing a-z, A-Z, and 0-9
-  characters <- c(letters, LETTERS, as.character(0:9))
-
-  # Randomly sample 5 characters from the vector without replacement and concatenate them
-  randomString <- paste(sample(characters, 5, replace=TRUE), collapse="")
-
-  return(randomString)
+#' @param content Character string containing the content of the code block.
+#' @return A character string containing a hash generated from the content, serving as the block name.
+generateCodeBlockName <- function(block) {
+  # Use SHA-1 hashing to generate a name based on the content
+  content <- block$content
+  if("options" %in% names(block)) {
+    if("exercise.cap" %in% names(block$options)) {
+      content <- paste(content, block$options$exercise.cap)
+    }
+  }
+  hash <- digest::digest(content, algo = "sha1", serialize = FALSE)
+  return(substr(hash, 1, 12))  # Shorten the hash for readability
 }
 
 #' Build content sections for a learnr tutorial
@@ -147,7 +147,6 @@ generateCodeBlockName <- function() {
 #' @return A character string containing markdown formatted content for the tutorial.
 build_content <- function(content, depth = 1, section = 0) {
 
-  exercise_count <- 1
   markdownText <- ""
 
   prefix <- paste(rep("#", depth + 1), collapse = "") # Adjusts section level based on depth
@@ -167,8 +166,7 @@ build_content <- function(content, depth = 1, section = 0) {
       markdownText <- paste0(markdownText, "![", item$alt, "](", item$src, ")\n\n")
     } else if (item$type == "code") {
       if(is.null(item$name)) {
-        item$name <- paste0("ex-", generateCodeBlockName(), "-", exercise_count)
-        exercise_count <- exercise_count + 1
+        item$name <- paste0("ex-", generateCodeBlockName(item))
       }
 
       if(!is.null(item$options)) {

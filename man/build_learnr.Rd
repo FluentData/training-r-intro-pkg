@@ -4,7 +4,10 @@
 \alias{build_learnr}
 \title{Build a learnr tutorial from a specified template}
 \usage{
-build_learnr(template_file_path)
+build_learnr(
+  template_file_path,
+  packages = c("learnr", "gradethis", "trainingRIntro", "shiny")
+)
 }
 \arguments{
 \item{template_file_path}{A string specifying the path to the YAML file containing the

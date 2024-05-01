@@ -2,14 +2,17 @@
 % Please edit documentation in R/build_learnr.R
 \name{generateCodeBlockName}
 \alias{generateCodeBlockName}
-\title{Generate a random name for a code block}
+\title{Generate a consistent name for a code block based on its content}
 \usage{
-generateCodeBlockName()
+generateCodeBlockName(content)
+}
+\arguments{
+\item{content}{Character string containing the content of the code block.}
 }
 \value{
-A character string containing a randomly generated code block name.
+A character string containing a hash generated from the content, serving as the block name.
 }
 \description{
-This function creates a random string that can be used as a name for R code chunks.
-It's useful for dynamically generating unique names for code chunks in markdown.
+This function creates a hash from the content of the code block which can be used as a name.
+This ensures that the name is consistent across rebuilds unless the content changes.
 }

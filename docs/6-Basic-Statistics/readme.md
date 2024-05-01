@@ -28,7 +28,7 @@ This lesson assumes you are familiar with the material in the lesson on Function
 Statistical functions are used in this lesson that require installation of the `envstats` package.
 
 
-```{r ex-Y51Fo-1, eval = FALSE}
+```{r ex-03e4e6e355b4, eval = FALSE}
 install.packages("envstats")
 
 ```
@@ -43,7 +43,7 @@ these functions to understand the ozone data in the `chicago_air` data
 frame.
 
 
-```{r ex-6jPUZ-1, exercise = FALSE, eval = TRUE, exercise.cap = 'Extract example data'}
+```{r ex-8517d97aaedf, exercise = FALSE, eval = TRUE, exercise.cap = 'Extract example data'}
 data("chicago_air")
 
 ozone <- chicago_air$ozone
@@ -58,17 +58,17 @@ These functions tell us the range of the data values, i.e., the highest and
 lowest values.
 
 
-```{r ex-QxQ5k-2, exercise = FALSE, eval = TRUE, exercise.cap = 'Find minimum value'}
+```{r ex-fddee11c2342, exercise = FALSE, eval = TRUE, exercise.cap = 'Find minimum value'}
 min(ozone, na.rm=TRUE)
 
 ```
 
-```{r ex-L01sE-3, exercise = FALSE, eval = TRUE, exercise.cap = 'Find maximum value'}
+```{r ex-90da1e37e6ea, exercise = FALSE, eval = TRUE, exercise.cap = 'Find maximum value'}
 max(ozone, na.rm=TRUE)
 
 ```
 
-```{r ex-eb95M-4, exercise = FALSE, eval = TRUE, exercise.cap = 'Find range of values'}
+```{r ex-6f0999a25617, exercise = FALSE, eval = TRUE, exercise.cap = 'Find range of values'}
 range(ozone, na.rm=TRUE)
 
 ```
@@ -76,7 +76,7 @@ range(ozone, na.rm=TRUE)
 We can also get the mean and the quartile values from the `summary()` function.
 
 
-```{r ex-4Pn2N-5, exercise = FALSE, eval = TRUE, exercise.cap = 'Summary statistics'}
+```{r ex-d4a27016db41, exercise = FALSE, eval = TRUE, exercise.cap = 'Summary statistics'}
 summary(ozone)
 
 ```
@@ -86,7 +86,7 @@ the spread is for the values in the central range of the distribution, i.e. betw
 the 25th percentile and the 75th percentile.
 
 
-```{r ex-QN2a9-6, exercise = FALSE, eval = TRUE, exercise.cap = 'Calculate IQR'}
+```{r ex-61b3ee890248, exercise = FALSE, eval = TRUE, exercise.cap = 'Calculate IQR'}
 IQR(ozone, na.rm=TRUE)
 
 ```
@@ -96,7 +96,7 @@ of the box itself shows the middle 50% of the data, while the line in the middle
 of the box shows the median.
 
 
-```{r ex-SRh2E-7, exercise = FALSE, eval = TRUE, exercise.cap = 'Visualize IQR with boxplot'}
+```{r ex-075999b4d751, exercise = FALSE, eval = TRUE, exercise.cap = 'Visualize IQR with boxplot'}
 boxplot(ozone)
 
 ```
@@ -106,12 +106,12 @@ boxplot(ozone)
 R has functions for finding the mean and median of a set of values.
 
 
-```{r ex-isNFK-1, exercise = FALSE, eval = TRUE, exercise.cap = 'Calculate mean'}
+```{r ex-f1cc48ad013e, exercise = FALSE, eval = TRUE, exercise.cap = 'Calculate mean'}
 mean(ozone, na.rm=TRUE)
 
 ```
 
-```{r ex-Sb0Oh-2, exercise = FALSE, eval = TRUE, exercise.cap = 'Calculate median'}
+```{r ex-8fbc6f8c0282, exercise = FALSE, eval = TRUE, exercise.cap = 'Calculate median'}
 median(ozone, na.rm=TRUE)
 
 ```
@@ -120,12 +120,12 @@ The functions `var()` and `sd()` calculate the variance and standard
 deviation, respectively.
 
 
-```{r ex-ypVUY-3, exercise = FALSE, eval = TRUE, exercise.cap = 'Calculate variance'}
+```{r ex-c1c9a388e295, exercise = FALSE, eval = TRUE, exercise.cap = 'Calculate variance'}
 var(ozone, na.rm=TRUE)
 
 ```
 
-```{r ex-FElpe-4, exercise = FALSE, eval = TRUE, exercise.cap = 'Calculate standard deviation'}
+```{r ex-39d21c711d4b, exercise = FALSE, eval = TRUE, exercise.cap = 'Calculate standard deviation'}
 sd(ozone, na.rm=TRUE)
 
 ```
@@ -139,7 +139,7 @@ ozone data.
 First, let's visualize our dataset.
 
 
-```{r ex-SNNSY-1, warning = FALSE, message = FALSE, exercise = FALSE, eval = TRUE, exercise.cap = 'Visualize dataset'}
+```{r ex-1b8d0bda5c30, warning = FALSE, message = FALSE, exercise = FALSE, eval = TRUE, exercise.cap = 'Visualize dataset'}
 library(ggplot2)
 
 ggplot(chicago_air, aes(factor(month), ozone)) + geom_boxplot()
@@ -151,7 +151,7 @@ a significant difference in concentrations. Below is a plot of those two
 months side by side.
 
 
-```{r ex-GPkBh-2, warning = FALSE, message = FALSE, exercise = FALSE, eval = TRUE, exercise.cap = 'Compare two groups'}
+```{r ex-ca11aff787eb, warning = FALSE, message = FALSE, exercise = FALSE, eval = TRUE, exercise.cap = 'Compare two groups'}
 library(dplyr)
 
 ozone_july_october <- filter(chicago_air, month == 7 | month == 10)
@@ -164,7 +164,7 @@ We should also check for normality before doing any statistical tests. Below
 are histograms of the datasets.
 
 
-```{r ex-UzyoG-3, exercise = FALSE, eval = TRUE, exercise.cap = 'Check for normality with histograms'}
+```{r ex-18852fd57412, exercise = FALSE, eval = TRUE, exercise.cap = 'Check for normality with histograms'}
 ggplot(ozone_july_october, aes(ozone)) +
   facet_grid(rows = "month") +
   geom_histogram()
@@ -178,14 +178,14 @@ comes from a normal distribution. If the p-value of the test is less than .05,
 we reject the null hypothesis and conclude the data is not normal.
 
 
-```{r ex-epl67-4, exercise = FALSE, eval = TRUE, exercise.cap = 'Shapiro-Wilk test for Group1'}
+```{r ex-2484da21aadb, exercise = FALSE, eval = TRUE, exercise.cap = 'Shapiro-Wilk test for Group1'}
 chicago_july <- filter(chicago_air, month == 7)
 
 shapiro.test(chicago_july$ozone)
 
 ```
 
-```{r ex-wOHVC-5, exercise = FALSE, eval = TRUE, exercise.cap = 'Shapiro-Wilk test for Group2'}
+```{r ex-7a9950b84de1, exercise = FALSE, eval = TRUE, exercise.cap = 'Shapiro-Wilk test for Group2'}
 chicago_october <- filter(chicago_air, month == 10)
 
 shapiro.test(chicago_october$ozone)
@@ -203,7 +203,7 @@ assumption, or null hypothesis, is that they are in fact mean values from
 the same distribution.
 
 
-```{r ex-635Ad-6, exercise = FALSE, eval = TRUE, exercise.cap = 'Students t test between two groups'}
+```{r ex-c661b23c8185, exercise = FALSE, eval = TRUE, exercise.cap = 'Students t test between two groups'}
 t.test(chicago_july$ozone, chicago_october$ozone)
 
 ```
@@ -228,7 +228,7 @@ The `EnvStats` package has a comprehensive list of basic and more advanced stati
 tests for Environmental Data.
 
 
-```{r ex-S0Gh7-1, eval = FALSE}
+```{r ex-1b9ce6350343, eval = FALSE}
 library(EnvStats)
 
 ?FcnsByCatHypothTests
@@ -247,7 +247,7 @@ arguments that we only want to include complete observations and the Pearson met
 of finding correlations.
 
 
-```{r ex-JhKWE-1, exercise = FALSE, eval = TRUE, exercise.cap = 'Correlation matrix of select variables'}
+```{r ex-a55ca0fd83da, exercise = FALSE, eval = TRUE, exercise.cap = 'Correlation matrix of select variables'}
 data(chicago_air)
 
 cor(chicago_air[, c("ozone", "temp", "pressure")],
@@ -268,7 +268,7 @@ We could also perform a correlation test using the `cor.test()` function.
 Here we test the correlation between ozone and temperature.
 
 
-```{r ex-7WcMB-2, exercise = FALSE, eval = TRUE, exercise.cap = 'Test correlation between two variables'}
+```{r ex-fb10ff3825c6, exercise = FALSE, eval = TRUE, exercise.cap = 'Test correlation between two variables'}
 cor.test(chicago_air$ozone, chicago_air$temp, method = "pearson")
 
 ```
@@ -283,7 +283,7 @@ Running the test between ozone and air pressure gives a p-value above
 correlation between ozone and air pressure.
 
 
-```{r ex-iqOGE-3, exercise = FALSE, eval = TRUE, exercise.cap = 'Test correlation between another set of two variables'}
+```{r ex-065a892b4a58, exercise = FALSE, eval = TRUE, exercise.cap = 'Test correlation between another set of two variables'}
 cor.test(chicago_air$ozone, chicago_air$pressure, method = "pearson")
 
 ```
@@ -295,7 +295,7 @@ Setting `lower.panel = panel.smooth` will draw a smooth line through the
 scatter plots on the lower panels.
 
 
-```{r ex-PfIPT-4, exercise = FALSE, eval = TRUE, exercise.cap = 'Pairwise plots of select variables'}
+```{r ex-952a98f8db0e, exercise = FALSE, eval = TRUE, exercise.cap = 'Pairwise plots of select variables'}
 pairs(chicago_air[, c("ozone", "temp", "pressure")], lower.panel = panel.smooth)
 
 ```

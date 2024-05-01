@@ -2,7 +2,7 @@
 % Please edit documentation in R/build_all_lessons.R
 \name{build_all_lessons}
 \alias{build_all_lessons}
-\title{Build all lessons for package.}
+\title{Build all lessons for the package.}
 \usage{
 build_all_lessons(
   source_dir = file.path(getwd(), "source"),
@@ -11,7 +11,7 @@ build_all_lessons(
 )
 }
 \arguments{
-\item{source_dir}{The base directory containing the tutorial subdirectories.}
+\item{source_dir}{The base directory containing the tutorial sub directories.}
 
 \item{learnr}{Logical, if TRUE, builds LearnR tutorials from the YAML files.}
 

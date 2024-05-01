@@ -10,6 +10,8 @@ lesson:
   number: 2
   id: 2-Functions-and-Importing-Data
   next: 3-Subsetting-Sorting-and-Combining
+packages:
+  - EnvStats
 introduction: |
   This lesson covers the use of functions in R, including built-in functions and functions from packages. It also discusses how to import
   data from CSV text files and Excel documents.
