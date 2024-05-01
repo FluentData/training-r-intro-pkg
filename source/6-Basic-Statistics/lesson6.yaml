@@ -8,18 +8,19 @@ lesson:
   number: 6
   id: 6-Basic-Statistics
   next: 7-Quality-Assurance
-introduction: |
-  R was originally developed as a statistical programming language and its built-in functions are commonly used for basic statistics. There are also many community developed packages that make it easy to perform statistical analyses. This tutorial will cover descriptive statistics functions and some statistical tests that might be used on environmental data.
 content:
   - type: section
-    title: Basic Statistics
-    content: []
+    title: Introduction
+    content:
+      - type: paragraph
+        content: |
+          R was originally developed as a statistical programming language and its built-in functions are commonly used for basic statistics. There are also many community developed packages that make it easy to perform statistical analyses. This tutorial will cover descriptive statistics functions and some statistical tests that might be used on environmental data.
   - type: section
     title: Prerequisites
     content:
       - type: paragraph
         content: |
-          This lesson assumes you are familiar with the material in the lesson on [Functions and Importing Data](../2-Functions-and-Importing-Data/readme.md).
+          This lesson assumes you are familiar with the material in the lesson on Functions and Importing Data.
 
           Statistical functions are used in this lesson that require installation of the `envstats` package.
       - type: code
@@ -36,15 +37,19 @@ content:
     content:
       - type: paragraph
         content: |
-          R has many built-in functions for descriptive statistics. We will use these
-          functions to understand the example environmental data available in this package.
+          R has many built-in functions for descriptive statistics. We will use
+          these functions to understand the ozone data in the `chicago_air` data
+          frame.
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
+          eval: true
           exercise.cap: "Extract example data"
         content: |
-          data <- example_data  # Assuming example_data is available in this package
+          data("chicago_air")
+
+          ozone <- chicago_air$ozone
       - type: paragraph
         content: |
           Most of the functions we'll be using have an argument named `na.rm` that stands
@@ -56,34 +61,38 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
+          eval: true
           exercise.cap: "Find minimum value"
         content: |
-          min(data, na.rm=TRUE)
+          min(ozone, na.rm=TRUE)
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
+          eval: true
           exercise.cap: "Find maximum value"
         content: |
-          max(data, na.rm=TRUE)
+          max(ozone, na.rm=TRUE)
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
+          eval: true
           exercise.cap: "Find range of values"
         content: |
-          range(data, na.rm=TRUE)
+          range(ozone, na.rm=TRUE)
       - type: paragraph
         content: |
           We can also get the mean and the quartile values from the `summary()` function.
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
+          eval: true
           exercise.cap: "Summary statistics"
         content: |
-          summary(data)
+          summary(ozone)
       - type: paragraph
         content: |
           The `IQR()` function gives us the interquartile range, which lets us know how large
@@ -92,10 +101,11 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
+          eval: true
           exercise.cap: "Calculate IQR"
         content: |
-          IQR(data, na.rm=TRUE)
+          IQR(ozone, na.rm=TRUE)
       - type: paragraph
         content: |
           We can use the `boxplot()` function to visualize the interquartile range. The outline
@@ -104,10 +114,11 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
+          eval: true
           exercise.cap: "Visualize IQR with boxplot"
         content: |
-          boxplot(data)
+          boxplot(ozone)
   - type: section
     title: Measures of Central Tendency and Dispersion
     content:
@@ -117,17 +128,19 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
+          eval: true
           exercise.cap: "Calculate mean"
         content: |
-          mean(data, na.rm=TRUE)
+          mean(ozone, na.rm=TRUE)
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
+          eval: true
           exercise.cap: "Calculate median"
         content: |
-          median(data, na.rm=TRUE)
+          median(ozone, na.rm=TRUE)
       - type: paragraph
         content: |
           The functions `var()` and `sd()` calculate the variance and standard
@@ -135,24 +148,27 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
+          eval: true
           exercise.cap: "Calculate variance"
         content: |
-          var(data, na.rm=TRUE)
+          var(ozone, na.rm=TRUE)
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
+          eval: true
           exercise.cap: "Calculate standard deviation"
         content: |
-          sd(data, na.rm=TRUE)
+          sd(ozone, na.rm=TRUE)
   - type: section
     title: Statistical Tests
     content:
       - type: paragraph
         content: |
-          R has many built-in functions for statistical tests. As an example, we'll use
-          the `t.test()` function to perform a two-sample t-test on the example data.
+          R has many built-in functions for statistical tests. As an example, we'll
+          use the `t.test()` function to perform a two sample t-test on the Chicago
+          ozone data.
 
           First, let's visualize our dataset.
       - type: code
@@ -160,26 +176,32 @@ content:
         options:
           warning: false
           message: false
-          exercise: true
+          exercise: false
+          eval: true
           exercise.cap: "Visualize dataset"
         content: |
-          ggplot(data, aes(factor(variable), value)) + geom_boxplot()
+          library(ggplot2)
+
+          ggplot(chicago_air, aes(factor(month), ozone)) + geom_boxplot()
       - type: paragraph
         content: |
-          We could compare values between two groups within our data and see if there is a significant
-          difference in concentrations. Below is a plot of those two groups side by
-          side.
+          We could compare ozone months in July and October and see if there is
+          a significant difference in concentrations. Below is a plot of those two
+          months side by side.
       - type: code
         language: r
         options:
           warning: false
           message: false
-          exercise: true
+          exercise: false
+          eval: true
           exercise.cap: "Compare two groups"
         content: |
-          filtered_data <- filter(data, group == "Group1" | group == "Group2")
+          library(dplyr)
 
-          ggplot(filtered_data, aes(factor(group), value)) + geom_boxplot()
+          ozone_july_october <- filter(chicago_air, month == 7 | month == 10)
+
+          ggplot(ozone_july_october, aes(factor(month), ozone)) + geom_boxplot()
       - type: paragraph
         content: |
           We should also check for normality before doing any statistical tests. Below
@@ -187,11 +209,12 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
+          eval: true
           exercise.cap: "Check for normality with histograms"
         content: |
-          ggplot(filtered_data, aes(value)) +
-            facet_grid(rows = vars(group)) +
+          ggplot(ozone_july_october, aes(ozone)) +
+            facet_grid(rows = "month") +
             geom_histogram()
       - type: paragraph
         content: |
@@ -203,38 +226,42 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
+          eval: true
           exercise.cap: "Shapiro-Wilk test for Group1"
         content: |
-          group1_data <- filter(data, group == "Group1")
+          chicago_july <- filter(chicago_air, month == 7)
 
-          shapiro.test(group1_data$value)
+          shapiro.test(chicago_july$ozone)
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
+          eval: true
           exercise.cap: "Shapiro-Wilk test for Group2"
         content: |
-          group2_data <- filter(data, group == "Group2")
+          chicago_october <- filter(chicago_air, month == 10)
 
-          shapiro.test(group2_data$value)
+          shapiro.test(chicago_october$ozone)
       - type: paragraph
         content: |
-          The p-values for the tests are well above 0.05, so we assume the null hypothesis
-          is true. Meaning, we can assume the distributions of values in the two groups
-          are normal.
+          The p-values for the tests are well above 0.05, so we assume the null
+          hypothesis is true. Meaning, we can assume the distributions of ozone
+          in the two months are normal.
 
           Now we can do some comparisons between these 2 months of measurements
-          using the Student's t-test. The test is meant to determine if the two means from the two
-          datasets are from the same distribution or not. The assumption, or null hypothesis,
-          is that they are, in fact, mean values from the same distribution.
+          using the Student's t-test. The test is meant to determine if the two
+          means from the two datasets are from the same distribution or not. The
+          assumption, or null hypothesis, is that they are in fact mean values from
+          the same distribution.
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.cap: "Student's t-test between two groups"
+          exercise: false
+          eval: true
+          exercise.cap: "Students t test between two groups"
         content: |
-          t.test(group1_data$value, group2_data$value)
+          t.test(chicago_july$ozone, chicago_october$ozone)
       - type: paragraph
         content: |
           The `t.test()` output shows a p-value well below .05, so we reject the null hypothesis.
@@ -279,64 +306,74 @@ content:
 
           A correlation matrix tells us how positively or negatively correlated each variable
           is to the other variables. Below, we use the `cor()` function to print a correlation
-          matrix of the numeric columns in our example data frame, specifying in the
+          matrix of the numeric columns in the `chicago_air` data frame, specifying in the
           arguments that we only want to include complete observations and the Pearson method
           of finding correlations.
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
+          eval: true
           exercise.cap: "Correlation matrix of select variables"
         content: |
-          cor(data[, c("Variable1", "Variable2", "Variable3")],
+          data(chicago_air)
+
+          cor(chicago_air[, c("ozone", "temp", "pressure")],
               use = "complete.obs",
               method ="pearson")
       - type: paragraph
         content: |
-          Along the diagonal, the correlation value is 1, because each variable is perfectly
-          correlated with itself. The closer the other values are to 1 or -1, the more
-          correlated the two variables are. A correlation value of 0 means the two variables
-          are not correlated at all. The matrix above shows relationships between the variables.
-      - type: paragraph
-        content: |
-          We could also perform a correlation test using the `cor.test()` function. Here
-          we test the correlation between two variables.
+          Along the diagonal, the correlation value is 1, because each variable
+          is perfectly correlated with itself. The closer the other values are to
+          1 or -1, the more correlated the two variables are. A correlation value
+          of 0 means the two variables are not correlated at all. The matrix above
+          shows a weak correlation between ozone and temperature, a weak negative
+          correlation between air pressure and temperature, and no correlation between
+          ozone and air pressure.
+
+          We could also perform a correlation test using the `cor.test()` function.
+          Here we test the correlation between ozone and temperature.
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
+          eval: true
           exercise.cap: "Test correlation between two variables"
         content: |
-          cor.test(data$Variable1, data$Variable2, method = "pearson")
+          cor.test(chicago_air$ozone, chicago_air$temp, method = "pearson")
       - type: paragraph
         content: |
-          The null hypothesis of the test is that the correlation is 0, there is no
-          correlation at all. The p-value is well below .05 so we reject the null hypothesis
-          and conclude that the two variables are correlated to some degree.
+          The null hypothesis of the test is that the correlation is 0, there is
+          no correlation at all. The p-value is well below .05 so we reject the
+          null hypothesis and conclude that ozone and temperature are correlated
+          to some degree.
 
-          Running the test between two other variables gives a p-value above .05 so we
-          do not reject the null hypothesis. We conclude there is no correlation between
-          these two variables.
+          Running the test between ozone and air pressure gives a p-value above
+          .05 so we do not reject the null hypothesis. We conclude there is no
+          correlation between ozone and air pressure.
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
+          eval: true
           exercise.cap: "Test correlation between another set of two variables"
         content: |
-          cor.test(data$Variable1, data$Variable3, method = "pearson")
+          cor.test(chicago_air$ozone, chicago_air$pressure, method = "pearson")
       - type: paragraph
         content: |
-          It's also useful to see pairwise plots for numeric values to see the relationships
-          between the variables. The built-in `pairs()` function will display a scatter
-          plot between each pair of columns in the data frame. Setting `lower.panel = panel.smooth`
-          will draw a smooth line through the scatter plots on the lower panels.
+          It's also useful to see pairwise plots for numeric values to see the
+          relationships between the variables. The built in `pairs()` function will
+          display a scatter plot between each pair of columns in the data frame.
+          Setting `lower.panel = panel.smooth` will draw a smooth line through the
+          scatter plots on the lower panels.
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
+          eval: true
           exercise.cap: "Pairwise plots of select variables"
         content: |
-          pairs(data[, c("Variable1", "Variable2", "Variable3")], lower.panel = panel.smooth)
+          pairs(chicago_air[, c("ozone", "temp", "pressure")], lower.panel = panel.smooth)
       - type: paragraph
         content: |
           You can see from the lower panel plots the increasing slope of the line

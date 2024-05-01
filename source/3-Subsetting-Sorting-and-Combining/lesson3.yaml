@@ -37,7 +37,8 @@ content:
           install_github("FluentData/region5air")
       - type: paragraph
         content: |
-          To load the `chicago_air` data frame we will be using in the lesson, simply use the `data()` function to load the data frame.
+          To load the chicago_air data frame we will be using in the lesson, use
+          the library() function to load the region5air package, then the data( ) function to load the data frame.
       - type: code
         language: r
         options:
@@ -46,6 +47,8 @@ content:
           eval: false
           exercise.cap: "Load `chicago_air` Data Frame"
         content: |
+          library(region5air)
+
           data(chicago_air)
       - type: paragraph
         content: |
@@ -311,8 +314,8 @@ content:
           - type: code
             language: r
             options:
-              exercise: true
-              exercise.eval: false
+              exercise: false
+              exercise.eval: true
               exercise.cap: "Access a Column with `$`"
             content: |
               data(chicago_air)
@@ -349,16 +352,16 @@ content:
           - type: code
             language: r
             options:
-              exercise: true
-              exercise.eval: false
+              exercise: false
+              exercise.eval: true
               exercise.cap: "Logical Expressions Example 1"
             content: |
               1 + 1 == 2
           - type: code
             language: r
             options:
-              exercise: true
-              exercise.eval: false
+              exercise: false
+              exercise.eval: true
               exercise.cap: "Logical Expressions Example 2"
             content: |
               10 > 20
@@ -371,8 +374,8 @@ content:
           - type: code
             language: r
             options:
-              exercise: true
-              exercise.eval: false
+              exercise: false
+              exercise.eval: true
               exercise.cap: "Vector Logical Expression"
             content: |
               c(25, 80, 55) > 60
@@ -385,8 +388,8 @@ content:
           - type: code
             language: r
             options:
-              exercise: true
-              exercise.eval: false
+              exercise: false
+              exercise.eval: true
               exercise.cap: "Create a Logical Vector for Subsetting"
             content: |
               my_data <- data.frame(colors = c("red", "green", "yellow"),
@@ -399,8 +402,8 @@ content:
           - type: code
             language: r
             options:
-              exercise: true
-              exercise.eval: false
+              exercise: false
+              exercise.eval: true
               exercise.cap: "Subset Using a Logical Vector"
             content: |
               my_data[c(FALSE, FALSE, TRUE), ]
@@ -413,8 +416,8 @@ content:
           - type: code
             language: r
             options:
-              exercise: true
-              exercise.eval: false
+              exercise: false
+              exercise.eval: true
               exercise.cap: "Create a Logical Vector with a Logical Expression"
             content: |
               colors <- my_data$colors
@@ -430,8 +433,8 @@ content:
           - type: code
             language: r
             options:
-              exercise: true
-              exercise.eval: false
+              exercise: false
+              exercise.eval: true
               exercise.cap: "Subset Data Frame Using Logical Vector"
             content: |
               my_data[yellow, ]
@@ -441,11 +444,10 @@ content:
           - type: code
             language: r
             options:
-              exercise: true
-              exercise.eval: false
+              exercise: false
+              exercise.eval: true
               exercise.cap: "Subset `chicago_air` for Hot Days"
             content: |
-              data(chicago_air)
               hot <- chicago_air$temp > 90
 
               chicago_air[hot, ]
@@ -461,8 +463,8 @@ content:
           - type: code
             language: r
             options:
-              exercise: true
-              exercise.eval: false
+              exercise: false
+              exercise.eval: true
               exercise.cap: "Load `dplyr` and Explore `filter()`"
             content: |
               # if you have not installed dplyr
@@ -480,8 +482,8 @@ content:
           - type: code
             language: r
             options:
-              exercise: true
-              exercise.eval: false
+              exercise: false
+              exercise.eval: true
               exercise.cap: "Filter `chicago_air` for High Ozone Levels"
             content: |
               data(chicago_air)
@@ -494,8 +496,8 @@ content:
           - type: code
             language: r
             options:
-              exercise: true
-              exercise.eval: false
+              exercise: false
+              exercise.eval: true
               exercise.cap: "Filter for High Ozone Levels in June"
             content: |
               data(chicago_air)
@@ -508,8 +510,8 @@ content:
           - type: code
             language: r
             options:
-              exercise: true
-              exercise.eval: false
+              exercise: false
+              exercise.eval: true
               exercise.cap: "Alternative `filter()` Syntax Using `&`"
             content: |
               data(chicago_air)
@@ -528,8 +530,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Sort `chicago_air` by `ozone`"
         content: |
           # if the dplyr library is not already loaded
@@ -545,8 +547,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Sort `chicago_air` in Descending Order by `ozone`"
         content: |
           data(chicago_air)
@@ -559,8 +561,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Sort `chicago_air` by Multiple Columns"
         content: |
           data(chicago_air)
@@ -581,8 +583,8 @@ content:
 
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Count Rows in `chicago_air`"
         content: |
           # if you have not loaded the dplyr package
@@ -596,8 +598,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Split `chicago_air` into Warm and Cool Subsets"
         content: |
           data(chicago_air)
@@ -615,8 +617,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Verify Row Counts Before Combining"
         content: |
           nrow(warm) + nrow(cool) == nrow(chicago_air)
@@ -626,8 +628,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Recombine Data Frames and Verify Row Count"
         content: |
           data(chicago_air)

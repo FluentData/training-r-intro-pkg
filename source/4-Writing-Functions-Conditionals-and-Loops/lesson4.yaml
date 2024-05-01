@@ -20,15 +20,15 @@ content:
         content: |
           This lesson assumes you are familiar with the material in the previous lessons:
 
-          - [Functions and Importing Data](../2-Functions-and_Importing-Data/readme.md)
-          - [Subsetting, Sorting, and Combining Data Frames](../3-Subsetting-Sorting-and-Combining/readme.md).
+          - Functions and Importing Data
+          - Subsetting, Sorting, and Combining Data Frames
 
           The data for these lessons is available from this package. It is assumed that this package is already installed and loaded into the R session. If you need to refer to the package, simply refer to it as "this package".
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Load Data from This Package"
         content: |
           # Assuming the package is already loaded
@@ -49,7 +49,7 @@ content:
         language: r
         options:
           eval: false
-          exercise: true
+          exercise: false
           exercise.cap: "Creating Your Own Function"
         content: |
           my_function_name <- function() {
@@ -64,8 +64,9 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
           exercise.eval: false
+          eval: false
           exercise.cap: "Simple Function to Print Hello"
         content: |
           print_hello <- function() {
@@ -76,8 +77,9 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
           exercise.eval: false
+          eval: true
           exercise.cap: "Testing the print_hello Function"
         content: |
           print_hello()
@@ -96,8 +98,9 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
           exercise.eval: false
+          eval: true
           exercise.cap: "Function with an Argument"
         content: |
           print_hello <- function(text) {
@@ -107,11 +110,18 @@ content:
             print(message)
 
           }
+      - type: paragraph
+        content: |
+          Now there are two lines of code inside of the curly braces. The first
+          line uses the `paste()` function to concatenate two character values.
+          The first value will always be "Hello". The second value will be supplied
+          by the user in the `text` argument.
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
           exercise.eval: false
+          eval: true
           exercise.cap: "Testing the Modified print_hello Function"
         content: |
           print_hello(text = "everybody!")
@@ -127,8 +137,9 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
           exercise.eval: false
+          eval: true
           exercise.cap: "Function with Two Arguments"
         content: |
           standard_violated <- function(measurement, standard) {
@@ -136,11 +147,16 @@ content:
             measurement > standard
 
           }
+      - type: paragraph
+        content: |
+          This function will simply return a `TRUE` or `FALSE` value, depending on whether
+          the measurement is greater than the standard or not.
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
           exercise.eval: false
+          eval: true
           exercise.cap: "Testing standard_violated Function"
         content: |
           standard_violated(measurement = 84, standard = 70)
@@ -156,8 +172,9 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
           exercise.eval: false
+          eval: true
           exercise.cap: "Function with Default Value"
         content: |
           standard_violated <- function(measurement, standard = 70) {
@@ -165,11 +182,16 @@ content:
             measurement > standard
 
           }
+      - type: paragraph
+        content: |
+          Now, when we use the function, it is not necessary to set the `standard`
+          argument.
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
           exercise.eval: false
+          eval: true
           exercise.cap: "Testing standard_violated with Default Value"
         content: |
           standard_violated(measurement = 50)
@@ -193,16 +215,18 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
           exercise.eval: false
+          eval: true
           exercise.cap: "Testing Positional Arguments"
         content: |
           standard_violated(60, 70)
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
           exercise.eval: false
+          eval: true
           exercise.cap: "Testing Positional Arguments in Reverse Order"
         content: |
           standard_violated(70, 60)
@@ -223,7 +247,7 @@ content:
         language: r
         options:
           eval: false
-          exercise: true
+          exercise: false
           exercise.cap: "if Function Outline"
         content: |
           if(logical expression>) {
@@ -231,11 +255,15 @@ content:
             <code that will run if the logical expression is TRUE>
 
           }
+      - type: paragraph
+        content: |
+          The key word `else` can also be used with another set of curly braces to
+          hold code that will only run if the logical expression returns `FALSE`.
       - type: code
         language: r
         options:
           eval: false
-          exercise: true
+          exercise: false
           exercise.cap: "if-else Function Outline"
         content: |
           if(<logical expression>) {
@@ -247,11 +275,16 @@ content:
             <code that will run if the logical expression is false>
 
           }
+      - type: paragraph
+        content: |
+          For example, if we wanted to print a message based on the value of ozone,
+          we could use this construction:
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
           exercise.eval: false
+          eval: true
           exercise.cap: "if Function Example"
         content: |
           ozone <- 0.075
@@ -265,11 +298,18 @@ content:
             print("All Good")
 
           }
+      - type: paragraph
+        content: |
+          Since the expression `ozone > 0.065` resolves to `TRUE`, the code in the first
+          set of curly braces is run. If we set the `ozone` variable to `0.06`, then
+          the logical expression will resolve to `FALSE` and the code in the second
+          curly braces will run.
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
           exercise.eval: false
+          eval: true
           exercise.cap: "Another if Function Example"
         content: |
           ozone <- 0.06
@@ -283,19 +323,32 @@ content:
             print("All Good")
 
           }
+      - type: paragraph
+        content: |
+          The `ifelse()` function is another way to use a logical condition that
+          determines which output is returned. Here is the outline
       - type: code
         language: r
         options:
           eval: false
-          exercise: true
+          exercise: false
           exercise.cap: "ifelse Function Outline"
         content: |
           ifelse(<test>, <yes>, <no>)
+      - type: paragraph
+        content: |
+          The `test` argument is the logical expression, `yes` is the value returned
+          if the expression resolves to `TRUE`, and `no` is the value returned if
+          the expression resolves to `FALSE`.
+
+          Here we accomplish the same task as the previous example. This time we
+          use the `ifelse()` function to create a variable named message.
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
           exercise.eval: false
+          eval: true
           exercise.cap: "ifelse Function Example"
         content: |
           ozone_value <- 0.06
@@ -318,7 +371,7 @@ content:
         language: r
         options:
           eval: false
-          exercise: true
+          exercise: false
           exercise.cap: "For Loop Outline"
         content: |
           for(i in sequence){
@@ -326,11 +379,20 @@ content:
             <code that will run a set number of times>
 
           }
+      - type: paragraph
+        content: |
+          The `sequence` parameter is typically a vector. The `i` parameter is a
+          variable that will take on the values in the `sequence` vector. For instance,
+          if `sequence` was the vector `c(1, 2, 3)` then the `i` variable will take
+          on each of those values in turn.
+
+          This example simply prints the values of the vector as the for loop progresses.
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
           exercise.eval: false
+          eval: true
           exercise.cap: "For Loop Example"
         content: |
           for(i in c(1, 2, 3)) {
@@ -350,8 +412,9 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
           exercise.eval: false
+          eval: true
           exercise.cap: "For Loop with Data Frame"
         content: |
           monitors <- data.frame(monitor1 = c(50, 60, 58, 52),
@@ -368,8 +431,9 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
           exercise.eval: false
+          eval: true
           exercise.cap: "Finding Maximum Values with For Loop"
         content: |
           max_values <- c()
@@ -403,8 +467,8 @@ content:
       - type: code
         language: r
         options:
-          eval: false
-          exercise: true
+          eval: true
+          exercise: false
           exercise.cap: "apply Function Example"
         content: |
           monitors_max <- apply(monitors, MARGIN = 2, FUN = max)
@@ -423,8 +487,8 @@ content:
       - type: code
         language: r
         options:
-          eval: false
-          exercise: true
+          eval: true
+          exercise: false
           exercise.cap: "apply Function Example with MARGIN = 1"
         content: |
           apply(monitors, MARGIN = 1, FUN = mean)

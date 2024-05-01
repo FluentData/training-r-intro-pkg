@@ -1,9 +1,8 @@
 # Basic Statistics 
 
-R was originally developed as a statistical programming language and its built-in functions are commonly used for basic statistics. There are also many community developed packages that make it easy to perform statistical analyses. This tutorial will cover descriptive statistics functions and some statistical tests that might be used on environmental data.
  
 
-- [Basic Statistics](#basic-statistics)
+- [Introduction](#introduction)
 
 - [Prerequisites](#prerequisites)
 
@@ -17,16 +16,19 @@ R was originally developed as a statistical programming language and its built-i
 
 - [Correlation Analysis](#correlation-analysis)
 
-## Basic Statistics
+## Introduction
+
+R was originally developed as a statistical programming language and its built-in functions are commonly used for basic statistics. There are also many community developed packages that make it easy to perform statistical analyses. This tutorial will cover descriptive statistics functions and some statistical tests that might be used on environmental data.
+
 
 ## Prerequisites
 
-This lesson assumes you are familiar with the material in the lesson on [Functions and Importing Data](../2-Functions-and-Importing-Data/readme.md).
+This lesson assumes you are familiar with the material in the lesson on Functions and Importing Data.
 
 Statistical functions are used in this lesson that require installation of the `envstats` package.
 
 
-```{r ex-pkO4T-1, eval = FALSE}
+```{r ex-Y51Fo-1, eval = FALSE}
 install.packages("envstats")
 
 ```
@@ -36,12 +38,15 @@ The data used throughout these lessons is available from this package.
 
 ## Descriptive Statistics
 
-R has many built-in functions for descriptive statistics. We will use these
-functions to understand the example environmental data available in this package.
+R has many built-in functions for descriptive statistics. We will use
+these functions to understand the ozone data in the `chicago_air` data
+frame.
 
 
-```{r ex-62gXq-1, exercise = TRUE, exercise.cap = 'Extract example data'}
-data <- example_data  # Assuming example_data is available in this package
+```{r ex-6jPUZ-1, exercise = FALSE, eval = TRUE, exercise.cap = 'Extract example data'}
+data("chicago_air")
+
+ozone <- chicago_air$ozone
 
 ```
 
@@ -53,26 +58,26 @@ These functions tell us the range of the data values, i.e., the highest and
 lowest values.
 
 
-```{r ex-FGRCe-2, exercise = TRUE, exercise.cap = 'Find minimum value'}
-min(data, na.rm=TRUE)
+```{r ex-QxQ5k-2, exercise = FALSE, eval = TRUE, exercise.cap = 'Find minimum value'}
+min(ozone, na.rm=TRUE)
 
 ```
 
-```{r ex-C6d4G-3, exercise = TRUE, exercise.cap = 'Find maximum value'}
-max(data, na.rm=TRUE)
+```{r ex-L01sE-3, exercise = FALSE, eval = TRUE, exercise.cap = 'Find maximum value'}
+max(ozone, na.rm=TRUE)
 
 ```
 
-```{r ex-FTKgo-4, exercise = TRUE, exercise.cap = 'Find range of values'}
-range(data, na.rm=TRUE)
+```{r ex-eb95M-4, exercise = FALSE, eval = TRUE, exercise.cap = 'Find range of values'}
+range(ozone, na.rm=TRUE)
 
 ```
 
 We can also get the mean and the quartile values from the `summary()` function.
 
 
-```{r ex-0pca4-5, exercise = TRUE, exercise.cap = 'Summary statistics'}
-summary(data)
+```{r ex-4Pn2N-5, exercise = FALSE, eval = TRUE, exercise.cap = 'Summary statistics'}
+summary(ozone)
 
 ```
 
@@ -81,8 +86,8 @@ the spread is for the values in the central range of the distribution, i.e. betw
 the 25th percentile and the 75th percentile.
 
 
-```{r ex-iqubR-6, exercise = TRUE, exercise.cap = 'Calculate IQR'}
-IQR(data, na.rm=TRUE)
+```{r ex-QN2a9-6, exercise = FALSE, eval = TRUE, exercise.cap = 'Calculate IQR'}
+IQR(ozone, na.rm=TRUE)
 
 ```
 
@@ -91,8 +96,8 @@ of the box itself shows the middle 50% of the data, while the line in the middle
 of the box shows the median.
 
 
-```{r ex-pNj09-7, exercise = TRUE, exercise.cap = 'Visualize IQR with boxplot'}
-boxplot(data)
+```{r ex-SRh2E-7, exercise = FALSE, eval = TRUE, exercise.cap = 'Visualize IQR with boxplot'}
+boxplot(ozone)
 
 ```
 
@@ -101,13 +106,13 @@ boxplot(data)
 R has functions for finding the mean and median of a set of values.
 
 
-```{r ex-kxHsF-1, exercise = TRUE, exercise.cap = 'Calculate mean'}
-mean(data, na.rm=TRUE)
+```{r ex-isNFK-1, exercise = FALSE, eval = TRUE, exercise.cap = 'Calculate mean'}
+mean(ozone, na.rm=TRUE)
 
 ```
 
-```{r ex-pE9gV-2, exercise = TRUE, exercise.cap = 'Calculate median'}
-median(data, na.rm=TRUE)
+```{r ex-Sb0Oh-2, exercise = FALSE, eval = TRUE, exercise.cap = 'Calculate median'}
+median(ozone, na.rm=TRUE)
 
 ```
 
@@ -115,38 +120,43 @@ The functions `var()` and `sd()` calculate the variance and standard
 deviation, respectively.
 
 
-```{r ex-ASLr1-3, exercise = TRUE, exercise.cap = 'Calculate variance'}
-var(data, na.rm=TRUE)
+```{r ex-ypVUY-3, exercise = FALSE, eval = TRUE, exercise.cap = 'Calculate variance'}
+var(ozone, na.rm=TRUE)
 
 ```
 
-```{r ex-tpyjT-4, exercise = TRUE, exercise.cap = 'Calculate standard deviation'}
-sd(data, na.rm=TRUE)
+```{r ex-FElpe-4, exercise = FALSE, eval = TRUE, exercise.cap = 'Calculate standard deviation'}
+sd(ozone, na.rm=TRUE)
 
 ```
 
 ## Statistical Tests
 
-R has many built-in functions for statistical tests. As an example, we'll use
-the `t.test()` function to perform a two-sample t-test on the example data.
+R has many built-in functions for statistical tests. As an example, we'll
+use the `t.test()` function to perform a two sample t-test on the Chicago
+ozone data.
 
 First, let's visualize our dataset.
 
 
-```{r ex-dvrmp-1, warning = FALSE, message = FALSE, exercise = TRUE, exercise.cap = 'Visualize dataset'}
-ggplot(data, aes(factor(variable), value)) + geom_boxplot()
+```{r ex-SNNSY-1, warning = FALSE, message = FALSE, exercise = FALSE, eval = TRUE, exercise.cap = 'Visualize dataset'}
+library(ggplot2)
+
+ggplot(chicago_air, aes(factor(month), ozone)) + geom_boxplot()
 
 ```
 
-We could compare values between two groups within our data and see if there is a significant
-difference in concentrations. Below is a plot of those two groups side by
-side.
+We could compare ozone months in July and October and see if there is
+a significant difference in concentrations. Below is a plot of those two
+months side by side.
 
 
-```{r ex-NhRQu-2, warning = FALSE, message = FALSE, exercise = TRUE, exercise.cap = 'Compare two groups'}
-filtered_data <- filter(data, group == "Group1" | group == "Group2")
+```{r ex-GPkBh-2, warning = FALSE, message = FALSE, exercise = FALSE, eval = TRUE, exercise.cap = 'Compare two groups'}
+library(dplyr)
 
-ggplot(filtered_data, aes(factor(group), value)) + geom_boxplot()
+ozone_july_october <- filter(chicago_air, month == 7 | month == 10)
+
+ggplot(ozone_july_october, aes(factor(month), ozone)) + geom_boxplot()
 
 ```
 
@@ -154,9 +164,9 @@ We should also check for normality before doing any statistical tests. Below
 are histograms of the datasets.
 
 
-```{r ex-gRI4C-3, exercise = TRUE, exercise.cap = 'Check for normality with histograms'}
-ggplot(filtered_data, aes(value)) +
-  facet_grid(rows = vars(group)) +
+```{r ex-UzyoG-3, exercise = FALSE, eval = TRUE, exercise.cap = 'Check for normality with histograms'}
+ggplot(ozone_july_october, aes(ozone)) +
+  facet_grid(rows = "month") +
   geom_histogram()
 
 ```
@@ -168,32 +178,33 @@ comes from a normal distribution. If the p-value of the test is less than .05,
 we reject the null hypothesis and conclude the data is not normal.
 
 
-```{r ex-hJHRI-4, exercise = TRUE, exercise.cap = 'Shapiro-Wilk test for Group1'}
-group1_data <- filter(data, group == "Group1")
+```{r ex-epl67-4, exercise = FALSE, eval = TRUE, exercise.cap = 'Shapiro-Wilk test for Group1'}
+chicago_july <- filter(chicago_air, month == 7)
 
-shapiro.test(group1_data$value)
-
-```
-
-```{r ex-nTI4H-5, exercise = TRUE, exercise.cap = 'Shapiro-Wilk test for Group2'}
-group2_data <- filter(data, group == "Group2")
-
-shapiro.test(group2_data$value)
+shapiro.test(chicago_july$ozone)
 
 ```
 
-The p-values for the tests are well above 0.05, so we assume the null hypothesis
-is true. Meaning, we can assume the distributions of values in the two groups
-are normal.
+```{r ex-wOHVC-5, exercise = FALSE, eval = TRUE, exercise.cap = 'Shapiro-Wilk test for Group2'}
+chicago_october <- filter(chicago_air, month == 10)
+
+shapiro.test(chicago_october$ozone)
+
+```
+
+The p-values for the tests are well above 0.05, so we assume the null
+hypothesis is true. Meaning, we can assume the distributions of ozone
+in the two months are normal.
 
 Now we can do some comparisons between these 2 months of measurements
-using the Student's t-test. The test is meant to determine if the two means from the two
-datasets are from the same distribution or not. The assumption, or null hypothesis,
-is that they are, in fact, mean values from the same distribution.
+using the Student's t-test. The test is meant to determine if the two
+means from the two datasets are from the same distribution or not. The
+assumption, or null hypothesis, is that they are in fact mean values from
+the same distribution.
 
 
-```{r ex-LwQE5-6, exercise = TRUE, exercise.cap = 'Student's t-test between two groups'}
-t.test(group1_data$value, group2_data$value)
+```{r ex-635Ad-6, exercise = FALSE, eval = TRUE, exercise.cap = 'Students t test between two groups'}
+t.test(chicago_july$ozone, chicago_october$ozone)
 
 ```
 
@@ -217,7 +228,7 @@ The `EnvStats` package has a comprehensive list of basic and more advanced stati
 tests for Environmental Data.
 
 
-```{r ex-P56P3-1, eval = FALSE}
+```{r ex-S0Gh7-1, eval = FALSE}
 library(EnvStats)
 
 ?FcnsByCatHypothTests
@@ -231,55 +242,61 @@ to each other, we can perform a correlation analysis.
 
 A correlation matrix tells us how positively or negatively correlated each variable
 is to the other variables. Below, we use the `cor()` function to print a correlation
-matrix of the numeric columns in our example data frame, specifying in the
+matrix of the numeric columns in the `chicago_air` data frame, specifying in the
 arguments that we only want to include complete observations and the Pearson method
 of finding correlations.
 
 
-```{r ex-Rpyub-1, exercise = TRUE, exercise.cap = 'Correlation matrix of select variables'}
-cor(data[, c("Variable1", "Variable2", "Variable3")],
+```{r ex-JhKWE-1, exercise = FALSE, eval = TRUE, exercise.cap = 'Correlation matrix of select variables'}
+data(chicago_air)
+
+cor(chicago_air[, c("ozone", "temp", "pressure")],
     use = "complete.obs",
     method ="pearson")
 
 ```
 
-Along the diagonal, the correlation value is 1, because each variable is perfectly
-correlated with itself. The closer the other values are to 1 or -1, the more
-correlated the two variables are. A correlation value of 0 means the two variables
-are not correlated at all. The matrix above shows relationships between the variables.
+Along the diagonal, the correlation value is 1, because each variable
+is perfectly correlated with itself. The closer the other values are to
+1 or -1, the more correlated the two variables are. A correlation value
+of 0 means the two variables are not correlated at all. The matrix above
+shows a weak correlation between ozone and temperature, a weak negative
+correlation between air pressure and temperature, and no correlation between
+ozone and air pressure.
+
+We could also perform a correlation test using the `cor.test()` function.
+Here we test the correlation between ozone and temperature.
 
 
-We could also perform a correlation test using the `cor.test()` function. Here
-we test the correlation between two variables.
-
-
-```{r ex-urG6l-2, exercise = TRUE, exercise.cap = 'Test correlation between two variables'}
-cor.test(data$Variable1, data$Variable2, method = "pearson")
-
-```
-
-The null hypothesis of the test is that the correlation is 0, there is no
-correlation at all. The p-value is well below .05 so we reject the null hypothesis
-and conclude that the two variables are correlated to some degree.
-
-Running the test between two other variables gives a p-value above .05 so we
-do not reject the null hypothesis. We conclude there is no correlation between
-these two variables.
-
-
-```{r ex-87sBr-3, exercise = TRUE, exercise.cap = 'Test correlation between another set of two variables'}
-cor.test(data$Variable1, data$Variable3, method = "pearson")
+```{r ex-7WcMB-2, exercise = FALSE, eval = TRUE, exercise.cap = 'Test correlation between two variables'}
+cor.test(chicago_air$ozone, chicago_air$temp, method = "pearson")
 
 ```
 
-It's also useful to see pairwise plots for numeric values to see the relationships
-between the variables. The built-in `pairs()` function will display a scatter
-plot between each pair of columns in the data frame. Setting `lower.panel = panel.smooth`
-will draw a smooth line through the scatter plots on the lower panels.
+The null hypothesis of the test is that the correlation is 0, there is
+no correlation at all. The p-value is well below .05 so we reject the
+null hypothesis and conclude that ozone and temperature are correlated
+to some degree.
+
+Running the test between ozone and air pressure gives a p-value above
+.05 so we do not reject the null hypothesis. We conclude there is no
+correlation between ozone and air pressure.
 
 
-```{r ex-1t9vT-4, exercise = TRUE, exercise.cap = 'Pairwise plots of select variables'}
-pairs(data[, c("Variable1", "Variable2", "Variable3")], lower.panel = panel.smooth)
+```{r ex-iqOGE-3, exercise = FALSE, eval = TRUE, exercise.cap = 'Test correlation between another set of two variables'}
+cor.test(chicago_air$ozone, chicago_air$pressure, method = "pearson")
+
+```
+
+It's also useful to see pairwise plots for numeric values to see the
+relationships between the variables. The built in `pairs()` function will
+display a scatter plot between each pair of columns in the data frame.
+Setting `lower.panel = panel.smooth` will draw a smooth line through the
+scatter plots on the lower panels.
+
+
+```{r ex-PfIPT-4, exercise = FALSE, eval = TRUE, exercise.cap = 'Pairwise plots of select variables'}
+pairs(chicago_air[, c("ozone", "temp", "pressure")], lower.panel = panel.smooth)
 
 ```
 
