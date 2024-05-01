@@ -124,6 +124,20 @@ build_github_content <- function(content) {
              codeBlock <- paste0("```", item$language, "\n", item$content, "\n```\n\n")
              markdownText <- paste0(markdownText, codeBlock)
            },
+           list = {
+             if (!is.null(item$bullets)) {
+               # Handle bulleted list
+               listItems <- paste0("- ", item$bullets, collapse = "\n")
+               markdownText <- paste0(markdownText, listItems, "\n\n")
+             } else if (!is.null(item$numbers)) {
+               # Handle numbered list
+               listItems <- paste0(seq_along(item$numbers), ". ", item$numbers, collapse = "\n")
+               markdownText <- paste0(markdownText, listItems, "\n\n")
+             } else {
+               # Fallback or error message if neither property is found
+               markdownText <- paste0(markdownText, "Error: List type not specified correctly.\n\n")
+             }
+           },
            table = {
              headerRow <- paste("|", paste(item$header, collapse = " | "), "|")
              separatorRow <- paste("|", paste(rep("---", length(item$header)), collapse = " | "), "|")

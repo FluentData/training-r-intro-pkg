@@ -10,6 +10,7 @@ title: 1 .  Introduction to R
 output:
   learnr::tutorial:
     allow_skip: yes
+    exercise.reuse: yes
 runtime: shiny_prerendered
 ---
 
@@ -37,6 +38,12 @@ a variety of data science tasks such as:
 - and predictive modeling.
 
 
+- reading and writing files,
+- data transformation,
+- graphic visualization,
+- geographic mapping,
+- and predictive modeling.
+
 ## Why Use a Programming Language?
 
 R is one of several programming languages that can be used for data science, including [Python](https://www.python.org/) and
@@ -61,6 +68,12 @@ are few occasions where you need custom visualizations or transformations,
 or if you do not need automation in your work, you may not need to learn
 a programming language.
 
+
+- If you cannot access data easily in your BI tool, R can read just about any data source.
+- If you need to save a large number of files, R can automate that process in a way that BI tools cannot.
+- Custom data transformations that are not possible in BI tools can be done with R.
+- Custom data visualizations that are not available in BI tools can be done with R.
+- Predictive modeling that is not available in BI tools, or only in a rudimentary way, can be done in R.
 
 ## Basic Math
 
@@ -188,6 +201,10 @@ There are 3 important rules to remember when creating variable names:
 3. Capitalization __DOES__ matter in R. That is, R will consider `y` and  `Y` to be different variables.
 
 
+1. You can't start your variable with a number.
+2. You can't use spaces or special characters ($,%,#,-). Periods `.` and underscores  `_` are ok.
+3. Capitalization __DOES__ matter in R. That is, R will consider `x` and  `X` to be different variables.
+
 Try running the following code and you will see that in your global environment there are two different objects listed.
 
 
@@ -222,6 +239,11 @@ There are several ways to store groups of data to make them easier to work with:
 - A __matrix__ is a table of values with only one data type.
 - A __data frame__ is a table of values that can have columns with different data types (e.g. a numeric column and a logical column).
 
+
+- A __vector__ stores multiple values of the same type (e.g. all numeric values).
+- A __list__ stores multiple values of different types (e.g. some numbers and character values).
+- A __matrix__ is a table of values with only one data type.
+- A __data frame__ is a table of values that can have columns with different data types (e.g. a numeric column and a logical column).
 
 ### Vectors
 

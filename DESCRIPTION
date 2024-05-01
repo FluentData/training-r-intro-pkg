@@ -1,11 +1,11 @@
 Package: trainingRIntro
 Type: Package
 Title: Introduction to R for Air Quality Data Science
-Version: 0.9.0
+Version: 0.9.1
 Author: Fluent Data, LLC
 Maintainer: Fluent Data, LLC <ebailey@fluentdatallc.com>
 Description: This package contains a series of learnr tutorials aimed at providing a comprehensive introduction to R programming, tailored specifically for air quality data science. It covers installation, basic operations, data structures, functions, data importing, data manipulation, custom functions, conditional statements, loops, plotting with base R and ggplot2, basic statistics, and data quality assurance. Designed for both guided training and independent study, it includes seven lessons along with example data sets to facilitate practical learning and application.
-License: CC BY 4.0
+License: MIT
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3

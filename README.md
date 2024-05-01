@@ -112,11 +112,12 @@ This repository is also an R package. It can be installed and ran by following t
 
 install.packages("remotes")
 
-remotes::install_github("FluentData/training-r-intro-pkg")
+remotes::install_github("FluentData/trainingRIntro")
 
-library(training-r-intro)
+library(trainingRIntro)
 
 start_training()
+
 ```
 
 ## Contributing

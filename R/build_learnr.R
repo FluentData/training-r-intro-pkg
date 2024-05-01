@@ -72,7 +72,8 @@ build_metadata <- function(metadata, type) {
   learnr_metadata <- list(
     output = list(
       `learnr::tutorial` = list(
-        allow_skip = TRUE
+        allow_skip = TRUE,
+        exercise.reuse = TRUE
       )
     ),
     runtime = "shiny_prerendered"
@@ -155,7 +156,21 @@ build_content <- function(content, depth = 1, section = 0) {
       bodyRows <- sapply(item$rows, function(row) paste("|", paste(row, collapse = " | "), "|"))
       tableMarkdown <- paste(c(headerRow, separatorRow, bodyRows), collapse = "\n")
       markdownText <- paste0(markdownText, tableMarkdown, "\n\n")
+    } else if (item$type == "list") {
+      if (!is.null(item$bullets)) {
+        # Handle bulleted list
+        listItems <- paste0("- ", item$bullets, collapse = "\n")
+        markdownText <- paste0(markdownText, listItems, "\n\n")
+      } else if (!is.null(item$numbers)) {
+        # Handle numbered list
+        listItems <- paste0(seq_along(item$numbers), ". ", item$numbers, collapse = "\n")
+        markdownText <- paste0(markdownText, listItems, "\n\n")
+      } else {
+        # Fallback or error message if neither property is found
+        markdownText <- paste0(markdownText, "Error: List type not specified correctly.\n\n")
+      }
     }
+
   }
 
   return(markdownText)

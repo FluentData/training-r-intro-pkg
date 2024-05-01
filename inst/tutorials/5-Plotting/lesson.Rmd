@@ -7,6 +7,7 @@ title: 5 .  Plotting in R
 output:
   learnr::tutorial:
     allow_skip: yes
+    exercise.reuse: yes
 runtime: shiny_prerendered
 ---
 
