@@ -7,6 +7,7 @@ title: 7 .  Quality Assurance and Common Pitfalls
 output:
   learnr::tutorial:
     allow_skip: yes
+    exercise.reuse: yes
 runtime: shiny_prerendered
 ---
 

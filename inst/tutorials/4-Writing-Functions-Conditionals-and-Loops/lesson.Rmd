@@ -7,6 +7,7 @@ title: 4 .  Writing Functions, Conditionals, and Loops
 output:
   learnr::tutorial:
     allow_skip: yes
+    exercise.reuse: yes
 runtime: shiny_prerendered
 ---
 

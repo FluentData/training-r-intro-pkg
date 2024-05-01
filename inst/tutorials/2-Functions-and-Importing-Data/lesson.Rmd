@@ -8,6 +8,7 @@ title: 2 .  Functions and Importing Data
 output:
   learnr::tutorial:
     allow_skip: yes
+    exercise.reuse: yes
 runtime: shiny_prerendered
 ---
 
