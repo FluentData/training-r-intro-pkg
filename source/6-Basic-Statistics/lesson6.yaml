@@ -8,6 +8,8 @@ lesson:
   number: 6
   id: 6-Basic-Statistics
   next: 7-Quality-Assurance
+  closing: |
+    Fantastic work on completing Basic Statistics! You've now learned how to use R for descriptive statistics, hypothesis testing, and correlation analysis. Next, you'll advance to Quality Assurance and Common Pitfalls, where you'll explore best practices for ensuring data integrity and avoiding common mistakes in R programming. Ready to solidify your data science foundations?
 content:
   - type: section
     title: Introduction

@@ -65,7 +65,7 @@ a programming language.
 
 ## Basic Math
 
-Open up a script if you haven't already (“File” -> “New File” -> “R Script”). Try some math by either typing the lines below or copying and pasting
+Open up a script if you haven't already (<U+201C>File<U+201D> -> <U+201C>New File<U+201D> -> <U+201C>R Script<U+201D>). Try some math by either typing the lines below or copying and pasting
 the lines into your script.
 
 
@@ -529,12 +529,24 @@ You have completed Lesson . Click the button below to mark it as complete and mo
 
 
 ```{r, context = "server"}
-  observeEvent(input$complete_lesson, {
-    shiny::stopApp()
-    trainingRIntro::set_user_state(lesson_1_complete=TRUE)
-  })
-```
+observeEvent(input$complete_lesson, {
+  showModal(modalDialog(
+    title = 'Congratulations!',
+tags$p("Congratulations on completing Introduction to R! You've mastered the essentials of R setup and basic operations. Next up, Functions and Importing Data, where you'll learn to enhance your data manipulation skills with R functions and importing techniques.
+"),
+    easyClose = FALSE,
+    footer = tagList(
+      modalButton('Cancel'),
+      actionButton('confirm_complete', 'Confirm', class = 'btn-primary')
+    )
+  ))
+})
 
+observeEvent(input$confirm_complete, {
+  removeModal()
+  trainingRIntro::set_user_state(lesson_1_complete=TRUE)
+  shiny::stopApp()
+})
 
 
 

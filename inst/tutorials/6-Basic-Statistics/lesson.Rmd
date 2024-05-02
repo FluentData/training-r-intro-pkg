@@ -463,12 +463,24 @@ You have completed Lesson . Click the button below to mark it as complete and mo
 
 
 ```{r, context = "server"}
-  observeEvent(input$complete_lesson, {
-    shiny::stopApp()
-    trainingRIntro::set_user_state(lesson_6_complete=TRUE)
-  })
-```
+observeEvent(input$complete_lesson, {
+  showModal(modalDialog(
+    title = 'Congratulations!',
+tags$p("Fantastic work on completing Basic Statistics! You've now learned how to use R for descriptive statistics, hypothesis testing, and correlation analysis. Next, you'll advance to Quality Assurance and Common Pitfalls, where you'll explore best practices for ensuring data integrity and avoiding common mistakes in R programming. Ready to solidify your data science foundations?
+"),
+    easyClose = FALSE,
+    footer = tagList(
+      modalButton('Cancel'),
+      actionButton('confirm_complete', 'Confirm', class = 'btn-primary')
+    )
+  ))
+})
 
+observeEvent(input$confirm_complete, {
+  removeModal()
+  trainingRIntro::set_user_state(lesson_6_complete=TRUE)
+  shiny::stopApp()
+})
 
 
 

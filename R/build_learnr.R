@@ -70,12 +70,25 @@ build_next_lesson <- function(lesson) {
 '  actionButton("complete_lesson", "Mark Lesson ', lesson$number, ' Complete")\n',
 '```\n\n')
 
+
   nls <- paste0('```{r, context = "server"}\n',
-'  observeEvent(input$complete_lesson, {\n',
-'    shiny::stopApp()\n',
-'    trainingRIntro::set_user_state(lesson_', lesson$number, '_complete=TRUE)\n',
-'  })\n',
-'```\n\n')
+                "observeEvent(input$complete_lesson, {\n",
+                "  showModal(modalDialog(\n",
+                "    title = 'Congratulations!',\n",
+                "tags$p(\"", lesson$closing, "\"),\n",
+                "    easyClose = FALSE,\n",
+                "    footer = tagList(\n",
+                "      modalButton('Cancel'),\n",
+                "      actionButton('confirm_complete', 'Confirm', class = 'btn-primary')\n",
+                "    )\n",
+                "  ))\n",
+                "})\n\n",
+
+                "observeEvent(input$confirm_complete, {\n",
+                "  removeModal()\n",
+                "  trainingRIntro::set_user_state(lesson_", lesson$number, "_complete=TRUE)\n",
+                "  shiny::stopApp()\n",
+                "})\n")
 
   return(paste0("\n## Next Lesson\n\nYou have completed Lesson ", lesson$no, ". Click the button below to mark it as complete and move on to the next lesson.\n\n", nlui, "\n", nls, "\n\n"))
 

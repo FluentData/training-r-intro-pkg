@@ -241,12 +241,24 @@ You have completed Lesson . Click the button below to mark it as complete and mo
 
 
 ```{r, context = "server"}
-  observeEvent(input$complete_lesson, {
-    shiny::stopApp()
-    trainingRIntro::set_user_state(lesson_7_complete=TRUE)
-  })
-```
+observeEvent(input$complete_lesson, {
+  showModal(modalDialog(
+    title = 'Congratulations!',
+tags$p("Well done on finishing the lesson on Quality Assurance and Common Pitfalls! You've learned valuable techniques for ensuring the integrity of your data and avoiding common errors in R programming. That concludes the lessons in this course. We hope you found them helpful and informative. If you have any questions or feedback, please don't hesitate to reach out to us. Good luck with your future data analysis projects!
+"),
+    easyClose = FALSE,
+    footer = tagList(
+      modalButton('Cancel'),
+      actionButton('confirm_complete', 'Confirm', class = 'btn-primary')
+    )
+  ))
+})
 
+observeEvent(input$confirm_complete, {
+  removeModal()
+  trainingRIntro::set_user_state(lesson_7_complete=TRUE)
+  shiny::stopApp()
+})
 
 
 

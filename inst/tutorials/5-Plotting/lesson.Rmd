@@ -223,7 +223,7 @@ Additional modifications can be made. Customize it by adding color, title, and l
 ggplot(chicago_air, aes(x = temp, y = ozone)) +
   geom_point(color = "forestgreen") +
   ggtitle('Relationship between Ozone and Temperature') +
-  xlab('Temperature (°F)') +
+  xlab('Temperature (<U+00B0>F)') +
   ylab('Ozone (ppm)')
 
 ```
@@ -238,7 +238,7 @@ argument `color` in the `aes( )` function.
 ggplot(chicago_air, aes(x = temp, y = ozone, color = factor(month))) +
   geom_point() +
   ggtitle('Relationship between Ozone and Temperature') +
-  xlab('Temperature (°F)') +
+  xlab('Temperature (<U+00B0>F)') +
   ylab('Ozone (ppm)')
 
 ```
@@ -605,12 +605,24 @@ You have completed Lesson . Click the button below to mark it as complete and mo
 
 
 ```{r, context = "server"}
-  observeEvent(input$complete_lesson, {
-    shiny::stopApp()
-    trainingRIntro::set_user_state(lesson_5_complete=TRUE)
-  })
-```
+observeEvent(input$complete_lesson, {
+  showModal(modalDialog(
+    title = 'Congratulations!',
+tags$p("Great work completing Plotting in R! You've gained skills in both basic and advanced visualization techniques. Up next, you'll explore Basic Statistics, where you'll learn how to apply statistical analysis to your data using R. This will enhance your ability to draw meaningful insights from your datasets. Ready to dive into the numbers?
+"),
+    easyClose = FALSE,
+    footer = tagList(
+      modalButton('Cancel'),
+      actionButton('confirm_complete', 'Confirm', class = 'btn-primary')
+    )
+  ))
+})
 
+observeEvent(input$confirm_complete, {
+  removeModal()
+  trainingRIntro::set_user_state(lesson_5_complete=TRUE)
+  shiny::stopApp()
+})
 
 
 

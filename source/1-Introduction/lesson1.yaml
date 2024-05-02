@@ -10,6 +10,8 @@ lesson:
   number: 1
   id: 1-Introduction
   next_lesson: 2-Functions-and-Importing-Data
+  closing: |
+    Congratulations on completing Introduction to R! You've mastered the essentials of R setup and basic operations. Next up, Functions and Importing Data, where you'll learn to enhance your data manipulation skills with R functions and importing techniques.
 introduction: |
   This lesson is a part of the Introduction to R for Air Quality Data Science. The sections below provide a basic introduction to R, including how to install and set up R and RStudio, an overview of R syntax, and how to perform simple operations.
 content:

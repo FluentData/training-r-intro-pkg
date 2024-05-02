@@ -102,7 +102,7 @@ View(chicago_air)
 
 ![View function output in RStudio](images/view.png)
 
-By inspecting the data frame this way, you can see that the records are daily values of ozone, temperature, and solar radiation. For more information about the data set you can type a question mark in from the name of the data frame variable in the console.
+By inspecting the data frame this way, you can see that the records are daily values of ozone, temperature, and air pressure. For more information about the data set you can type a question mark in from the name of the data frame variable in the console.
 
 
 ```{r ex-2b529429ca7c, exercise = FALSE, exercise.eval = FALSE, eval = FALSE, exercise.cap = 'Learn More About `chicago_air`'}
@@ -112,7 +112,7 @@ By inspecting the data frame this way, you can see that the records are daily va
 
 From the `Description` section of the help page, the `chicago_air` data frame is:
 
-> A dataset containing daily values of ozone, temperature, and solar radiation from a Chicago monitor between January 1, 2021 and December 31, 2021.
+> A dataset containing daily values of ozone, temperature, and air pressure from a Chicago monitor between January 1, 2021 and December 31, 2021.
 
 
 ## Subsetting
@@ -162,7 +162,7 @@ my_data[3, 2]
 
 ```
 
-We can also access data from a vector using the same indexing idea. In this case, you don’t need the comma to separate the rows and columns since you are accessing one dimensional data. Below is a vector of numbers.
+We can also access data from a vector using the same indexing idea. In this case, you don<U+2019>t need the comma to separate the rows and columns since you are accessing one dimensional data. Below is a vector of numbers.
 
 
 ```{r ex-81d6c088db05, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Vector Indexing Example'}
@@ -224,8 +224,8 @@ Since more than one column is selected, then a data frame is returned.
 A column name can be used to select a vector.
 
 
-```{r ex-7a9a2f4fef61, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Access a Column by Name'}
-head(chicago_air[, "solar"])
+```{r ex-78d0d81fb271, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Access a Column by Name'}
+head(chicago_air[, "pressure"])
 
 ```
 
@@ -237,11 +237,11 @@ head(chicago_air[, c("ozone", "temp", "month")])
 
 ```
 
-Both rows and columns can be specified at the same time. The example below returns the first 5 rows of the temperature and solar columns.
+Both rows and columns can be specified at the same time. The example below returns the first 5 rows of the temperature and pressure columns.
 
 
-```{r ex-f44397a98593, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Specify Both Rows and Columns for Subsetting'}
-chicago_air[1:5, c("temp", "solar")]
+```{r ex-1b72dd331529, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Specify Both Rows and Columns for Subsetting'}
+chicago_air[1:5, c("temp", "pressure")]
 
 ```
 
@@ -651,12 +651,24 @@ You have completed Lesson . Click the button below to mark it as complete and mo
 
 
 ```{r, context = "server"}
-  observeEvent(input$complete_lesson, {
-    shiny::stopApp()
-    trainingRIntro::set_user_state(lesson_3_complete=TRUE)
-  })
-```
+observeEvent(input$complete_lesson, {
+  showModal(modalDialog(
+    title = 'Congratulations!',
+tags$p("Great job navigating Subsetting, Sorting, and Combining Data Frames! You've successfully refined your data handling skills. Next, you'll dive into Writing Functions, Conditionals, and Loops to learn how to automate and streamline your data analysis processes.
+"),
+    easyClose = FALSE,
+    footer = tagList(
+      modalButton('Cancel'),
+      actionButton('confirm_complete', 'Confirm', class = 'btn-primary')
+    )
+  ))
+})
 
+observeEvent(input$confirm_complete, {
+  removeModal()
+  trainingRIntro::set_user_state(lesson_3_complete=TRUE)
+  shiny::stopApp()
+})
 
 
 

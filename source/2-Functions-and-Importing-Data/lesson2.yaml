@@ -10,6 +10,9 @@ lesson:
   number: 2
   id: 2-Functions-and-Importing-Data
   next: 3-Subsetting-Sorting-and-Combining
+  closing: |
+    Well done on mastering Functions and Importing Data! You've expanded your toolkit with new R functions and data import techniques. In the next lesson, Subsetting, Sorting, and Combining Data Frames, you'll explore advanced data manipulation strategies to refine and optimize your data analysis workflows.
+
 packages:
   - EnvStats
 introduction: |

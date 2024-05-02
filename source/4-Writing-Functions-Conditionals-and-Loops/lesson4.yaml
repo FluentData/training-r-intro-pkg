@@ -8,6 +8,9 @@ lesson:
   number: 4
   id: 4-Writing-Functions-Conditionals-and-Loops
   next: 5-Plotting
+  closing: |
+    Well done on completing Writing Functions, Conditionals, and Loops! You've developed the skills to customize your analysis and automate tasks in R. Next, you'll move on to Plotting in R, where you'll learn how to visually represent data using various plotting techniques. Get ready to bring your data to life with engaging visuals!
+
 introduction: |
   This lesson covers how to write your own R functions. It also explains how to automate
   your code using `if()` and `ifelse()` functions, for loops, and the `apply`
@@ -48,8 +51,8 @@ content:
       - type: code
         language: r
         options:
-          eval: false
-          exercise: false
+          eval: true
+          exercise.eval: true
           exercise.cap: "Creating Your Own Function"
         content: |
           my_function_name <- function() {
@@ -64,9 +67,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: false
-          exercise.eval: false
-          eval: false
+          exercise: true
+          exercise.eval: true
           exercise.cap: "Simple Function to Print Hello"
         content: |
           print_hello <- function() {
@@ -77,9 +79,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: false
+          exercise: true
           exercise.eval: false
-          eval: true
           exercise.cap: "Testing the print_hello Function"
         content: |
           print_hello()
@@ -98,9 +99,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: false
-          exercise.eval: false
-          eval: true
+          exercise: true
+          exercise.eval: true
           exercise.cap: "Function with an Argument"
         content: |
           print_hello <- function(text) {
@@ -119,9 +119,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: false
+          exercise: true
           exercise.eval: false
-          eval: true
           exercise.cap: "Testing the Modified print_hello Function"
         content: |
           print_hello(text = "everybody!")
@@ -137,9 +136,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: false
-          exercise.eval: false
-          eval: true
+          exercise: true
+          exercise.eval: true
           exercise.cap: "Function with Two Arguments"
         content: |
           standard_violated <- function(measurement, standard) {
@@ -154,9 +152,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: false
+          exercise: true
           exercise.eval: false
-          eval: true
           exercise.cap: "Testing standard_violated Function"
         content: |
           standard_violated(measurement = 84, standard = 70)
@@ -172,9 +169,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: false
-          exercise.eval: false
-          eval: true
+          exercise: true
+          exercise.eval: true
           exercise.cap: "Function with Default Value"
         content: |
           standard_violated <- function(measurement, standard = 70) {
@@ -189,9 +185,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: false
+          exercise: true
           exercise.eval: false
-          eval: true
           exercise.cap: "Testing standard_violated with Default Value"
         content: |
           standard_violated(measurement = 50)
@@ -215,18 +210,16 @@ content:
       - type: code
         language: r
         options:
-          exercise: false
+          exercise: true
           exercise.eval: false
-          eval: true
           exercise.cap: "Testing Positional Arguments"
         content: |
           standard_violated(60, 70)
       - type: code
         language: r
         options:
-          exercise: false
+          exercise: true
           exercise.eval: false
-          eval: true
           exercise.cap: "Testing Positional Arguments in Reverse Order"
         content: |
           standard_violated(70, 60)
@@ -250,7 +243,7 @@ content:
           exercise: false
           exercise.cap: "if Function Outline"
         content: |
-          if(logical expression>) {
+          if(<logical expression>) {
 
             <code that will run if the logical expression is TRUE>
 
@@ -282,9 +275,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: false
+          exercise: true
           exercise.eval: false
-          eval: true
           exercise.cap: "if Function Example"
         content: |
           ozone <- 0.075
@@ -307,9 +299,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: false
+          exercise: true
           exercise.eval: false
-          eval: true
           exercise.cap: "Another if Function Example"
         content: |
           ozone <- 0.06
@@ -346,9 +337,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: false
+          exercise: true
           exercise.eval: false
-          eval: true
           exercise.cap: "ifelse Function Example"
         content: |
           ozone_value <- 0.06
@@ -390,9 +380,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: false
+          exercise: true
           exercise.eval: false
-          eval: true
           exercise.cap: "For Loop Example"
         content: |
           for(i in c(1, 2, 3)) {
@@ -412,9 +401,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: false
+          exercise: true
           exercise.eval: false
-          eval: true
           exercise.cap: "For Loop with Data Frame"
         content: |
           monitors <- data.frame(monitor1 = c(50, 60, 58, 52),
@@ -431,9 +419,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: false
+          exercise: true
           exercise.eval: false
-          eval: true
           exercise.cap: "Finding Maximum Values with For Loop"
         content: |
           max_values <- c()
@@ -467,8 +454,8 @@ content:
       - type: code
         language: r
         options:
-          eval: true
-          exercise: false
+          exercise: true
+          exercise.eval: false
           exercise.cap: "apply Function Example"
         content: |
           monitors_max <- apply(monitors, MARGIN = 2, FUN = max)
@@ -487,8 +474,8 @@ content:
       - type: code
         language: r
         options:
-          eval: true
-          exercise: false
+          exercise: true
+          exercise.eval: false
           exercise.cap: "apply Function Example with MARGIN = 1"
         content: |
           apply(monitors, MARGIN = 1, FUN = mean)

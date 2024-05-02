@@ -8,8 +8,13 @@ lesson:
   number: 3
   id: 3-Subsetting-Sorting-and-Combining
   next: 4-Writing-Functions-Conditionals-and-Loops
+  closing: |
+    Great job navigating Subsetting, Sorting, and Combining Data Frames! You've successfully refined your data handling skills. Next, you'll dive into Writing Functions, Conditionals, and Loops to learn how to automate and streamline your data analysis processes.
+
 introduction: |
   This lesson covers how to subset data using indexing, logical operators, and the `filter()` function from `dplyr`. It also covers how to sort and combine data frames.
+closing: |
+  Great job navigating "Subsetting, Sorting, and Combining Data Frames"! You've successfully refined your data handling skills. Next, you'll dive into "Writing Functions, Conditionals, and Loops" to learn how to automate and streamline your data analysis processes.
 content:
   - type: section
     title: Prerequisites
@@ -122,7 +127,7 @@ content:
         alt: "View function output in RStudio"
       - type: paragraph
         content: |
-          By inspecting the data frame this way, you can see that the records are daily values of ozone, temperature, and solar radiation. For more information about the data set you can type a question mark in from the name of the data frame variable in the console.
+          By inspecting the data frame this way, you can see that the records are daily values of ozone, temperature, and air pressure. For more information about the data set you can type a question mark in from the name of the data frame variable in the console.
       - type: code
         language: r
         options:
@@ -136,7 +141,7 @@ content:
         content: |
           From the `Description` section of the help page, the `chicago_air` data frame is:
 
-          > A dataset containing daily values of ozone, temperature, and solar radiation from a Chicago monitor between January 1, 2021 and December 31, 2021.
+          > A dataset containing daily values of ozone, temperature, and air pressure from a Chicago monitor between January 1, 2021 and December 31, 2021.
   - type: section
     title: Subsetting
     content:
@@ -282,7 +287,7 @@ content:
               exercise.eval: true
               exercise.cap: "Access a Column by Name"
             content: |
-              head(chicago_air[, "solar"])
+              head(chicago_air[, "pressure"])
           - type: paragraph
             content: |
               Or a vector of column names can subset to a slimmed down data frame.
@@ -296,7 +301,7 @@ content:
               head(chicago_air[, c("ozone", "temp", "month")])
           - type: paragraph
             content: |
-              Both rows and columns can be specified at the same time. The example below returns the first 5 rows of the temperature and solar columns.
+              Both rows and columns can be specified at the same time. The example below returns the first 5 rows of the temperature and pressure columns.
           - type: code
             language: r
             options:
@@ -304,7 +309,7 @@ content:
               exercise.eval: true
               exercise.cap: "Specify Both Rows and Columns for Subsetting"
             content: |
-              chicago_air[1:5, c("temp", "solar")]
+              chicago_air[1:5, c("temp", "pressure")]
       - type: section
         title: Access a Column with `$`
         content:

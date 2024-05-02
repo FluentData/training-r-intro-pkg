@@ -8,6 +8,9 @@ lesson:
   number: 5
   id: 5-Plotting
   next: 6-Basic-Statistics
+  closing: |
+    Great work completing Plotting in R! You've gained skills in both basic and advanced visualization techniques. Up next, you'll explore Basic Statistics, where you'll learn how to apply statistical analysis to your data using R. This will enhance your ability to draw meaningful insights from your datasets. Ready to dive into the numbers?
+
 introduction: |
   In this lesson you will first learn how to quickly visualize data using a few base
   plotting functions. The rest of the material explains how to use the `ggplot2` package

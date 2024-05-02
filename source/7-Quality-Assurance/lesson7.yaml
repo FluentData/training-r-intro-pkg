@@ -8,6 +8,9 @@ lesson:
   number: 7
   id: 7-Quality-Assurance
   next:
+  closing: |
+    Well done on finishing the lesson on Quality Assurance and Common Pitfalls! You've learned valuable techniques for ensuring the integrity of your data and avoiding common errors in R programming. That concludes the lessons in this course. We hope you found them helpful and informative. If you have any questions or feedback, please don't hesitate to reach out to us. Good luck with your future data analysis projects!
+
 introduction: |
   Quality assurance (QA) in R could refer to at least two things: the quality of the code, or the quality of the data. Advanced R users that develop their own functions should follow general best practices for software development. The package [testthat](https://testthat.r-lib.org/) is useful to ensure that functions are working the way they are intended to work. However, this lesson focuses on _data_ quality, and points out a few common mistakes when using R.
 content:

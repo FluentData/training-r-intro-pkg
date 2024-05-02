@@ -233,7 +233,7 @@ mean(seq(from=1, to=10, by=3))
 
 ```
 
-_Note: Typically you don’t want to have too many nested functions because it becomes difficult to read._
+_Note: Typically you don<U+2019>t want to have too many nested functions because it becomes difficult to read._
 
 
 ## NA Values
@@ -316,7 +316,7 @@ serialCorrelationTest(x)
 Here is a link to a page that lists many useful packages for environmental data analysis: https://cran.r-project.org/web/views/Environmetrics.html
 
 
-Remember, when you close down RStudio, then start it up again, you don’t have to download the package again. But you do have to use the `library()` function to load the package before you can use any function that's not in the R core functionality (this is very easy to forget).
+Remember, when you close down RStudio, then start it up again, you don<U+2019>t have to download the package again. But you do have to use the `library()` function to load the package before you can use any function that's not in the R core functionality (this is very easy to forget).
 
 
 ## Importing Data
@@ -532,12 +532,24 @@ You have completed Lesson . Click the button below to mark it as complete and mo
 
 
 ```{r, context = "server"}
-  observeEvent(input$complete_lesson, {
-    shiny::stopApp()
-    trainingRIntro::set_user_state(lesson_2_complete=TRUE)
-  })
-```
+observeEvent(input$complete_lesson, {
+  showModal(modalDialog(
+    title = 'Congratulations!',
+tags$p("Well done on mastering Functions and Importing Data! You've expanded your toolkit with new R functions and data import techniques. In the next lesson, Subsetting, Sorting, and Combining Data Frames, you'll explore advanced data manipulation strategies to refine and optimize your data analysis workflows.
+"),
+    easyClose = FALSE,
+    footer = tagList(
+      modalButton('Cancel'),
+      actionButton('confirm_complete', 'Confirm', class = 'btn-primary')
+    )
+  ))
+})
 
+observeEvent(input$confirm_complete, {
+  removeModal()
+  trainingRIntro::set_user_state(lesson_2_complete=TRUE)
+  shiny::stopApp()
+})
 
 
 
