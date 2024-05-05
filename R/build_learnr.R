@@ -27,7 +27,12 @@ build_learnr <- function(template_file_path, packages = c("learnr", "gradethis",
     packages <- c(packages, template$packages)
   }
 
-  setup <- paste("```{r setup, include=FALSE}\n", paste("library(", packages, ")", sep = "", collapse = "\n"), "\n```\n")
+  setup <- paste(
+    "```{r setup, include=FALSE}\n",
+    paste("library(", packages, ")", sep = "", collapse = "\n"),
+    "\n",
+    ifelse("setup" %in% names(template), template$setup, ""),
+    "\n```\n")
 
   intro <- template$introduction
 
@@ -176,7 +181,8 @@ build_content <- function(content, depth = 1, section = 0) {
     } else if (item$type == "section") {
       markdownText <- paste0(markdownText, prefix, " ", item$title, "\n\n", build_content(item$content, depth + 1))
     } else if (item$type == "image") {
-      markdownText <- paste0(markdownText, "![", item$alt, "](", item$src, ")\n\n")
+      markdownText <- paste0(markdownText, "<img src='", item$src, "' alt='", item$alt, "' style='max-width: 100%;' />\n\n")
+      #markdownText <- paste0(markdownText, "![", item$alt, "](", item$src, ")\n\n")
     } else if (item$type == "code") {
       if(is.null(item$name)) {
         item$name <- paste0("ex-", generateCodeBlockName(item))
@@ -204,7 +210,7 @@ build_content <- function(content, depth = 1, section = 0) {
     } else if (item$type == "table") {
       # Simple table conversion; consider enhancing for complex tables
       headerRow <- paste("|", paste(item$header, collapse = " | "), "|")
-      separatorRow <- paste("|", paste(rep("---", length(item$header)), collapse = " | "), "|")
+      separatorRow <- paste("|", paste(rep(":---", length(item$header)), collapse = " | "), "|")
       bodyRows <- sapply(item$rows, function(row) paste("|", paste(row, collapse = " | "), "|"))
       tableMarkdown <- paste(c(headerRow, separatorRow, bodyRows), collapse = "\n")
       markdownText <- paste0(markdownText, tableMarkdown, "\n\n")
@@ -271,6 +277,7 @@ build_exercise <- function(exercise, exercise_number) {
   hints <- exercise$hints
   solution <- exercise$solution$code
   explanation <- exercise$solution$explanation
+  custom_check <- exercise$solution$check
 
   # Initialize the Rmarkdown content with the exercise instruction
   rmarkdown_content <- paste0("### Exercise ", exercise_number, "\n\n", instructions, "\n\n```{r exercise", exercise_number, ", exercise = TRUE}\n# Your code here\n```\n\n")
@@ -288,7 +295,21 @@ build_exercise <- function(exercise, exercise_number) {
   explanation_formatted <- stringr::str_replace_all(explanation, "\n", " ")
 
   # Add the exercise check to the Rmarkdown content
-  rmarkdown_content <- paste0(rmarkdown_content, "```{r exercise", exercise_number, "-check}\ngrade_this_code(\n  correct = c(gradethis::random_praise(), \"", explanation_formatted, "\")\n)\n```\n")
+  if (!is.null(custom_check)) {
+    rmarkdown_content <- paste0(
+      rmarkdown_content,
+      "```{r exercise", exercise_number, "-check}\n",
+      custom_check,
+      "\n```\n"
+    )
+  } else {
+    rmarkdown_content <- paste0(
+      rmarkdown_content,
+      "```{r exercise", exercise_number, "-check}\ngrade_this_code(\n  correct = c(gradethis::random_praise(), \"",
+      explanation_formatted,
+      "\")\n)\n```\n"
+    )
+  }
 
   return(rmarkdown_content)
 

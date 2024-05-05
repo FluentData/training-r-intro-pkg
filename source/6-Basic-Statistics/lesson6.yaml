@@ -2,6 +2,9 @@ title: "Basic Statistics"
 metadata:
   author: Fluent Data, LLC
   date: "`r Sys.Date()`"
+  tutorial:
+    id: "training.r.intro.6"
+    version: 1.0
   description: |
     This lesson introduces basic statistical analysis in R, covering descriptive statistics, measures of central tendency and dispersion, statistical tests like the t-test and Shapiro-Wilk test for normality, correlation analysis with the cor() and cor.test() functions, and visualization of relationships between variables using pairwise plots.
 lesson:

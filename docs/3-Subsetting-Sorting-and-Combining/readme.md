@@ -99,7 +99,7 @@ View(chicago_air)
 
 ```
 
-![View function output in RStudio](images/view.png)
+<img src='images/view.png' alt='View function output in RStudio' style='max-width: 100%;' />
 
 By inspecting the data frame this way, you can see that the records are daily values of ozone, temperature, and air pressure. For more information about the data set you can type a question mark in from the name of the data frame variable in the console.
 

@@ -1,6 +1,9 @@
 ---
 author: Fluent Data, LLC
 date: '`r Sys.Date()`'
+tutorial:
+  id: training.r.intro.3
+  version: 1.0
 description: |
   This lesson provides an overview of subsetting, sorting, and combining data frames in R using indexing, logical operations, the filter() function from dplyr, as well as sorting with arrange() and combining data frames with bind_rows().
 title: 3 .  Subsetting, Sorting, and Combining Data Frames
@@ -17,6 +20,7 @@ runtime: shiny_prerendered
 library(gradethis)
 library(trainingRIntro)
 library(shiny) 
+  
 ```
 
 This lesson covers how to subset data using indexing, logical operators, and the `filter()` function from `dplyr`. It also covers how to sort and combine data frames.
@@ -100,7 +104,7 @@ View(chicago_air)
 
 ```
 
-![View function output in RStudio](images/view.png)
+<img src='images/view.png' alt='View function output in RStudio' style='max-width: 100%;' />
 
 By inspecting the data frame this way, you can see that the records are daily values of ozone, temperature, and air pressure. For more information about the data set you can type a question mark in from the name of the data frame variable in the console.
 

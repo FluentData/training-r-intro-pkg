@@ -3,6 +3,9 @@ title: "Functions and Importing Data"
 metadata:
   author: Fluent Data, LLC
   date: "`r Sys.Date()`"
+  tutorial:
+    id: "training.r.intro.2"
+    version: 1.0
   description: |
     This lesson provides an overview of using functions in R, including built-in and package functions, and demonstrates how to import data
     from CSV and Excel files.
@@ -13,8 +16,6 @@ lesson:
   closing: |
     Well done on mastering Functions and Importing Data! You've expanded your toolkit with new R functions and data import techniques. In the next lesson, Subsetting, Sorting, and Combining Data Frames, you'll explore advanced data manipulation strategies to refine and optimize your data analysis workflows.
 
-packages:
-  - EnvStats
 introduction: |
   This lesson covers the use of functions in R, including built-in functions and functions from packages. It also discusses how to import
   data from CSV text files and Excel documents.
@@ -489,9 +490,18 @@ content:
           - type: code
             language: r
             options:
-              exercise: true
-              exercise.eval: false
-              exercise.lines: 5
+              exercise: false
+              eval: false
+              exercise.cap: "Read and Inspect Excel Data"
+            content: |
+              library(readxl)
+              emissions <- read_excel("emissions_IL_2022.xlsx", sheet = "UNIT_DATA", skip = 6)
+              head(emissions)
+          - type: code
+            language: r
+            options:
+              echo: false
+              eval: true
               exercise.cap: "Read and Inspect Excel Data"
             content: |
               library(readxl)

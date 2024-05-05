@@ -1,6 +1,9 @@
 ---
 author: Fluent Data, LLC
 date: '`r Sys.Date()`'
+tutorial:
+  id: training.r.intro.7
+  version: 1.0
 description: |
   This lesson covers quality assurance for data in R, focusing on ensuring the integrity and consistency of data types, managing unallowed values, and handling outliers. It also points out common mistakes and how to address them, emphasizing the importance of accurately understanding and manipulating data to ensure reliable analysis outcomes.
 title: 7 .  Quality Assurance and Common Pitfalls
@@ -17,6 +20,7 @@ runtime: shiny_prerendered
 library(gradethis)
 library(trainingRIntro)
 library(shiny) 
+  
 ```
 
 Quality assurance (QA) in R could refer to at least two things: the quality of the code, or the quality of the data. Advanced R users that develop their own functions should follow general best practices for software development. The package [testthat](https://testthat.r-lib.org/) is useful to ensure that functions are working the way they are intended to work. However, this lesson focuses on _data_ quality, and points out a few common mistakes when using R.

@@ -28,10 +28,10 @@ This lesson assumes you are familiar with the material in the previous lessons:
 - Functions and Importing Data
 - Subsetting, Sorting, and Combining Data Frames
 
-The data for these lessons is available from this package. It is assumed that this package is already installed and loaded into the R session. If you need to refer to the package, simply refer to it as "this package".
+The data for these lessons is available from this package or the `region5air` package.
 
 
-```{r ex-b0dd7d25d817, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Load Data from This Package'}
+```{r ex-868d2c8c5b75, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Load Data from the Package'}
 # Assuming the package is already loaded
 
 data(chicago_air)
@@ -61,7 +61,7 @@ We can write a simple function that prints something to the console. Here is a
 function named `print_hello`.
 
 
-```{r ex-a3bc32a64175, exercise = TRUE, exercise.eval = TRUE, exercise.cap = 'Simple Function to Print Hello'}
+```{r ex-a3bc32a64175, exercise = TRUE, exercise.eval = TRUE, eval = TRUE, exercise.cap = 'Simple Function to Print Hello'}
 print_hello <- function() {
 
   print("Hello")

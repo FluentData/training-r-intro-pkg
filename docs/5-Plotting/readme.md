@@ -337,7 +337,7 @@ Plots can be saved in RStudio using the "Export" button at the top of the "Plots
 pane.
 
 
-![Screenshot showing how to save plots in RStudio.](./images/save_plot.png)
+<img src='./images/save_plot.png' alt='Screenshot showing how to save plots in RStudio.' style='max-width: 100%;' />
 
 You can also save a plot made by `ggplot2` using the `ggsave()` function.
 

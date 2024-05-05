@@ -2,6 +2,9 @@ title: "Subsetting, Sorting, and Combining Data Frames"
 metadata:
   author: Fluent Data, LLC
   date: "`r Sys.Date()`"
+  tutorial:
+    id: "training.r.intro.3"
+    version: 1.0
   description: |
     This lesson provides an overview of subsetting, sorting, and combining data frames in R using indexing, logical operations, the filter() function from dplyr, as well as sorting with arrange() and combining data frames with bind_rows().
 lesson:

@@ -2,6 +2,9 @@ title: "Writing Functions, Conditionals, and Loops"
 metadata:
   author: Fluent Data, LLC
   date: "`r Sys.Date()`"
+  tutorial:
+    id: "training.r.intro.4"
+    version: 1.0
   description: |
     This lesson teaches how to create custom R functions, use conditional statements to make decisions in your code, loop through data with for loops, and efficiently apply functions to data structures using the apply function.
 lesson:
@@ -10,7 +13,12 @@ lesson:
   next: 5-Plotting
   closing: |
     Well done on completing Writing Functions, Conditionals, and Loops! You've developed the skills to customize your analysis and automate tasks in R. Next, you'll move on to Plotting in R, where you'll learn how to visually represent data using various plotting techniques. Get ready to bring your data to life with engaging visuals!
+setup: |
+  print_hello <- function() {
 
+    print("Hello")
+
+  }
 introduction: |
   This lesson covers how to write your own R functions. It also explains how to automate
   your code using `if()` and `ifelse()` functions, for loops, and the `apply`
@@ -26,13 +34,13 @@ content:
           - Functions and Importing Data
           - Subsetting, Sorting, and Combining Data Frames
 
-          The data for these lessons is available from this package. It is assumed that this package is already installed and loaded into the R session. If you need to refer to the package, simply refer to it as "this package".
+          The data for these lessons is available from this package or the `region5air` package.
       - type: code
         language: r
         options:
           exercise: false
           exercise.eval: true
-          exercise.cap: "Load Data from This Package"
+          exercise.cap: "Load Data from the Package"
         content: |
           # Assuming the package is already loaded
 
@@ -69,6 +77,7 @@ content:
         options:
           exercise: true
           exercise.eval: true
+          eval: true
           exercise.cap: "Simple Function to Print Hello"
         content: |
           print_hello <- function() {

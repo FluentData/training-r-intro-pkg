@@ -219,7 +219,7 @@ Below is a reference table of a few popular tests for categorical data analysis 
 
 
 | test | function |
-| --- | --- |
+| :--- | :--- |
 | Chi Square Test | `chisq.test()` |
 | Fisher's Test | `fisher.test()` |
 | Analysis of Variance | `aov()` |
