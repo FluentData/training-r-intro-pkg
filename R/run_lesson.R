@@ -42,7 +42,8 @@ run_lesson <- function(number = NA) {
   # Check if number is within the valid range and run the lesson
   if(number > 0 & number <= nrow(x)) {
     message("Running lesson: ", x$title[number])
-    learnr::run_tutorial(x$name[number], "trainingRIntro")
+#      options(shiny.launch.browser = "pane")
+      print(learnr::run_tutorial(x$name[number], "trainingRIntro"))
   } else {
     stop("Invalid lesson number")
   }
