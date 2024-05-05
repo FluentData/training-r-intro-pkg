@@ -63,7 +63,7 @@ We can write a simple function that prints something to the console. Here is a
 function named `print_hello`.
 
 
-```{r ex-a3bc32a64175, exercise = TRUE, exercise.eval = TRUE, exercise.cap = 'Simple Function to Print Hello'}
+```{r ex-a3bc32a64175, exercise = TRUE, exercise.eval = TRUE, eval = TRUE, exercise.cap = 'Simple Function to Print Hello'}
 print_hello <- function() {
 
   print("Hello")

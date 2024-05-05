@@ -69,6 +69,7 @@ content:
         options:
           exercise: true
           exercise.eval: true
+          eval: true
           exercise.cap: "Simple Function to Print Hello"
         content: |
           print_hello <- function() {

@@ -34,3 +34,4 @@ Suggests:
     digest
 Remotes: 
     rstudio/gradethis
+    rstudio/learnr
