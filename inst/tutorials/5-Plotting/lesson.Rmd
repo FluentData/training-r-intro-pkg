@@ -17,6 +17,7 @@ runtime: shiny_prerendered
 library(gradethis)
 library(trainingRIntro)
 library(shiny) 
+  
 ```
 
 In this lesson you will first learn how to quickly visualize data using a few base

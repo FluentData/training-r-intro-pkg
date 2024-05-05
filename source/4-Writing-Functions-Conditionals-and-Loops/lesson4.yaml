@@ -10,7 +10,12 @@ lesson:
   next: 5-Plotting
   closing: |
     Well done on completing Writing Functions, Conditionals, and Loops! You've developed the skills to customize your analysis and automate tasks in R. Next, you'll move on to Plotting in R, where you'll learn how to visually represent data using various plotting techniques. Get ready to bring your data to life with engaging visuals!
+setup: |
+  print_hello <- function() {
 
+    print("Hello")
+
+  }
 introduction: |
   This lesson covers how to write your own R functions. It also explains how to automate
   your code using `if()` and `ifelse()` functions, for loops, and the `apply`

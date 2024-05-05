@@ -17,6 +17,7 @@ runtime: shiny_prerendered
 library(gradethis)
 library(trainingRIntro)
 library(shiny) 
+  
 ```
 
 This lesson covers how to subset data using indexing, logical operators, and the `filter()` function from `dplyr`. It also covers how to sort and combine data frames.

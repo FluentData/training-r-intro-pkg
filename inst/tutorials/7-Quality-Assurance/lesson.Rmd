@@ -17,6 +17,7 @@ runtime: shiny_prerendered
 library(gradethis)
 library(trainingRIntro)
 library(shiny) 
+  
 ```
 
 Quality assurance (QA) in R could refer to at least two things: the quality of the code, or the quality of the data. Advanced R users that develop their own functions should follow general best practices for software development. The package [testthat](https://testthat.r-lib.org/) is useful to ensure that functions are working the way they are intended to work. However, this lesson focuses on _data_ quality, and points out a few common mistakes when using R.

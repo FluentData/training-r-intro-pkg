@@ -18,6 +18,7 @@ runtime: shiny_prerendered
 library(gradethis)
 library(trainingRIntro)
 library(shiny) 
+  
 ```
 
 This lesson covers the use of functions in R, including built-in functions and functions from packages. It also discusses how to import

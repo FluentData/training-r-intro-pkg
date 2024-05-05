@@ -27,7 +27,12 @@ build_learnr <- function(template_file_path, packages = c("learnr", "gradethis",
     packages <- c(packages, template$packages)
   }
 
-  setup <- paste("```{r setup, include=FALSE}\n", paste("library(", packages, ")", sep = "", collapse = "\n"), "\n```\n")
+  setup <- paste(
+    "```{r setup, include=FALSE}\n",
+    paste("library(", packages, ")", sep = "", collapse = "\n"),
+    "\n",
+    ifelse("setup" %in% names(template), template$setup, ""),
+    "\n```\n")
 
   intro <- template$introduction
 

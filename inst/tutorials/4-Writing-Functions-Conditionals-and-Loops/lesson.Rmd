@@ -17,6 +17,12 @@ runtime: shiny_prerendered
 library(gradethis)
 library(trainingRIntro)
 library(shiny) 
+ print_hello <- function() {
+
+  print("Hello")
+
+}
+ 
 ```
 
 This lesson covers how to write your own R functions. It also explains how to automate
