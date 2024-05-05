@@ -99,7 +99,7 @@ View(chicago_air)
 
 ```
 
-![View function output in RStudio](images/view.png)
+<img src='images/view.png' alt='View function output in RStudio' style='max-width: 100%;' />
 
 By inspecting the data frame this way, you can see that the records are daily values of ozone, temperature, and air pressure. For more information about the data set you can type a question mark in from the name of the data frame variable in the console.
 
@@ -161,7 +161,7 @@ my_data[3, 2]
 
 ```
 
-We can also access data from a vector using the same indexing idea. In this case, you don<U+2019>t need the comma to separate the rows and columns since you are accessing one dimensional data. Below is a vector of numbers.
+We can also access data from a vector using the same indexing idea. In this case, you don’t need the comma to separate the rows and columns since you are accessing one dimensional data. Below is a vector of numbers.
 
 
 ```{r ex-81d6c088db05, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Vector Indexing Example'}

@@ -26,13 +26,13 @@ content:
           - Functions and Importing Data
           - Subsetting, Sorting, and Combining Data Frames
 
-          The data for these lessons is available from this package. It is assumed that this package is already installed and loaded into the R session. If you need to refer to the package, simply refer to it as "this package".
+          The data for these lessons is available from this package or the `region5air` package.
       - type: code
         language: r
         options:
           exercise: false
           exercise.eval: true
-          exercise.cap: "Load Data from This Package"
+          exercise.cap: "Load Data from the Package"
         content: |
           # Assuming the package is already loaded
 

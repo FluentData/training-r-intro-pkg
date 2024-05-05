@@ -176,7 +176,8 @@ build_content <- function(content, depth = 1, section = 0) {
     } else if (item$type == "section") {
       markdownText <- paste0(markdownText, prefix, " ", item$title, "\n\n", build_content(item$content, depth + 1))
     } else if (item$type == "image") {
-      markdownText <- paste0(markdownText, "![", item$alt, "](", item$src, ")\n\n")
+      markdownText <- paste0(markdownText, "<img src='", item$src, "' alt='", item$alt, "' style='max-width: 100%;' />\n\n")
+      #markdownText <- paste0(markdownText, "![", item$alt, "](", item$src, ")\n\n")
     } else if (item$type == "code") {
       if(is.null(item$name)) {
         item$name <- paste0("ex-", generateCodeBlockName(item))
@@ -204,7 +205,7 @@ build_content <- function(content, depth = 1, section = 0) {
     } else if (item$type == "table") {
       # Simple table conversion; consider enhancing for complex tables
       headerRow <- paste("|", paste(item$header, collapse = " | "), "|")
-      separatorRow <- paste("|", paste(rep("---", length(item$header)), collapse = " | "), "|")
+      separatorRow <- paste("|:", paste(rep("---", length(item$header)), collapse = " | "), "|")
       bodyRows <- sapply(item$rows, function(row) paste("|", paste(row, collapse = " | "), "|"))
       tableMarkdown <- paste(c(headerRow, separatorRow, bodyRows), collapse = "\n")
       markdownText <- paste0(markdownText, tableMarkdown, "\n\n")

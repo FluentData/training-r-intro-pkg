@@ -80,12 +80,12 @@ Once you have installed R, you can open the program itself. On a PC, if you have
 will look like this:
 
 
-![R icon](./images/r_icon.png)
+<img src='./images/r_icon.png' alt='R icon' style='max-width: 100%;' />
 
 Once opened, the R console looks very plain.
 
 
-![R console](./images/r_console.png)
+<img src='./images/r_console.png' alt='R console' style='max-width: 100%;' />
 
 RStudio makes R much more user friendly. It's free and can be downloaded from the [Posit website](https://posit.co/download/rstudio-desktop/).
 Accept the defaults during installation. It's not necessary to open RStudio to use R, but in these sessions we will assume that RStudio is your
@@ -95,29 +95,29 @@ interface to R.
 On a PC, the RStudio desktop icon looks like this:
 
 
-![RStudio icon](./images/rstudio_icon.png)
+<img src='./images/rstudio_icon.png' alt='RStudio icon' style='max-width: 100%;' />
 
 When you first open RStudio, this is what you see:
 
 
-![RStudio interface](./images/rstudio_interface.png)
+<img src='./images/rstudio_interface.png' alt='RStudio interface' style='max-width: 100%;' />
 
 The left panel is the console for R. Type `1 + 1` in the console then hit "Enter" and R will return the answer.
 
 
-![RStudio console with calculation](./images/rstudio_calculation.png)
+<img src='./images/rstudio_calculation.png' alt='RStudio console with calculation' style='max-width: 100%;' />
 
 It's a good idea to use a script so you can save your code. Open a new script by selecting "File" -> "New File" -> "R Script" and it will appear
 in the top left panel of RStudio.
 
 
-![New R script in RStudio](./images/rstudio_new_script.png)
+<img src='./images/rstudio_new_script.png' alt='New R script in RStudio' style='max-width: 100%;' />
 
 This is a text document that can be saved. Go to "File" -> "Save As" and you can save the file with a `.R` extension. You can type and run more
 than one line at a time by highlighting and clicking the "Run" button on the script tool bar.
 
 
-![Running a script in RStudio](./images/rstudio_run_script.png)
+<img src='./images/rstudio_run_script.png' alt='Running a script in RStudio' style='max-width: 100%;' />
 
 The bottom right panel can be used to find and open files, view plots, load packages, and look at help pages. The top right panel gives you information
 about what variables you're working with during your R session.
@@ -125,7 +125,7 @@ about what variables you're working with during your R session.
 
 ## Basic Math
 
-Open up a script if you haven't already (<U+201C>File<U+201D> -> <U+201C>New File<U+201D> -> <U+201C>R Script<U+201D>). Try some math by either typing the lines below or copying and pasting
+Open up a script if you haven't already (“File” -> “New File” -> “R Script”). Try some math by either typing the lines below or copying and pasting
 the lines into your script.
 
 
@@ -143,7 +143,7 @@ in the R language.
 
 
 | Operator | Meaning | Example |
-| --- | --- | --- |
+|: --- | --- | --- |
 | + | addition | 2 + 2 |
 | - | subtraction | 2 - 2 |
 | * | multiplication | 2 * 2 |
@@ -221,7 +221,7 @@ x + y
 In RStudio, you will see the variables we created in the top right panel.
 
 
-![Variables in RStudio](./images/rstudio_variables.png)
+<img src='./images/rstudio_variables.png' alt='Variables in RStudio' style='max-width: 100%;' />
 
 If you've already created a variable, you can replace the value with another value.
 
@@ -240,7 +240,7 @@ x
 In the top right panel you can see that the number stored in the variable `x` has changed.
 
 
-![Updated variable in RStudio](./images/rstudio_updated_variable.png)
+<img src='./images/rstudio_updated_variable.png' alt='Updated variable in RStudio' style='max-width: 100%;' />
 
 There are 3 important rules to remember when creating variable names:
 
@@ -264,7 +264,7 @@ R has three main data types:
 
 
 | Type | Description | Examples |
-| --- | --- | --- |
+|: --- | --- | --- |
 | character | letters and words | `z`, `red`, `H2O` |
 | numeric | numbers | `1`, `3.14`, `log(10)` |
 | logical | binary | `TRUE`, `FALSE` |

@@ -17,8 +17,7 @@ runtime: shiny_prerendered
  library(learnr)
 library(gradethis)
 library(trainingRIntro)
-library(shiny)
-library(EnvStats) 
+library(shiny) 
 ```
 
 This lesson covers the use of functions in R, including built-in functions and functions from packages. It also discusses how to import
@@ -83,7 +82,7 @@ Many functions also have additional options you can choose, which are called the
 In RStudio, you will see the help page for `mean()` in the bottom right corner panel.
 
 
-![RStudio help page for the mean function](images/rstudio_help.png)
+<img src='images/rstudio_help.png' alt='RStudio help page for the mean function' style='max-width: 100%;' />
 
 On the help page, under `Usage`, you see `mean(x, ...)`. This means that the only thing that necessarily has to go into `( )` is `x`. On the help page under `Arguments` you will find a description of what `x` needs to be: a numeric or logical vector.
 
@@ -233,7 +232,7 @@ mean(seq(from=1, to=10, by=3))
 
 ```
 
-_Note: Typically you don<U+2019>t want to have too many nested functions because it becomes difficult to read._
+_Note: Typically you don’t want to have too many nested functions because it becomes difficult to read._
 
 
 ## NA Values
@@ -295,12 +294,12 @@ It's not available because we need to install the package first (again, like ini
 In the bottom right panel of RStudio, click on the "Packages" tab then click "Install Packages" in the tool bar.
 
 
-![RStudio Install Packages tab](images/rstudio_install_package.png)
+<img src='images/rstudio_install_package.png' alt='RStudio Install Packages tab' style='max-width: 100%;' />
 
 A window will pop up. Start typing "EnvStats" into the "Packages" box, select that package, and click "Install".
 
 
-![RStudio package installation window for EnvStats](images/rstudio_install_package2.png)
+<img src='images/rstudio_install_package2.png' alt='RStudio package installation window for EnvStats' style='max-width: 100%;' />
 
 Now that we've installed the package, we still can't use the function we want. We need to load the package first (opening the app). We use the `library()` function to do this.
 
@@ -316,7 +315,7 @@ serialCorrelationTest(x)
 Here is a link to a page that lists many useful packages for environmental data analysis: https://cran.r-project.org/web/views/Environmetrics.html
 
 
-Remember, when you close down RStudio, then start it up again, you don<U+2019>t have to download the package again. But you do have to use the `library()` function to load the package before you can use any function that's not in the R core functionality (this is very easy to forget).
+Remember, when you close down RStudio, then start it up again, you don’t have to download the package again. But you do have to use the `library()` function to load the package before you can use any function that's not in the R core functionality (this is very easy to forget).
 
 
 ## Importing Data
@@ -371,7 +370,14 @@ library(readxl)
 Use the `read_excel()` function from the `readxl` package to read emissions data from [this Excel workbook](https://github.com/LADCO/training-r-intro/blob/main/data/emissions_IL_2022.xlsx). Download the file to your working directory and read the first worksheet (named "UNIT_DATA"), skipping the first 6 rows.
 
 
-```{r ex-42c0a66e0643, exercise = TRUE, exercise.eval = FALSE, exercise.lines = 5, exercise.cap = 'Read and Inspect Excel Data'}
+```{r ex-4cbff1905b04, exercise = FALSE, eval = FALSE, exercise.cap = 'Read and Inspect Excel Data'}
+library(readxl)
+emissions <- read_excel("emissions_IL_2022.xlsx", sheet = "UNIT_DATA", skip = 6)
+head(emissions)
+
+```
+
+```{r ex-42c0a66e0643, echo = FALSE, eval = TRUE, exercise.cap = 'Read and Inspect Excel Data'}
 library(readxl)
 emissions <- read_excel("./data/emissions_IL_2022.xlsx", sheet = "UNIT_DATA", skip = 6)
 head(emissions)
