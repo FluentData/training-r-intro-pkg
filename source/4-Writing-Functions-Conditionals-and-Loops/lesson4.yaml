@@ -2,6 +2,9 @@ title: "Writing Functions, Conditionals, and Loops"
 metadata:
   author: Fluent Data, LLC
   date: "`r Sys.Date()`"
+  tutorial:
+    id: "training.r.intro.4"
+    version: 1.0
   description: |
     This lesson teaches how to create custom R functions, use conditional statements to make decisions in your code, loop through data with for loops, and efficiently apply functions to data structures using the apply function.
 lesson:

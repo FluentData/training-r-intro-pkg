@@ -3,6 +3,9 @@ title: "Functions and Importing Data"
 metadata:
   author: Fluent Data, LLC
   date: "`r Sys.Date()`"
+  tutorial:
+    id: "training.r.intro.2"
+    version: 1.0
   description: |
     This lesson provides an overview of using functions in R, including built-in and package functions, and demonstrates how to import data
     from CSV and Excel files.

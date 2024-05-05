@@ -29,6 +29,12 @@ This lesson covers how to write your own R functions. It also explains how to au
 your code using `if()` and `ifelse()` functions, for loops, and the `apply`
 function.
 
+```{r test}
+
+print(options("tutorial.storage"))
+
+```
+
 ## Prerequisites
 
 This lesson assumes you are familiar with the material in the previous lessons:
