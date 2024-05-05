@@ -33,6 +33,7 @@ data_dir <- "~/.training-r-intro"
       rstudioapi::sendToConsole("start_training()", execute = FALSE, animate = TRUE)
     } else {
       message(crayon::red("To get started or continue where you left off, type", crayon::underline(crayon::bold("start_training()")), "at the prompt below and press", crayon::bold("Enter."), "\n"))
+      message(crayon::red("To view a specific tutorial type", crayon::underline(crayon::bold("run_lesson(<lesson_number>)")), "and press", crayon::bold("Enter."), "\n"))
     }
   }
 
