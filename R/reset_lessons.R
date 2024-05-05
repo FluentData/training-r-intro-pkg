@@ -73,4 +73,6 @@ reset_training <- function() {
     file.remove(user_state_file())
   }
 
+  return(invisible(TRUE))
+
 }

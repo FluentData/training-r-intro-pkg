@@ -223,7 +223,7 @@ Additional modifications can be made. Customize it by adding color, title, and l
 ggplot(chicago_air, aes(x = temp, y = ozone)) +
   geom_point(color = "forestgreen") +
   ggtitle('Relationship between Ozone and Temperature') +
-  xlab('Temperature (°F)') +
+  xlab('Temperature (<U+00B0>F)') +
   ylab('Ozone (ppm)')
 
 ```
@@ -238,7 +238,7 @@ argument `color` in the `aes( )` function.
 ggplot(chicago_air, aes(x = temp, y = ozone, color = factor(month))) +
   geom_point() +
   ggtitle('Relationship between Ozone and Temperature') +
-  xlab('Temperature (°F)') +
+  xlab('Temperature (<U+00B0>F)') +
   ylab('Ozone (ppm)')
 
 ```

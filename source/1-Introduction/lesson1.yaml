@@ -545,6 +545,31 @@ exercises:
         In R, we can combine vectors of equal length into a data frame using the `data.frame()` function. Here, we're creating two vectors, `name` and `age`, and combining them into a data frame, demonstrating how to organize and structure data in a tabular format.
       code: |
         df <- data.frame(name = c('Alice', 'Bob', 'Charlie'), age = c(25, 32, 28))
+      check: |
+        grade_this({
+          # The student's solution
+          df_student <- .result
+
+          # Expected names
+          expected_names <- c('Alice', 'Bob', 'Charlie')
+
+          # Check that the data frame has the correct structure
+          has_correct_columns <- all(names(df_student) == c('name', 'age'))
+          contains_all_names <- all(expected_names %in% df_student$name)
+          are_ages_numeric <- is.numeric(df_student$age)
+
+          # Provide detailed feedback based on specific issues
+          if (!has_correct_columns) {
+            fail("Incorrect columns. Ensure your data frame has exactly two columns named `name` and `age`.")
+          } else if (!contains_all_names) {
+            missing_names <- setdiff(expected_names, df_student$name)
+            fail(paste("Missing the following names:", paste(missing_names, collapse = ", ")))
+          } else if (!are_ages_numeric) {
+            fail("The `age` column should contain numeric values only. Ensure all ages are numbers.")
+          } else {
+            pass("Correct! You've successfully created a data frame with the names 'Alice', 'Bob', and 'Charlie', and ensured that ages are numeric.")
+          }
+        })
   - instructions: "Create a numeric vector `nums` with the values 10, 20, and 30 and add 5 to each element of the vector."
     hints:
       - "# You can create a vector using the `c()` function."

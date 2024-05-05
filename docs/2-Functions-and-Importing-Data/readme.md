@@ -239,7 +239,7 @@ mean(seq(from=1, to=10, by=3))
 
 ```
 
-_Note: Typically you don’t want to have too many nested functions because it becomes difficult to read._
+_Note: Typically you don<U+2019>t want to have too many nested functions because it becomes difficult to read._
 
 
 ## NA Values
@@ -322,7 +322,7 @@ serialCorrelationTest(x)
 Here is a link to a page that lists many useful packages for environmental data analysis: https://cran.r-project.org/web/views/Environmetrics.html
 
 
-Remember, when you close down RStudio, then start it up again, you don’t have to download the package again. But you do have to use the `library()` function to load the package before you can use any function that's not in the R core functionality (this is very easy to forget).
+Remember, when you close down RStudio, then start it up again, you don<U+2019>t have to download the package again. But you do have to use the `library()` function to load the package before you can use any function that's not in the R core functionality (this is very easy to forget).
 
 
 ## Importing Data

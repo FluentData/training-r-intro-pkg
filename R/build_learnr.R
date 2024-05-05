@@ -210,7 +210,7 @@ build_content <- function(content, depth = 1, section = 0) {
     } else if (item$type == "table") {
       # Simple table conversion; consider enhancing for complex tables
       headerRow <- paste("|", paste(item$header, collapse = " | "), "|")
-      separatorRow <- paste("|:", paste(rep("---", length(item$header)), collapse = " | "), "|")
+      separatorRow <- paste("|", paste(rep(":---", length(item$header)), collapse = " | "), "|")
       bodyRows <- sapply(item$rows, function(row) paste("|", paste(row, collapse = " | "), "|"))
       tableMarkdown <- paste(c(headerRow, separatorRow, bodyRows), collapse = "\n")
       markdownText <- paste0(markdownText, tableMarkdown, "\n\n")
@@ -277,6 +277,7 @@ build_exercise <- function(exercise, exercise_number) {
   hints <- exercise$hints
   solution <- exercise$solution$code
   explanation <- exercise$solution$explanation
+  custom_check <- exercise$solution$check
 
   # Initialize the Rmarkdown content with the exercise instruction
   rmarkdown_content <- paste0("### Exercise ", exercise_number, "\n\n", instructions, "\n\n```{r exercise", exercise_number, ", exercise = TRUE}\n# Your code here\n```\n\n")
@@ -294,7 +295,21 @@ build_exercise <- function(exercise, exercise_number) {
   explanation_formatted <- stringr::str_replace_all(explanation, "\n", " ")
 
   # Add the exercise check to the Rmarkdown content
-  rmarkdown_content <- paste0(rmarkdown_content, "```{r exercise", exercise_number, "-check}\ngrade_this_code(\n  correct = c(gradethis::random_praise(), \"", explanation_formatted, "\")\n)\n```\n")
+  if (!is.null(custom_check)) {
+    rmarkdown_content <- paste0(
+      rmarkdown_content,
+      "```{r exercise", exercise_number, "-check}\n",
+      custom_check,
+      "\n```\n"
+    )
+  } else {
+    rmarkdown_content <- paste0(
+      rmarkdown_content,
+      "```{r exercise", exercise_number, "-check}\ngrade_this_code(\n  correct = c(gradethis::random_praise(), \"",
+      explanation_formatted,
+      "\")\n)\n```\n"
+    )
+  }
 
   return(rmarkdown_content)
 

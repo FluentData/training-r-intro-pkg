@@ -125,7 +125,7 @@ about what variables you're working with during your R session.
 
 ## Basic Math
 
-Open up a script if you haven't already (“File” -> “New File” -> “R Script”). Try some math by either typing the lines below or copying and pasting
+Open up a script if you haven't already (<U+201C>File<U+201D> -> <U+201C>New File<U+201D> -> <U+201C>R Script<U+201D>). Try some math by either typing the lines below or copying and pasting
 the lines into your script.
 
 
@@ -143,7 +143,7 @@ in the R language.
 
 
 | Operator | Meaning | Example |
-|: --- | --- | --- |
+| :--- | :--- | :--- |
 | + | addition | 2 + 2 |
 | - | subtraction | 2 - 2 |
 | * | multiplication | 2 * 2 |
@@ -264,7 +264,7 @@ R has three main data types:
 
 
 | Type | Description | Examples |
-|: --- | --- | --- |
+| :--- | :--- | :--- |
 | character | letters and words | `z`, `red`, `H2O` |
 | numeric | numbers | `1`, `3.14`, `log(10)` |
 | logical | binary | `TRUE`, `FALSE` |

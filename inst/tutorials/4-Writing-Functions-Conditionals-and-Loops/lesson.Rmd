@@ -1,6 +1,9 @@
 ---
 author: Fluent Data, LLC
 date: '`r Sys.Date()`'
+tutorial:
+  id: training.r.intro.4
+  version: 1.0
 description: |
   This lesson teaches how to create custom R functions, use conditional statements to make decisions in your code, loop through data with for loops, and efficiently apply functions to data structures using the apply function.
 title: 4 .  Writing Functions, Conditionals, and Loops
@@ -28,12 +31,6 @@ library(shiny)
 This lesson covers how to write your own R functions. It also explains how to automate
 your code using `if()` and `ifelse()` functions, for loops, and the `apply`
 function.
-
-```{r test}
-
-print(options("tutorial.storage"))
-
-```
 
 ## Prerequisites
 

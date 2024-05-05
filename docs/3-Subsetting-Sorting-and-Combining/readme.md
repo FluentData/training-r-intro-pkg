@@ -161,7 +161,7 @@ my_data[3, 2]
 
 ```
 
-We can also access data from a vector using the same indexing idea. In this case, you don’t need the comma to separate the rows and columns since you are accessing one dimensional data. Below is a vector of numbers.
+We can also access data from a vector using the same indexing idea. In this case, you don<U+2019>t need the comma to separate the rows and columns since you are accessing one dimensional data. Below is a vector of numbers.
 
 
 ```{r ex-81d6c088db05, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Vector Indexing Example'}
