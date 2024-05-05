@@ -33,5 +33,5 @@ Suggests:
     testthat (>= 3.0.0),
     digest
 Remotes: 
-    rstudio/gradethis,
-    rstudio/learnr
+    rstudio/learnr,
+    rstudio/gradethis
