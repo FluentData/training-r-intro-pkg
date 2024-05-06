@@ -12,7 +12,7 @@ This lesson is a part of the Introduction to R for Air Quality Data Science. The
 - [Basic Math](#basic-math)
   - [Order of Operations](#order-of-operations)
 
-- [Note on Comments and Code Blocks](#note-on-comments-and-code-blocks)
+- [Comments and Code Blocks](#comments-and-code-blocks)
 
 - [Variables](#variables)
 
@@ -29,14 +29,17 @@ This lesson is a part of the Introduction to R for Air Quality Data Science. The
 
 ## What is R?
 
-R is a free, open-source computing language. It was originally written by statisticians for doing statistical analysis in academia. In recent years it has become more widely used in many industries for performing a variety of data science tasks such as:
-
+R is a free, open-source computing language. It was originally written
+by statisticians for doing statistical analysis in academia. In recent
+years it has become more widely used in many industries for performing
+a variety of data science tasks such as:
 
 - reading and writing files,
 - data transformation,
 - graphic visualization,
 - geographic mapping,
 - and predictive modeling.
+
 
 ## Why Use a Programming Language?
 
@@ -50,12 +53,18 @@ Many data analysis tasks can be accomplished with spreadsheets and other busines
 BI. When should you move beyond BI tools and use a high-level programming language like R? Below are a few scenarios where a language
 like R is more advantageous than a BI tool.
 
-
 - If you cannot access data easily in your BI tool, R can read just about any data source.
-- If you need to save a large number of files, R can automate that process in a way that BI tools cannot.
+- If you need to download, save, or otherwise process a large number of files, R can automate those tasks in a way that BI tools cannot.
 - Custom data transformations that are not possible in BI tools can be done with R.
 - Custom data visualizations that are not available in BI tools can be done with R.
 - Predictive modeling that is not available in BI tools, or only in a rudimentary way, can be done in R.
+
+BI tools are more advantageous if you need enterprise wide dashboards,
+or tools that are more easily accessible to a wider audience. If there
+are few occasions where you need custom visualizations or transformations,
+or if you do not need automation in your work, you may not need to learn
+a programming language.
+
 
 ## Install R and RStudio
 
@@ -67,7 +76,7 @@ To download R, [see this page](https://cran.r-project.org/). You will need to se
 system (PC or Mac). Accept the default options during the installation.
 
 
-Once you have installed R, you can open the program itself. On PC, if you have selected the desktop shortcut during installation, the R icon
+Once you have installed R, you can open the program itself. On a PC, if you have selected the desktop shortcut during installation, the R icon
 will look like this:
 
 
@@ -116,11 +125,11 @@ about what variables you're working with during your R session.
 
 ## Basic Math
 
-Open up a script if you haven't already (“File” -> “New File” -> “R Script”). Try some math by either typing the lines below or copying and pasting
+Open up a script if you haven't already (<U+201C>File<U+201D> -> <U+201C>New File<U+201D> -> <U+201C>R Script<U+201D>). Try some math by either typing the lines below or copying and pasting
 the lines into your script.
 
 
-```{r ex-lsbF1-1, exercise = FALSE, eval = TRUE, exercise.cap = 'Practice Basic Math Operations'}
+```{r ex-81f861c580e9, exercise = FALSE, eval = TRUE, exercise.cap = 'Practice Basic Math Operations'}
 10 + 5
 10 - 5
 10 * 5
@@ -147,17 +156,17 @@ R follows the usual order of arithmetical operations and uses parentheses for gr
 see the different values that are returned.
 
 
-```{r ex-tKvGY-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Understanding Order of Operations'}
+```{r ex-79b4cf434d78, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Understanding Order of Operations'}
 10 - 3 / 5
 
 ```
 
-```{r ex-1uIa6-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Practicing Grouping with Parentheses'}
+```{r ex-17bb0057c9a3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Practicing Grouping with Parentheses'}
 (10 - 3) / 5
 
 ```
 
-## Note on Comments and Code Blocks
+## Comments and Code Blocks
 
 To write a comment in your script that will not be evaluated, type `#` in front of your comment. The text after `#` will not be evaluated. There is
 no multi-line commenting in R, so every comment line must begin with the `#` character.
@@ -166,17 +175,17 @@ no multi-line commenting in R, so every comment line must begin with the `#` cha
 Run all of the code below and see what gets returned in the R console (bottom left panel in RStudio).
 
 
-```{r ex-0F6Xn-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Experiment with Comments'}
+```{r ex-d3c1f581907f, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Experiment with Comments'}
 # Full line comment
 5^2 # partial line comment
 
 ```
 
-In the example above and the previous section, you have seen the R code and its output. The code blocks with output look like this, with `1+1` being
+In the example above and the previous section, you can see the R code and its output. The code blocks with output look like this, with `1+1` being
 the R code and `## [1] 2` being the output:
 
 
-```{r ex-eEZSt-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Code and Output Example'}
+```{r ex-ce008c1109f0, exercise = FALSE, eval = TRUE, exercise.cap = 'Code and Output Example'}
 1+1
 
 ```
@@ -184,10 +193,17 @@ the R code and `## [1] 2` being the output:
 However, in the R console the code and output would look like this:
 
 
-```{r ex-HKQpJ-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Console Code Execution'}
-1 + 1
+```{r ex-9a36f5215f5f, exercise = FALSE, eval = FALSE, echo = TRUE, exercise.cap = 'Console Code Execution'}
+> 1 + 1
+[1] 2
 
 ```
+
+The R code in code blocks do not show the `>` part of the console, called
+the prompt, and the output block places two comment marks `##` before the
+output. This is to make it possible to copy and paste the text into your
+R console and run it without causing an error.
+
 
 ## Variables
 
@@ -195,7 +211,7 @@ A variable is a letter or combination of alphanumeric characters that is used to
 with the dash to create an arrow symbol pointing left `<-`. Below, the variables `x` and `y` are created by assigning some numbers to them.
 
 
-```{r ex-Gx2xc-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Creating Variables'}
+```{r ex-ec1ce06e0ab7, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Creating Variables'}
 x <- 10
 y <- 5
 x + y
@@ -210,12 +226,12 @@ In RStudio, you will see the variables we created in the top right panel.
 If you've already created a variable, you can replace the value with another value.
 
 
-```{r ex-VenIe-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Exploring Variable Assignment'}
+```{r ex-2df91768bd95, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Exploring Variable Assignment'}
 x
 
 ```
 
-```{r ex-uta82-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Updating Variable Values'}
+```{r ex-d0f95f7fc26e, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Updating Variable Values'}
 x <- 20
 x
 
@@ -228,17 +244,17 @@ In the top right panel you can see that the number stored in the variable `x` ha
 
 There are 3 important rules to remember when creating variable names:
 
-
-1. You can't start your variable with a number.
+1. You can't start your variable name with a number.
 2. You can't use spaces or special characters ($,%,#,-). Periods `.` and underscores  `_` are ok.
-3. Capitalization __DOES__ matter in R. That is, R will consider `x` and  `X` to be different variables.
+3. Capitalization __DOES__ matter in R. That is, R will consider `y` and  `Y` to be different variables.
+
 
 Try running the following code and you will see that in your global environment there are two different objects listed.
 
 
-```{r ex-7d2f4-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Variable Naming Rules'}
-x <- 5
-X <- 5
+```{r ex-14716a5ddf54, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Variable Naming Rules'}
+y <- 5
+Y <- 10
 
 ```
 
@@ -253,32 +269,33 @@ R has three main data types:
 | numeric | numbers | `1`, `3.14`, `log(10)` |
 | logical | binary | `TRUE`, `FALSE` |
 
-The `character` type requires single or double quotes. The logical values
-`TRUE` and `FALSE` should not be quoted and require full caps.
+The `character` type requires single or double quotes. The numeric type
+must be unquoted numbers, and the full-caps logical values `TRUE` and
+`FALSE` must also be unquoted.
 
 
 ## Grouping Data
 
-There are several ways to group data to make them easier to work with:
-
+There are several ways to store groups of data to make them easier to work with:
 
 - A __vector__ stores multiple values of the same type (e.g. all numeric values).
 - A __list__ stores multiple values of different types (e.g. some numbers and character values).
 - A __matrix__ is a table of values with only one data type.
 - A __data frame__ is a table of values that can have columns with different data types (e.g. a numeric column and a logical column).
 
+
 ## Vectors
 
 A vector variable can contain only one type of data (numeric, character, or logical). We use `c()` to create vectors.
 
 
-```{r ex-0BIxw-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Creating Numeric Vectors'}
+```{r ex-67078c489715, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Creating Numeric Vectors'}
 x <- c(1, 2, 3, 4, 5)
 x
 
 ```
 
-```{r ex-W1utr-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Creating Character Vectors'}
+```{r ex-63506426ac71, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Creating Character Vectors'}
 fruit <- c("apples", "bananas", "oranges")
 fruit
 
@@ -288,7 +305,7 @@ If you try to type in text without using quotations marks for character values (
 running the code below.
 
 
-```{r ex-FI35b-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Error Without Quotes'}
+```{r ex-bba8373fea79, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Error Without Quotes'}
 fruit <- c(apples, bananas, oranges)
 
 ```
@@ -298,7 +315,7 @@ find them and it returns an error. The members of a vector can be accessed by us
 `fruit` vector, you can use the single bracket with the number 3:
 
 
-```{r ex-YtkAP-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Accessing Vector Elements'}
+```{r ex-5cd4385f6056, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Accessing Vector Elements'}
 fruit[3]
 
 ```
@@ -308,7 +325,7 @@ fruit[3]
 Lists are like vectors but can contain any mix of data types. We use `list()` to create a list variable.
 
 
-```{r ex-C4KwZ-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Creating Lists'}
+```{r ex-6a0e866a73e4, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Creating Lists'}
 x <- list("Benzene", 1.3, TRUE)
 x
 
@@ -319,7 +336,7 @@ is the second value in the list, so it is shown below the double bracket `[[2]]`
 list.
 
 
-```{r ex-7XCqu-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Accessing List Elements'}
+```{r ex-73b1c6677a00, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Accessing List Elements'}
 x[[2]]
 
 ```
@@ -327,7 +344,7 @@ x[[2]]
 Lists can also contain vectors and other lists.
 
 
-```{r ex-8CjYW-3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Lists Containing Vectors and Lists'}
+```{r ex-c3a1b6cfb9ea, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Lists Containing Vectors and Lists'}
 my_vector <- c(1, 2, 3)
 my_list <- list("Benzene", 1.3, TRUE)
 y <- list(TRUE, my_vector, my_list)
@@ -339,7 +356,7 @@ In this example, you can use two double brackets to access the value `1.3` by se
 `my_list`:
 
 
-```{r ex-w0s21-4, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Nested List Access'}
+```{r ex-a4653820754f, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Nested List Access'}
 y[[3]][[2]]
 
 ```
@@ -350,7 +367,7 @@ Data frames are data tables in R. We use `data.frame()` to create a data frame o
 vectors of the same length and use them to create a data frame.
 
 
-```{r ex-JcsIC-1, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Creating Data Frames'}
+```{r ex-85321c4c22ee, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Creating Data Frames'}
 pollutant <- c("Benzene", "Toluene", "Xylenes")
 concentration <- c(1.3, 5.5, 6.0)
 carcinogen <- c(TRUE, FALSE, FALSE)
@@ -360,10 +377,10 @@ my_data_frame
 ```
 
 The output above shows a table with the vector variable names as column names, and the vector values below the respective column name. If you try to
-create a data frame where the vectors are not all the same length, you will see the error shown below.
+create a data frame where the vectors are not all the same length, you will get an error.
 
 
-```{r ex-fiLV8-2, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Data Frame Dimension Mismatch Error'}
+```{r ex-2a5a8901cad3, exercise = TRUE, exercise.eval = FALSE, exercise.cap = 'Data Frame Dimension Mismatch Error'}
 pollutant <- c("Benzene", "Toluene")
 concentration <- c(1.3, 5.5, 6.0)
 carcinogen <- c(TRUE, FALSE, FALSE)
@@ -484,7 +501,7 @@ v <- c(1, 2, 3, 4, 5)
 
 ### Exercise 4
 
-Create a list `l` that contains a number (e.g., 5), a string (e.g., 'apple'), and a logical value (e.g., TRUE).
+Create a list `l` that contains the number 5, the string 'apple', and the logical value `TRUE`.
 
 <details><summary>Click for Hint</summary>
 
@@ -517,7 +534,7 @@ l <- list(5, 'apple', TRUE)
 
 ### Exercise 5
 
-Create a data frame `df` with two columns, `name` and `age`, each containing three entries of your choosing.
+Create a data frame `df` with two columns, `name` and `age`. Use the names 'Alice', 'Bob', and 'Charlie' and give them each an age.
 
 <details><summary>Click for Hint</summary>
 

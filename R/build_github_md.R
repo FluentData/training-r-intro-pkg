@@ -5,10 +5,8 @@
 #' @param template_file_path The file path to the YAML template.
 #' @param save Logical; if TRUE, saves the output to a Markdown file and copies associated directories.
 #' @return A character string containing the Markdown content or file path if saved.
-#' @export
 #' @importFrom yaml yaml.load_file
 #' @importFrom tools file_path_sans_ext
-#' @useDynLib yourPackageName
 build_github_md <- function(template_file_path) {
 
   # Load YAML content
@@ -76,7 +74,6 @@ generate_toc <- function(content, depth = 1) {
 #' @description This function creates a Markdown section with a link to the next lesson based on the lesson attribute in the YAML file.
 #' @param lesson The name of the next lesson as specified in the YAML file.
 #' @return A character string containing the Markdown formatted link to the next lesson.
-#' @export
 #' @noRd
 build_github_next_lesson <- function(lesson) {
 
@@ -99,7 +96,6 @@ build_github_next_lesson <- function(lesson) {
 #' @description Processes structured content from a YAML file and converts it into GitHub-flavored Markdown text.
 #' @param content A list of content blocks parsed from the YAML file.
 #' @return A character string containing formatted Markdown text.
-#' @export
 #' @noRd
 build_github_content <- function(content) {
   markdownText <- ""
@@ -156,7 +152,6 @@ build_github_content <- function(content) {
 #' @description This function creates GitHub-flavored Markdown formatted exercises with collapsible sections for hints and solutions.
 #' @param exercise_objects List of exercises parsed from the YAML file.
 #' @return A character string containing formatted Markdown exercises.
-#' @export
 #' @noRd
 process_github_exercises <- function(exercise_objects) {
   markdown_content <- "## Exercises\n\n"

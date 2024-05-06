@@ -1,0 +1,118 @@
+---
+title: "Introduction to R for Air Quality Data Science"
+author: "Fluent Data, LLC"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to R for Air Quality Data Science}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Introduction
+
+This vignette provides a comprehensive guide to using the `trainingRIntro` package, which is designed to introduce R programming skills specifically for air quality data science. This series of interactive lessons will help you understand the fundamentals of R programming, including data manipulation, visualization, and statistical analysis, with a focus on environmental data.
+
+## Getting Started
+
+## Lessons Overview
+
+### Lesson 1: Introduction to R
+
+-   **Objective**: Learn the basics of R programming, including installation and basic operations.
+-   **Topics Covered**:
+    -   Introduction to R and RStudio.
+    -   Understanding R syntax and operations.
+    -   Basic mathematical operations and variable assignment.
+
+### Lesson 2: Functions and Importing Data
+
+-   **Objective**: Understand how to utilize functions and import data from various sources.
+-   **Topics Covered**:
+    -   Using built-in functions and additional functions from packages.
+    -   Importing data from CSV files, Excel sheets, and web sources.
+    -   Basic data inspection and manipulation techniques.
+
+### Lesson 3: Subsetting, Sorting, and Combining Data Frames
+
+-   **Objective**: Master techniques for manipulating datasets to prepare them for analysis.
+-   **Topics Covered**:
+    -   Techniques for subsetting data to focus on relevant data points.
+    -   Sorting data to organize and prepare for analysis.
+    -   Combining multiple datasets using `dplyr` and `data.table`.
+
+### Lesson 4: Writing Functions, Conditionals, and Loops
+
+-   **Objective**: Learn to write custom functions and control flow to automate data analysis tasks.
+-   **Topics Covered**:
+    -   Creating and using custom functions for repetitive tasks.
+    -   Employing conditionals (`if`, `else`, `ifelse`) to handle different data scenarios.
+    -   Using loops (`for`, `while`) and apply functions (`lapply`, `sapply`) to process data efficiently.
+
+### Lesson 5: Plotting in R
+
+-   **Objective**: Gain proficiency in data visualization to explore and present data insights effectively.
+-   **Topics Covered**:
+    -   Basics of base plotting in R.
+    -   Introduction to `ggplot2` for creating advanced visualizations.
+    -   Practical exercises on creating scatter plots, line graphs, histograms, and box plots.
+
+### Lesson 6: Basic Statistics
+
+-   **Objective**: Understand fundamental statistical techniques for data analysis.
+-   **Topics Covered**:
+    -   Descriptive statistics to summarize data characteristics.
+    -   Conducting statistical tests like t-tests and Shapiro-Wilk tests for normality.
+    -   Performing correlation analysis to discover relationships between variables.
+
+### Lesson 7: Quality Assurance and Common Pitfalls
+
+-   **Objective**: Learn to ensure data integrity and avoid common mistakes in R programming.
+-   **Topics Covered**:
+    -   Techniques for quality assurance in data processing.
+    -   Handling outliers and data entry errors.
+    -   Common pitfalls in R programming and how to avoid them.
+
+### Running the Tutorials
+
+To start the tutorials, load the package and call `start_training()`:
+
+``` r
+library(trainingRIntro)
+start_training()
+```
+
+This function will guide you through the lessons, starting from where you last left off.
+
+## Lessons Overview
+
+Each lesson is designed to build on the knowledge from the previous ones. It is recommended to follow them in sequence:
+
+1.  **Introduction to R**
+    -   Basics of R programming, syntax, and operations.
+2.  **Functions and Importing Data**
+    -   Utilization of built-in and external package functions, importing data, and initial data cleaning.
+3.  **Subsetting, Sorting, and Combining Data Frames**
+    -   Advanced data manipulation techniques including subsetting, sorting, and merging datasets.
+
+... and so forth up to the seventh lesson.
+
+## Interactive Learning
+
+This package provides an interactive learning experience through `learnr` tutorials. Each lesson includes practical exercises that reinforce the concepts covered.
+
+## Contributing
+
+Contributions to enhance or extend the lessons are welcomed. You can contribute by opening issues or pull requests on the GitHub repository.
+
+## License
+
+The content is available under the MIT License, allowing you to freely use, share, and adapt these materials.
+
+Happy learning!
+
+# Additional Resources
+
+For further reading and advanced topics in R programming and air quality analysis, refer to the following resources: - [Advanced R by Hadley Wickham](https://adv-r.hadley.nz/) - [R for Data Science by Hadley Wickham and Garrett Grolemund](https://r4ds.had.co.nz/)
+
+This guide serves not only as an instructional manual but also as a reference for future learning and application of R in the field of air quality data science. \`\`\`

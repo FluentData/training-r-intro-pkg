@@ -10,6 +10,11 @@ lesson:
   number: 2
   id: 2-Functions-and-Importing-Data
   next: 3-Subsetting-Sorting-and-Combining
+  closing: |
+    Well done on mastering Functions and Importing Data! You've expanded your toolkit with new R functions and data import techniques. In the next lesson, Subsetting, Sorting, and Combining Data Frames, you'll explore advanced data manipulation strategies to refine and optimize your data analysis workflows.
+
+packages:
+  - EnvStats
 introduction: |
   This lesson covers the use of functions in R, including built-in functions and functions from packages. It also discusses how to import
   data from CSV text files and Excel documents.
@@ -19,7 +24,11 @@ content:
     content:
       - type: paragraph
         content: |
-          In R, there are two main types of objects: variables and functions. We covered variables in the [introductory lesson](../1-Introduction-to-R/readme.md). A variable is used to create and reference data. The data can be a character, numeric, or logical data type. Variables can reference various "containers" for data, such as a __vector__, __list__, or __data frame__.
+          In R, there are two main types of objects: variables and functions. We
+          covered variables in the introductory lesson. A variable is used to create
+          and reference data. The data can be a character, numeric, or logical data
+          type. Variables can reference various "containers" for data, such as a
+          __vector__, __list__, or __data frame__.
       - type: paragraph
         content: |
           Functions are similar to variables in that they are short names that reference something saved in R. In this case, a function is not referencing data but a piece of code. A function is saved code that can be used to do some operation on data.
@@ -38,7 +47,8 @@ content:
           mean(x)
       - type: paragraph
         content: |
-          As you would expect, R has many built-in math functions. Below are a series of examples.
+          As you would expect, R has many built-in math functions. Below are a few
+          examples.
       - type: code
         language: r
         options:
@@ -98,7 +108,11 @@ content:
           On the help page, under `Usage`, you see `mean(x, ...)`. This means that the only thing that necessarily has to go into `( )` is `x`. On the help page under `Arguments` you will find a description of what `x` needs to be: a numeric or logical vector.
       - type: paragraph
         content: |
-          Many built-in functions in R have multiple arguments. This allows you to give the function some more information to perform calculation you want. The example below shows how to use the `digits` argument in the `round( )` function. Providing different values to the `digits` argument will return different values.
+          Many built-in functions in R have multiple arguments. This allows you
+          to give the function some more information to perform calculation you
+          want. The example below shows how to use the `digits` argument in the
+          `round( )` function. Providing different values to the `digits` argument
+          will return different values.
       - type: code
         language: r
         options:
@@ -126,12 +140,23 @@ content:
           exercise.cap: "Round to One Digit"
         content: |
           round(12.3456, digits=1)
+      - type: paragraph
+        content: |
+          In the first example, you can see that we did not provide a value for the
+          `digits` argument. That's because there is a default value `digits = 0` (see
+          the `Usage` section on the help page `?round`). If there is a default value,
+          then that argument does not need to be specified inside `( )`. If there is no
+          default value for an argument, then the function will error and tell you that
+          you forgot to supply a value for the argument.
   - type: section
     title: Useful Built-in Functions
     content:
       - type: paragraph
         content: |
-          When you start an R session there are many built-in functions that are immediately available for you to use. Other functions are available in community developed packages, as explained in a later section of this lesson. Below is a list of a few commonly used built-in functions in R.
+          When you start an R session there are many built-in functions that are
+          immediately available for you to use. Other functions are available in
+          community developed packages, as explained in a later section of this
+          lesson. Below is a list of a few commonly used built-in functions in R.
       - type: section
         title: "1. `sum( )`"
         content:
@@ -176,7 +201,7 @@ content:
               exercise.lines: 5
               exercise.cap: "Maximum Value"
             content: |
-              max(c(6, 9, 3, 11, -2))
+              max(c(15, 2, 8.3, -10, 21))
       - type: section
         title: "4. `seq()`"
         content:
@@ -306,7 +331,7 @@ content:
     content:
       - type: paragraph
         content: |
-          Most of the statistical summary functions in R have the argument `na.rm`. This stands for `NA` remove. `NA` value is how R represents a missing value, similar to the NULL value in a SQL database.
+          Most of the statistical summary functions in R have the argument `na.rm`. This stands for `NA` remove. The `NA` value is how R represents a missing value, similar to the NULL value in a SQL database.
       - type: paragraph
         content: |
           For example, there is a built-in data frame in R called `airquality` with daily measurements from a monitor in New York from 1973 (see `?airquality`). If we load the data frame using the `data()` function and take a look at the top 6 rows using the `head()` function, we can see some missing values represented as `NA`.
@@ -390,16 +415,12 @@ content:
       - type: code
         language: r
         options:
-          message: false
-        content: |
-          library(EnvStats)
-      - type: code
-        language: r
-        options:
           exercise: true
           exercise.eval: false
           exercise.cap: "Use `serialCorrelationTest` from EnvStats"
         content: |
+          library(EnvStats)
+
           x <- c(1.3, 3.5, 2.6, 3.4, 6.4)
           serialCorrelationTest(x)
       - type: paragraph
@@ -407,19 +428,26 @@ content:
           Here is a link to a page that lists many useful packages for environmental data analysis: https://cran.r-project.org/web/views/Environmetrics.html
       - type: paragraph
         content: |
-          Remember, when you close down RStudio, then start it up again, you don’t have to download the package again. But you do have to load the package to use any function that's not in the R core functionality (this is very easy to forget).
+          Remember, when you close down RStudio, then start it up again, you don’t have to download the package again. But you do have to use the `library()` function to load the package before you can use any function that's not in the R core functionality (this is very easy to forget).
   - type: section
     title: Importing Data
     content:
       - type: paragraph
         content: |
-          R can import data from just about any format, including CSV, Excel, Databases, GIS shapefiles. This section will demonstrate how to import CSV and Excel files.
+          R can import data from just about any format, including
+
+          - CSV,
+          - Excel,
+          - Databases, and
+          - GIS shapefiles.
+
+          This section will demonstrate how to import CSV and Excel files.
       - type: section
         title: CSV
         content:
           - type: paragraph
             content: |
-              R has a built-in function called `read.csv()` for reading `.csv` files. Download the `chicago_daily.csv` file [here](../data/chicago_daily.csv) and save it to your working directory. If you don't know what your working directory is, run this code in R and it will tell you.
+              R has a built-in function called `read.csv()` for reading `.csv` files. Download the `chicago_daily.csv` file [here](https://github.com/LADCO/training-r-intro/blob/main/data/chicago_daily.csv) and save it to your working directory. If you don't know what your working directory is, run this code in R and it will tell you.
           - type: code
             language: r
             options:
@@ -457,7 +485,7 @@ content:
               library(readxl)
           - type: paragraph
             content: |
-              Use the `read_excel()` function from the `readxl` package to read emissions data from [this Excel workbook](./data/emissions_IL_2022.xlsx). Download the file to your working directory and read the first worksheet (named "UNIT_DATA"), skipping the first 6 rows.
+              Use the `read_excel()` function from the `readxl` package to read emissions data from [this Excel workbook](https://github.com/LADCO/training-r-intro/blob/main/data/emissions_IL_2022.xlsx). Download the file to your working directory and read the first worksheet (named "UNIT_DATA"), skipping the first 6 rows.
           - type: code
             language: r
             options:
@@ -470,7 +498,7 @@ content:
               emissions <- read_excel("./data/emissions_IL_2022.xlsx", sheet = "UNIT_DATA", skip = 6)
               head(emissions)
 exercises:
-  - instructions: "Use the `seq()` function to create a vector from 1 to 20 by 2. For help with the parameters, run `?seq()` in the console and use the documentation."
+  - instructions: "Use the `seq()` function to create a vector from 1 to 20 by 2. For help with the parameters, run `?seq()` in the console and consult the documentation."
     hints:
       - "# To create a sequence, use the `seq()` function with `from`, `to`, and `by` parameters."
       - "# `from` specifies the starting number, `to` the ending number, and `by` how much to increment. For example, `seq(from = 1, to = 20, by = 2)`."
@@ -506,12 +534,12 @@ exercises:
         By using the `:` operator, we create a sequence of integers from 1 to 10. Placing this sequence inside the `sum()` function calculates the total sum of these numbers.
       code: |
         sum(1:10)
-  - instructions: "Read in the first 10 rows of the `chicago_daily.csv` file [here](../data/chicago_daily.csv)."
+  - instructions: "Read in the first 10 rows of the `chicago_daily.csv` file. file is located at ./data/chicago_daily.csv."
     hints:
       - "# Use the `read.csv()` function to read in CSV files. Specify the file path and use `nrows` to limit the number of rows read."
       - "# To read the first 10 rows, set `nrows = 10` in the `read.csv()` function."
     solution:
       explanation: |
-        First, ensure the `chicago_daily.csv` file is saved in your working directory. Then, by using the `read.csv()` function with the `nrows` parameter set to 10, we can read only the first 10 rows of the file.
+        Use the `read.csv()` function with the `nrows` parameter set to 10, we can read only the first 10 rows of the file.
       code: |
-        read.csv("../data/chicago_daily.csv", nrows = 10)
+        read.csv("chicago_daily.csv", nrows = 10)

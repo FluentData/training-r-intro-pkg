@@ -8,6 +8,9 @@ lesson:
   number: 4
   id: 4-Writing-Functions-Conditionals-and-Loops
   next: 5-Plotting
+  closing: |
+    Well done on completing Writing Functions, Conditionals, and Loops! You've developed the skills to customize your analysis and automate tasks in R. Next, you'll move on to Plotting in R, where you'll learn how to visually represent data using various plotting techniques. Get ready to bring your data to life with engaging visuals!
+
 introduction: |
   This lesson covers how to write your own R functions. It also explains how to automate
   your code using `if()` and `ifelse()` functions, for loops, and the `apply`
@@ -20,15 +23,15 @@ content:
         content: |
           This lesson assumes you are familiar with the material in the previous lessons:
 
-          - [Functions and Importing Data](../2-Functions-and_Importing-Data/readme.md)
-          - [Subsetting, Sorting, and Combining Data Frames](../3-Subsetting-Sorting-and-Combining/readme.md).
+          - Functions and Importing Data
+          - Subsetting, Sorting, and Combining Data Frames
 
           The data for these lessons is available from this package. It is assumed that this package is already installed and loaded into the R session. If you need to refer to the package, simply refer to it as "this package".
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Load Data from This Package"
         content: |
           # Assuming the package is already loaded
@@ -48,8 +51,8 @@ content:
       - type: code
         language: r
         options:
-          eval: false
-          exercise: true
+          eval: true
+          exercise.eval: true
           exercise.cap: "Creating Your Own Function"
         content: |
           my_function_name <- function() {
@@ -65,7 +68,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: false
+          exercise.eval: true
           exercise.cap: "Simple Function to Print Hello"
         content: |
           print_hello <- function() {
@@ -97,7 +100,7 @@ content:
         language: r
         options:
           exercise: true
-          exercise.eval: false
+          exercise.eval: true
           exercise.cap: "Function with an Argument"
         content: |
           print_hello <- function(text) {
@@ -107,6 +110,12 @@ content:
             print(message)
 
           }
+      - type: paragraph
+        content: |
+          Now there are two lines of code inside of the curly braces. The first
+          line uses the `paste()` function to concatenate two character values.
+          The first value will always be "Hello". The second value will be supplied
+          by the user in the `text` argument.
       - type: code
         language: r
         options:
@@ -121,58 +130,66 @@ content:
       - type: paragraph
         content: |
           We can create a function with more than one argument, and set default values when
-          needed. Suppose we would like to make a function that checks if a measurement is below
-          a criteria pollutant standard. We could make simple function that takes two arguments:
-          one for the measurement value, and one for the standard value.
+          needed. Suppose we would like to make a function that checks if a measurement is
+          greater than a criteria pollutant standard. We could make a simple function that
+          takes two arguments: one for the measurement value, and one for the standard value.
       - type: code
         language: r
         options:
           exercise: true
-          exercise.eval: false
+          exercise.eval: true
           exercise.cap: "Function with Two Arguments"
         content: |
-          check_standard <- function(measurement, standard) {
+          standard_violated <- function(measurement, standard) {
 
             measurement > standard
 
           }
+      - type: paragraph
+        content: |
+          This function will simply return a `TRUE` or `FALSE` value, depending on whether
+          the measurement is greater than the standard or not.
       - type: code
         language: r
         options:
           exercise: true
           exercise.eval: false
-          exercise.cap: "Testing check_standard Function"
+          exercise.cap: "Testing standard_violated Function"
         content: |
-          check_standard(measurement = 84, standard = 70)
+          standard_violated(measurement = 84, standard = 70)
       - type: paragraph
         content: |
           We could write a more specific function for checking a value against the ozone
           standard. For this function, we want to keep the `standard` parameter but make sure
           the default is `70`. It may be that we typically want to use this function to
           check against the current 8-hour ozone standard in parts per billion, but have
-          then flexibility to use a different value.
+          the flexibility to use a different value.
 
           To set a default value, we use `= 70` when we create the function.
       - type: code
         language: r
         options:
           exercise: true
-          exercise.eval: false
+          exercise.eval: true
           exercise.cap: "Function with Default Value"
         content: |
-          check_standard <- function(measurement, standard = 70) {
+          standard_violated <- function(measurement, standard = 70) {
 
             measurement > standard
 
           }
+      - type: paragraph
+        content: |
+          Now, when we use the function, it is not necessary to set the `standard`
+          argument.
       - type: code
         language: r
         options:
           exercise: true
           exercise.eval: false
-          exercise.cap: "Testing check_standard with Default Value"
+          exercise.cap: "Testing standard_violated with Default Value"
         content: |
-          check_standard(measurement = 50)
+          standard_violated(measurement = 50)
   - type: section
     title: Positional Arguments
     content:
@@ -183,7 +200,7 @@ content:
           they appeared in the parentheses of the `function( ){}` call, without writing out
           the argument names.
 
-          For example, we can supply two numbers to the `check_standard()` function that we
+          For example, we can supply two numbers to the `standard_violated()` function that we
           created above, without writing out the `measurement` and `standard` arguments.
           When R executes the function, it will assign the numbers to the arguments
           based on the position in the parentheses.
@@ -197,7 +214,7 @@ content:
           exercise.eval: false
           exercise.cap: "Testing Positional Arguments"
         content: |
-          check_standard(60, 70)
+          standard_violated(60, 70)
       - type: code
         language: r
         options:
@@ -205,7 +222,7 @@ content:
           exercise.eval: false
           exercise.cap: "Testing Positional Arguments in Reverse Order"
         content: |
-          check_standard(70, 60)
+          standard_violated(70, 60)
   - type: section
     title: if Functions
     content:
@@ -223,19 +240,23 @@ content:
         language: r
         options:
           eval: false
-          exercise: true
+          exercise: false
           exercise.cap: "if Function Outline"
         content: |
-          if(logical expression>) {
+          if(<logical expression>) {
 
             <code that will run if the logical expression is TRUE>
 
           }
+      - type: paragraph
+        content: |
+          The key word `else` can also be used with another set of curly braces to
+          hold code that will only run if the logical expression returns `FALSE`.
       - type: code
         language: r
         options:
           eval: false
-          exercise: true
+          exercise: false
           exercise.cap: "if-else Function Outline"
         content: |
           if(<logical expression>) {
@@ -247,6 +268,10 @@ content:
             <code that will run if the logical expression is false>
 
           }
+      - type: paragraph
+        content: |
+          For example, if we wanted to print a message based on the value of ozone,
+          we could use this construction:
       - type: code
         language: r
         options:
@@ -265,6 +290,12 @@ content:
             print("All Good")
 
           }
+      - type: paragraph
+        content: |
+          Since the expression `ozone > 0.065` resolves to `TRUE`, the code in the first
+          set of curly braces is run. If we set the `ozone` variable to `0.06`, then
+          the logical expression will resolve to `FALSE` and the code in the second
+          curly braces will run.
       - type: code
         language: r
         options:
@@ -283,14 +314,26 @@ content:
             print("All Good")
 
           }
+      - type: paragraph
+        content: |
+          The `ifelse()` function is another way to use a logical condition that
+          determines which output is returned. Here is the outline
       - type: code
         language: r
         options:
           eval: false
-          exercise: true
+          exercise: false
           exercise.cap: "ifelse Function Outline"
         content: |
           ifelse(<test>, <yes>, <no>)
+      - type: paragraph
+        content: |
+          The `test` argument is the logical expression, `yes` is the value returned
+          if the expression resolves to `TRUE`, and `no` is the value returned if
+          the expression resolves to `FALSE`.
+
+          Here we accomplish the same task as the previous example. This time we
+          use the `ifelse()` function to create a variable named message.
       - type: code
         language: r
         options:
@@ -304,7 +347,7 @@ content:
 
           print(message)
   - type: section
-    title: For loop
+    title: For loops
     content:
       - type: paragraph
         content: |
@@ -318,7 +361,7 @@ content:
         language: r
         options:
           eval: false
-          exercise: true
+          exercise: false
           exercise.cap: "For Loop Outline"
         content: |
           for(i in sequence){
@@ -326,6 +369,14 @@ content:
             <code that will run a set number of times>
 
           }
+      - type: paragraph
+        content: |
+          The `sequence` parameter is typically a vector. The `i` parameter is a
+          variable that will take on the values in the `sequence` vector. For instance,
+          if `sequence` was the vector `c(1, 2, 3)` then the `i` variable will take
+          on each of those values in turn.
+
+          This example simply prints the values of the vector as the for loop progresses.
       - type: code
         language: r
         options:
@@ -359,6 +410,12 @@ content:
                                  monitor3 = c(70, 62, 68, 71))
 
           monitors
+      - type: paragraph
+        content: |
+          In the code below, we create an empty vector called max_values. As the
+          for() function loops through the vector c(1, 2, 3), the data frame columns
+          are accessed using square brackets [ , i]. Each max value is saved to
+          the max_values vector using square brackets [i].
       - type: code
         language: r
         options:
@@ -397,13 +454,31 @@ content:
       - type: code
         language: r
         options:
-          eval: false
           exercise: true
+          exercise.eval: false
           exercise.cap: "apply Function Example"
         content: |
           monitors_max <- apply(monitors, MARGIN = 2, FUN = max)
 
           monitors_max
+      - type: paragraph
+        content: |
+          The MARGIN argument is set to 2 because we are applying the max() function
+          to the columns of the data frame. Also notice that we do not need to create
+          an initial empty vector, as we did with the for() function. The returned
+          value is a named vector that is as long as the number of columns in the
+          data frame.
+
+          We could also find the mean of each row in the `monitors` data frame.
+          To do this, we would set the `MARGIN` argument to `1`.
+      - type: code
+        language: r
+        options:
+          exercise: true
+          exercise.eval: false
+          exercise.cap: "apply Function Example with MARGIN = 1"
+        content: |
+          apply(monitors, MARGIN = 1, FUN = mean)
 exercises:
   - instructions: "Write a function named `ppm_to_ppb` that converts a value from parts per million to parts per billion."
     hints:

@@ -8,6 +8,9 @@ lesson:
   number: 5
   id: 5-Plotting
   next: 6-Basic-Statistics
+  closing: |
+    Great work completing Plotting in R! You've gained skills in both basic and advanced visualization techniques. Up next, you'll explore Basic Statistics, where you'll learn how to apply statistical analysis to your data using R. This will enhance your ability to draw meaningful insights from your datasets. Ready to dive into the numbers?
+
 introduction: |
   In this lesson you will first learn how to quickly visualize data using a few base
   plotting functions. The rest of the material explains how to use the `ggplot2` package
@@ -33,8 +36,9 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
+          exercise: false
           exercise.eval: false
+          eval: true
           exercise.cap: "Loading Data"
         content: |
           data(chicago_air)
@@ -49,8 +53,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Basic Plot"
         content: |
           benzene <- c(1.3, 4.5, 2.6, 3.4, 6.4)
@@ -65,8 +69,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Scatter Plot"
         content: |
           plot(x = chicago_air$temp, y = chicago_air$ozone)
@@ -77,8 +81,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Converting Date Column"
         content: |
           chicago_air$date <- as.Date(chicago_air$date)
@@ -88,8 +92,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Line Graph"
         content: |
           plot(x = chicago_air$date, y = chicago_air$ozone, type = 'l')
@@ -101,8 +105,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Customized Plot"
         content: |
           plot(x = chicago_air$date, y = chicago_air$ozone,
@@ -110,7 +114,7 @@ content:
                pch = 16,
                col = "purple",
                lwd = 2.5,
-               xlab="Date",
+               xlab = "Date",
                ylab = 'Ozone (ppm)',
                main = 'Chicago Ozone Data')
   - type: section
@@ -124,8 +128,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Default Histogram"
         content: |
           hist(chicago_air$ozone)
@@ -137,8 +141,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Customized Histogram"
         content: |
           hist(chicago_air$ozone,
@@ -158,8 +162,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Simple Box Plot"
         content: |
           boxplot(chicago_air$ozone)
@@ -170,8 +174,8 @@ content:
           are the min and max ozone values within a certain range from the box (specifically,
           1.5 times the IQR). If a value falls outside that range, it will be represented by
           a point (the default point type is a circle). Overall, the plot gives an idea of
-          where the middle half of the values are, and if there are extreme values beyond
-          that.
+          where the middle half of the values are, and if there are extreme values
+          on either side of the distribution.
       - type: paragraph
         content: |
           The benefit of supplying a data frame to the `data` argument is to break the data
@@ -180,12 +184,15 @@ content:
           an equation like y = x. The way to represent this relationship in R is with the
           `~` character: `y ~ x`. The `boxplot()` function needs a formula to know which
           column in the data frame is being plotted, and which column is used to do the
-          grouping. We can make a plot of ozone by month using the `chicago_air` data frame.
+          grouping.
+
+          We can make a plot of ozone by month using the `chicag_air` data frame
+          and the formula `ozone ~ month`.
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Box Plot by Month"
         content: |
           boxplot(ozone ~ month, data = chicago_air)
@@ -200,37 +207,38 @@ content:
       - type: paragraph
         content: |
           To use `ggplot2`, we typically follow this sequence of steps:
-          1. Start with the `ggplot()` function where we specify the dataset and
-             map variables to aesthetics (visual properties of objects in the
+
+          1. Start with the `ggplot()` function where we specify the dataset, and then we
+             map variables to "aesthetics" (i.e. visual properties of objects in the
              plot like shapes or colors).
-          2. Add `geoms` – geometric objects like points (`geom_point` for
+          2. Add `geoms` which are geometric objects like points (`geom_point` for
              scatter plots), bars (`geom_bar` for bar plots), or lines
              (`geom_line` for line plots) that determine the type of the plot.
           3. Finally, customize and refine the plot with additional layers like
              labels, themes, facets etc.
-      - type: paragraph
-        content: |
+
           Let's begin by loading the `ggplot2` package.
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Loading ggplot2 Package"
         content: |
           library(ggplot2)
       - type: paragraph
         content: |
-          Let's recreate the base scatter plot of ozone and temperature from the previous
+          First we recreate the base scatter plot of ozone and temperature from the previous
           section, starting with the `ggplot( )` function. The first argument `data` takes
-          the data frame. The `mapping` argument takes another function named `aes()`, which
+          the data frame. The `mapping` argument takes a function named `aes()`, which
           is short for aesthetic. The primary arguments in the `aes( )` function are `x`
-          and `y`. These determine which column from the data frame is used on the x and y axes.
+          and `y`. These determine which columns from the data frame are displayed
+          on the graph.
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Base ggplot"
         content: |
           ggplot(chicago_air, aes(x = temp, y = ozone))
@@ -243,8 +251,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "ggplot Scatter Plot"
         content: |
           ggplot(chicago_air, aes(x = temp, y = ozone)) + geom_point()
@@ -253,8 +261,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Customized ggplot Scatter Plot"
         content: |
           ggplot(chicago_air, aes(x = temp, y = ozone)) +
@@ -265,14 +273,14 @@ content:
       - type: paragraph
         content: |
           The `aes()` function can also map aesthetic properties like color based on other
-          columns in the data frame. We could want each point to have a different color based
+          columns in the data frame. We might want each point to have a different color based
           on the month. To do this, we need to make the month column a factor and use the
           argument `color` in the `aes( )` function.
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Color Coded Scatter Plot"
         content: |
           ggplot(chicago_air, aes(x = temp, y = ozone, color = factor(month))) +
@@ -283,9 +291,8 @@ content:
       - type: paragraph
         content: |
           The `factor()` function converts the data type of the month column to a `factor`
-          class. This class represents categorical variables in R. See the
-          [lesson on regression](../7-Regression-and-Data-Transformation/readme.md) for more
-          details on factors in R.
+          class. This class represents categorical variables in R. See the section
+          on Factors in this lesson for more details.
       - type: paragraph
         content: |
           To create a line plot of ozone over time, we use the `as.Date()` function on the date
@@ -293,8 +300,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Line Plot Over Time"
         content: |
           ggplot(chicago_air, aes(x = as.Date(date), y = ozone)) + geom_line()
@@ -306,8 +313,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "ggplot Histogram"
         content: |
           ggplot(chicago_air, aes(ozone)) +
@@ -318,8 +325,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Simple ggplot Box Plot"
         content: |
           ggplot(chicago_air, aes(ozone)) + geom_boxplot()
@@ -330,8 +337,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Grouped Box Plot"
         content: |
           ggplot(chicago_air, aes(x = ozone, y = factor(month))) + geom_boxplot()
@@ -350,8 +357,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Faceted Histogram"
         content: |
           ggplot(chicago_air, aes(ozone)) +
@@ -370,8 +377,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Linear Model Fitted Line"
           message: false
           warning: false
@@ -387,8 +394,8 @@ content:
       - type: code
         language: r
         options:
-          exercise: true
-          exercise.eval: false
+          exercise: false
+          exercise.eval: true
           exercise.cap: "Nonlinear Curve Fitting"
           message: false
           warning: false
@@ -404,7 +411,7 @@ content:
           Plots can be saved in RStudio using the "Export" button at the top of the "Plots"
           pane.
       - type: image
-        url: "images/save_plot.png"
+        src: "./images/save_plot.png"
         alt: "Screenshot showing how to save plots in RStudio."
       - type: paragraph
         content: |
@@ -419,6 +426,54 @@ content:
             geom_smooth(method=loess)
 
           ggsave(filename = "my_plot.png", plot = my_plot)
+  - type: section
+    title: Factors
+    content:
+      - type: paragraph
+        content: |
+          Factors are a data structure used in R for categorizing data into a set of levels,
+          which is particularly useful in statistical modeling and visualizations that involve
+          categorical variables. They are important in R because they influence how data is
+          represented and analyzed in statistical models, ensuring the data is treated as
+          nominal or ordinal rather than continuous.
+
+          To create a factor in R, you use the `factor()` function. This function takes a
+          vector of alphanumeric values and converts it into a factor, which stores the data
+          as integers internally while maintaining labels for these integers. Here is an
+          example of converting a character vector into a factor:
+      - type: code
+        language: r
+        options:
+          eval: true
+        content: |
+          months <- c("January", "February", "March", "January", "February")
+          months_factor <- factor(months)
+
+          months_factor
+      - type: paragraph
+        content: |
+          When you print the `months_factor` object, you will see the levels of
+          the factor and the integer values that represent each level. The levels
+          are ordered alphabetically by default, but you can specify the order of
+          the levels with the `levels` argument.
+      - type: code
+        language: r
+        options:
+          eval: true
+        content: |
+          months_factor_ordered <- factor(months, levels = c("January", "February", "March"))
+
+          months_factor_ordered
+      - type: paragraph
+        content: |
+          Factors are particularly useful in data analysis for a few reasons:
+
+          - __Statistical Analysis__: Many statistical models require categorical data to
+            be provided as factors in order to correctly analyze it.
+          - __Control Order__: Factors can be ordered or unordered, and you can specify the
+            order of levels to influence data analysis and visual representation.
+          - __Efficiency__: Factors store data as integers, which can be more memory efficient
+            than storing strings, especially for large datasets.
 exercises:
   - instructions: "Make a scatter plot of barometric pressure and ozone from the `chicago_air` data frame. Use the `plot()` function with ozone on the y-axis, and provide helpful labels to the axes."
     hints:
@@ -471,3 +526,32 @@ exercises:
         ggplot(chicago_air, aes(pressure)) +
           geom_histogram() +
           facet_wrap(~month)
+  - instructions: "__CHALLENGING EXERCISE!__ Use `ggplot2` and the data frame `ertac_egu_projections` from the `region5air` package to make a map of facility locations in the CONUS ERTAC region. "
+    hints:
+      - "# Use the `data()` function to load the `ertac_egu_projections` data frame and ?ertac_egu_projections to see the documentation. Which columns would be useful for the x and y coordinates?"
+      - "# Use the `filter()` function from the `dplyr` package to filter down to the 'CONUS' region and look at the documentation for the `geom_polygon()` function: https://ggplot2.tidyverse.org/reference/geom_polygon.html."
+      - "# Use the `map_data()` function from the `maps` package to create a base map variable to use as the `data` parameter in the `geom_polygon()` function."
+    solution:
+      explanation: |
+        This exercise involves creating a map of facility locations in the CONUS ERTAC region using `ggplot2` and the `ertac_egu_projections` data frame from the `region5air` package. By filtering the data to the "CONUS" region and using the `geom_polygon()` function with a base map variable, we can visualize the facility locations effectively. This exercise provides a challenging opportunity to practice plotting geospatial data in R.
+      code: |
+        library(region5air)
+        library(ggplot2)
+        library(dplyr)
+        library(maps)
+
+        data(ertac_egu_projections)
+        # filter to CONUS region
+        conus <- filter(ertac_egu_projections, ertac_region == "CONUS")
+        states_map <- map_data("state")
+
+        ggplot() +
+          geom_polygon(data = states_map, aes(x = long, y = lat, group = group),
+                       fill = "white", color = "black") +
+          geom_point(data = conus, aes(x = longitude, y = latitude), color = "red",
+                     size = 3) +
+          coord_fixed(1.3) +
+          labs(title = "Map of the US with Points", x = "Longitude", y = "Latitude") +
+          theme_minimal()
+
+

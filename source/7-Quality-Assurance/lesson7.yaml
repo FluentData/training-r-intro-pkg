@@ -8,6 +8,9 @@ lesson:
   number: 7
   id: 7-Quality-Assurance
   next:
+  closing: |
+    Well done on finishing the lesson on Quality Assurance and Common Pitfalls! You've learned valuable techniques for ensuring the integrity of your data and avoiding common errors in R programming. That concludes the lessons in this course. We hope you found them helpful and informative. If you have any questions or feedback, please don't hesitate to reach out to us. Good luck with your future data analysis projects!
+
 introduction: |
   Quality assurance (QA) in R could refer to at least two things: the quality of the code, or the quality of the data. Advanced R users that develop their own functions should follow general best practices for software development. The package [testthat](https://testthat.r-lib.org/) is useful to ensure that functions are working the way they are intended to work. However, this lesson focuses on _data_ quality, and points out a few common mistakes when using R.
 content:
@@ -107,7 +110,13 @@ content:
         content:
           - type: paragraph
             content: |
-              Handling outliers is difficult because we do not necessarily want to remove data that may be uncommon but within the realm of possibility.
+              Handling outliers is difficult because we do not necessarily want
+              to remove data that may be uncommon but within the realm of possibility.
+              The best way to detect extreme values is to look at the summary of
+              your data and pay attention to min and max values. You can plot the
+              data to see if you can detect anything weird through visual inspection.
+              Boxplots with outliers plotted as points are handy for this. Below
+              is a boxplot of the ozone column in the `chicago_air` data frame.
           - type: code
             language: r
             options:
@@ -116,9 +125,21 @@ content:
               exercise.eval: false
               exercise.cap: "Identify and Handle Outliers"
             content: |
-              # Example of identifying and handling outliers
-              data("example_dataset")
-              boxplot(example_dataset$value)
+              boxplot(chicago_air$ozone)
+          - type: paragraph
+            content: |
+              We can see that two values are printed as points on the high end of the distribution.
+              We can use the `boxplot.stats()` function to get the values used in the `boxplot()`
+              function. The `out` values are the outliers.
+          - type: code
+            language: r
+            options:
+              eval: true
+              exercise: true
+              exercise.eval: false
+              exercise.cap: "Return Outlier Values from Boxplot"
+            content: |
+              boxplot.stats(chicago_air$ozone)$out
   - type: section
     title: Common Mistakes
     content:
@@ -170,7 +191,7 @@ exercises:
         monitors[monitors == "site two"] <- "site 2"
 
         monitors
-  - instructions: "Use the boxplot to check for outliers in the ozone column of the built-in `airquality` data frame."
+  - instructions: "Use a boxplot to check for outliers in the ozone column of the built-in `airquality` data frame."
     hints:
       - "# First, load the `airquality` data frame using `data(\"airquality\")`."
       - "# Use the `boxplot()` function and specify `airquality$Ozone` as the argument to plot the ozone column."

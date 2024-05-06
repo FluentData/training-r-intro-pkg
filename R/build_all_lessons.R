@@ -1,14 +1,14 @@
-#' Build all lessons for package.
+#' Build all lessons for the package.
 #'
 #' This function reads the YAML source for each lesson and builds the training materials for the package.
 #' Depending on the options specified, it can build LearnR tutorials or GitHub markdown files.
 #'
-#' @param source_dir The base directory containing the tutorial subdirectories.
+#' @param source_dir The base directory containing the tutorial sub directories.
 #' @param learnr Logical, if TRUE, builds LearnR tutorials from the YAML files.
 #' @param github Logical, if TRUE, builds GitHub markdown files from the YAML files.
 #' @return A list containing the results of processing each YAML file.
-#' @export
 build_all_lessons <- function(source_dir = file.path(getwd(), "source"), learnr = TRUE, github = TRUE) {
+
   # Validate base directory
   if (!dir.exists(source_dir)) {
     stop("The specified base directory does not exist.")
@@ -22,7 +22,7 @@ build_all_lessons <- function(source_dir = file.path(getwd(), "source"), learnr 
 
   # Process each YAML file
   for (yaml_file in yaml_files) {
-    print(paste("Processing file:", yaml_file))
+    message(paste(crayon::black("Processing file:"), crayon::blue(yaml_file)))
 
     # Process for learnR if enabled
     if (learnr) {
@@ -36,4 +36,5 @@ build_all_lessons <- function(source_dir = file.path(getwd(), "source"), learnr 
   }
 
   return(invisible(results))
+
 }

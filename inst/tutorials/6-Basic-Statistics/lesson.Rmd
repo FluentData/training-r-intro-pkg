@@ -13,24 +13,26 @@ runtime: shiny_prerendered
 
 
 ```{r setup, include=FALSE}
-library(learnr)
+ library(learnr)
 library(gradethis)
 library(trainingRIntro)
-library(shiny)
+library(shiny) 
 ```
+
+
+## Introduction
 
 R was originally developed as a statistical programming language and its built-in functions are commonly used for basic statistics. There are also many community developed packages that make it easy to perform statistical analyses. This tutorial will cover descriptive statistics functions and some statistical tests that might be used on environmental data.
 
-## Basic Statistics
 
 ## Prerequisites
 
-This lesson assumes you are familiar with the material in the lesson on [Functions and Importing Data](../2-Functions-and-Importing-Data/readme.md).
+This lesson assumes you are familiar with the material in the lesson on Functions and Importing Data.
 
-Statistical functions are used in this lesson that require installation of the following packages.
+Statistical functions are used in this lesson that require installation of the `envstats` package.
 
 
-```{r ex-5z88y-1, eval = FALSE}
+```{r ex-03e4e6e355b4, eval = FALSE}
 install.packages("envstats")
 
 ```
@@ -40,12 +42,15 @@ The data used throughout these lessons is available from this package.
 
 ## Descriptive Statistics
 
-R has many built-in functions for descriptive statistics. We will use these
-functions to understand the example environmental data available in this package.
+R has many built-in functions for descriptive statistics. We will use
+these functions to understand the ozone data in the `chicago_air` data
+frame.
 
 
-```{r ex-68IpD-1, exercise = TRUE, exercise.cap = 'Extract example data'}
-data <- example_data  # Assuming example_data is available in this package
+```{r ex-8517d97aaedf, exercise = FALSE, eval = TRUE, exercise.cap = 'Extract example data'}
+data("chicago_air")
+
+ozone <- chicago_air$ozone
 
 ```
 
@@ -53,50 +58,50 @@ Most of the functions we'll be using have an argument named `na.rm` that stands
 for `NA` remove. If the argument is set to `TRUE` then the function will remove
 all missing values from the data set. Otherwise, the function will error.
 
-These functions let us know the range of the data values, i.e., the highest and
+These functions tell us the range of the data values, i.e., the highest and
 lowest values.
 
 
-```{r ex-2aj9E-2, exercise = TRUE, exercise.cap = 'Find minimum value'}
-min(data, na.rm=TRUE)
+```{r ex-fddee11c2342, exercise = FALSE, eval = TRUE, exercise.cap = 'Find minimum value'}
+min(ozone, na.rm=TRUE)
 
 ```
 
-```{r ex-r5oph-3, exercise = TRUE, exercise.cap = 'Find maximum value'}
-max(data, na.rm=TRUE)
+```{r ex-90da1e37e6ea, exercise = FALSE, eval = TRUE, exercise.cap = 'Find maximum value'}
+max(ozone, na.rm=TRUE)
 
 ```
 
-```{r ex-S0GDH-4, exercise = TRUE, exercise.cap = 'Find range of values'}
-range(data, na.rm=TRUE)
+```{r ex-6f0999a25617, exercise = FALSE, eval = TRUE, exercise.cap = 'Find range of values'}
+range(ozone, na.rm=TRUE)
 
 ```
 
 We can also get the mean and the quartile values from the `summary()` function.
 
 
-```{r ex-7Kkgx-5, exercise = TRUE, exercise.cap = 'Summary statistics'}
-summary(data)
+```{r ex-d4a27016db41, exercise = FALSE, eval = TRUE, exercise.cap = 'Summary statistics'}
+summary(ozone)
 
 ```
 
 The `IQR()` function gives us the interquartile range, which lets us know how large
-the spread is for the values in the central range of the distribution, i.e., between
-the 1st quartile and the 3rd quartile.
+the spread is for the values in the central range of the distribution, i.e. between
+the 25th percentile and the 75th percentile.
 
 
-```{r ex-G2Izx-6, exercise = TRUE, exercise.cap = 'Calculate IQR'}
-IQR(data, na.rm=TRUE)
+```{r ex-61b3ee890248, exercise = FALSE, eval = TRUE, exercise.cap = 'Calculate IQR'}
+IQR(ozone, na.rm=TRUE)
 
 ```
 
 We can use the `boxplot()` function to visualize the interquartile range. The outline
-of the box itself shows the first and third quartile, while the line in the middle
+of the box itself shows the middle 50% of the data, while the line in the middle
 of the box shows the median.
 
 
-```{r ex-96uu0-7, exercise = TRUE, exercise.cap = 'Visualize IQR with boxplot'}
-boxplot(data)
+```{r ex-075999b4d751, exercise = FALSE, eval = TRUE, exercise.cap = 'Visualize IQR with boxplot'}
+boxplot(ozone)
 
 ```
 
@@ -105,13 +110,13 @@ boxplot(data)
 R has functions for finding the mean and median of a set of values.
 
 
-```{r ex-dtVd2-1, exercise = TRUE, exercise.cap = 'Calculate mean'}
-mean(data, na.rm=TRUE)
+```{r ex-f1cc48ad013e, exercise = FALSE, eval = TRUE, exercise.cap = 'Calculate mean'}
+mean(ozone, na.rm=TRUE)
 
 ```
 
-```{r ex-3qm7z-2, exercise = TRUE, exercise.cap = 'Calculate median'}
-median(data, na.rm=TRUE)
+```{r ex-8fbc6f8c0282, exercise = FALSE, eval = TRUE, exercise.cap = 'Calculate median'}
+median(ozone, na.rm=TRUE)
 
 ```
 
@@ -119,38 +124,43 @@ The functions `var()` and `sd()` calculate the variance and standard
 deviation, respectively.
 
 
-```{r ex-duEzl-3, exercise = TRUE, exercise.cap = 'Calculate variance'}
-var(data, na.rm=TRUE)
+```{r ex-c1c9a388e295, exercise = FALSE, eval = TRUE, exercise.cap = 'Calculate variance'}
+var(ozone, na.rm=TRUE)
 
 ```
 
-```{r ex-h6W2q-4, exercise = TRUE, exercise.cap = 'Calculate standard deviation'}
-sd(data, na.rm=TRUE)
+```{r ex-39d21c711d4b, exercise = FALSE, eval = TRUE, exercise.cap = 'Calculate standard deviation'}
+sd(ozone, na.rm=TRUE)
 
 ```
 
 ## Statistical Tests
 
-R has many built-in functions for statistical tests. As an example, we'll use
-the `t.test()` function to perform a two-sample t-test on the example data.
+R has many built-in functions for statistical tests. As an example, we'll
+use the `t.test()` function to perform a two sample t-test on the Chicago
+ozone data.
 
 First, let's visualize our dataset.
 
 
-```{r ex-Odf1V-1, warning = FALSE, message = FALSE, exercise = TRUE, exercise.cap = 'Visualize dataset'}
-ggplot(data, aes(factor(variable), value)) + geom_boxplot()
+```{r ex-1b8d0bda5c30, warning = FALSE, message = FALSE, exercise = FALSE, eval = TRUE, exercise.cap = 'Visualize dataset'}
+library(ggplot2)
+
+ggplot(chicago_air, aes(factor(month), ozone)) + geom_boxplot()
 
 ```
 
-We could compare values between two groups within our data and see if there is a significant
-difference in concentrations. Below is a plot of those two groups side by
-side.
+We could compare ozone months in July and October and see if there is
+a significant difference in concentrations. Below is a plot of those two
+months side by side.
 
 
-```{r ex-AweMe-2, warning = FALSE, message = FALSE, exercise = TRUE, exercise.cap = 'Compare two groups'}
-filtered_data <- filter(data, group == "Group1" | group == "Group2")
+```{r ex-ca11aff787eb, warning = FALSE, message = FALSE, exercise = FALSE, eval = TRUE, exercise.cap = 'Compare two groups'}
+library(dplyr)
 
-ggplot(filtered_data, aes(factor(group), value)) + geom_boxplot()
+ozone_july_october <- filter(chicago_air, month == 7 | month == 10)
+
+ggplot(ozone_july_october, aes(factor(month), ozone)) + geom_boxplot()
 
 ```
 
@@ -158,9 +168,9 @@ We should also check for normality before doing any statistical tests. Below
 are histograms of the datasets.
 
 
-```{r ex-YdmMk-3, exercise = TRUE, exercise.cap = 'Check for normality with histograms'}
-ggplot(filtered_data, aes(value)) +
-  facet_grid(rows = vars(group)) +
+```{r ex-18852fd57412, exercise = FALSE, eval = TRUE, exercise.cap = 'Check for normality with histograms'}
+ggplot(ozone_july_october, aes(ozone)) +
+  facet_grid(rows = "month") +
   geom_histogram()
 
 ```
@@ -172,32 +182,33 @@ comes from a normal distribution. If the p-value of the test is less than .05,
 we reject the null hypothesis and conclude the data is not normal.
 
 
-```{r ex-v1KtN-4, exercise = TRUE, exercise.cap = 'Shapiro-Wilk test for Group1'}
-group1_data <- filter(data, group == "Group1")
+```{r ex-2484da21aadb, exercise = FALSE, eval = TRUE, exercise.cap = 'Shapiro-Wilk test for Group1'}
+chicago_july <- filter(chicago_air, month == 7)
 
-shapiro.test(group1_data$value)
-
-```
-
-```{r ex-Exono-5, exercise = TRUE, exercise.cap = 'Shapiro-Wilk test for Group2'}
-group2_data <- filter(data, group == "Group2")
-
-shapiro.test(group2_data$value)
+shapiro.test(chicago_july$ozone)
 
 ```
 
-The p-values for the tests are well above 0.05, so we assume the null hypothesis
-is true. Meaning, we can assume the distributions of values in the two groups
-are normal.
+```{r ex-7a9950b84de1, exercise = FALSE, eval = TRUE, exercise.cap = 'Shapiro-Wilk test for Group2'}
+chicago_october <- filter(chicago_air, month == 10)
 
-Now we can do some comparisons between these 2 groups of readings using the
-Student's t-test. The test is meant to determine if the two means from the two
-datasets are from the same distribution or not. The assumption, or null hypothesis,
-is that they are, in fact, mean values from the same distribution.
+shapiro.test(chicago_october$ozone)
+
+```
+
+The p-values for the tests are well above 0.05, so we assume the null
+hypothesis is true. Meaning, we can assume the distributions of ozone
+in the two months are normal.
+
+Now we can do some comparisons between these 2 months of measurements
+using the Student's t-test. The test is meant to determine if the two
+means from the two datasets are from the same distribution or not. The
+assumption, or null hypothesis, is that they are in fact mean values from
+the same distribution.
 
 
-```{r ex-lFccB-6, exercise = TRUE, exercise.cap = 'Student's t-test between two groups'}
-t.test(group1_data$value, group2_data$value)
+```{r ex-c661b23c8185, exercise = FALSE, eval = TRUE, exercise.cap = 'Students t test between two groups'}
+t.test(chicago_july$ozone, chicago_october$ozone)
 
 ```
 
@@ -221,7 +232,7 @@ The `EnvStats` package has a comprehensive list of basic and more advanced stati
 tests for Environmental Data.
 
 
-```{r ex-daIxK-1, eval = FALSE}
+```{r ex-1b9ce6350343, eval = FALSE}
 library(EnvStats)
 
 ?FcnsByCatHypothTests
@@ -235,57 +246,68 @@ to each other, we can perform a correlation analysis.
 
 A correlation matrix tells us how positively or negatively correlated each variable
 is to the other variables. Below, we use the `cor()` function to print a correlation
-matrix of the numeric columns in our example data frame, specifying in the
+matrix of the numeric columns in the `chicago_air` data frame, specifying in the
 arguments that we only want to include complete observations and the Pearson method
 of finding correlations.
 
 
-```{r ex-lhngz-1, exercise = TRUE, exercise.cap = 'Correlation matrix of select variables'}
-cor(data[, c("Variable1", "Variable2", "Variable3")],
+```{r ex-a55ca0fd83da, exercise = FALSE, eval = TRUE, exercise.cap = 'Correlation matrix of select variables'}
+data(chicago_air)
+
+cor(chicago_air[, c("ozone", "temp", "pressure")],
     use = "complete.obs",
     method ="pearson")
 
 ```
 
-Along the diagonal, the correlation value is 1, because each variable is perfectly
-correlated with itself. The closer the other values are to 1 or -1, the more
-correlated the two variables are. A correlation value of 0 means the two variables
-are not correlated at all. The matrix above shows relationships between the variables.
+Along the diagonal, the correlation value is 1, because each variable
+is perfectly correlated with itself. The closer the other values are to
+1 or -1, the more correlated the two variables are. A correlation value
+of 0 means the two variables are not correlated at all. The matrix above
+shows a weak correlation between ozone and temperature, a weak negative
+correlation between air pressure and temperature, and no correlation between
+ozone and air pressure.
+
+We could also perform a correlation test using the `cor.test()` function.
+Here we test the correlation between ozone and temperature.
 
 
-We could also perform a correlation test using the `cor.test()` function. Here
-we test the correlation between two variables.
-
-
-```{r ex-6yh5n-2, exercise = TRUE, exercise.cap = 'Test correlation between two variables'}
-cor.test(data$Variable1, data$Variable2, method = "pearson")
-
-```
-
-The null hypothesis of the test is that the correlation is 0, there is no
-correlation at all. The p-value is well below .05 so we reject the null hypothesis
-and conclude that the two variables are correlated to some degree.
-
-Running the test between two other variables gives a p-value above .05 so we
-do not reject the null hypothesis. We conclude there is no correlation between
-these two variables.
-
-
-```{r ex-PuThV-3, exercise = TRUE, exercise.cap = 'Test correlation between another set of two variables'}
-cor.test(data$Variable1, data$Variable3, method = "pearson")
+```{r ex-fb10ff3825c6, exercise = FALSE, eval = TRUE, exercise.cap = 'Test correlation between two variables'}
+cor.test(chicago_air$ozone, chicago_air$temp, method = "pearson")
 
 ```
 
-It's also useful to see pairwise plots for numeric values to see the relationships
-between the variables. The built-in `pairs()` function will display a scatter
-plot between each pair of columns in the data frame. Setting `lower.panel = panel.smooth`
-will draw a smooth line through the scatter plots on the lower panels.
+The null hypothesis of the test is that the correlation is 0, there is
+no correlation at all. The p-value is well below .05 so we reject the
+null hypothesis and conclude that ozone and temperature are correlated
+to some degree.
+
+Running the test between ozone and air pressure gives a p-value above
+.05 so we do not reject the null hypothesis. We conclude there is no
+correlation between ozone and air pressure.
 
 
-```{r ex-vW0Mn-4, exercise = TRUE, exercise.cap = 'Pairwise plots of select variables'}
-pairs(data[, c("Variable1", "Variable2", "Variable3")], lower.panel = panel.smooth)
+```{r ex-065a892b4a58, exercise = FALSE, eval = TRUE, exercise.cap = 'Test correlation between another set of two variables'}
+cor.test(chicago_air$ozone, chicago_air$pressure, method = "pearson")
 
 ```
+
+It's also useful to see pairwise plots for numeric values to see the
+relationships between the variables. The built in `pairs()` function will
+display a scatter plot between each pair of columns in the data frame.
+Setting `lower.panel = panel.smooth` will draw a smooth line through the
+scatter plots on the lower panels.
+
+
+```{r ex-952a98f8db0e, exercise = FALSE, eval = TRUE, exercise.cap = 'Pairwise plots of select variables'}
+pairs(chicago_air[, c("ozone", "temp", "pressure")], lower.panel = panel.smooth)
+
+```
+
+You can see from the lower panel plots the increasing slope of the line
+for ozone and temp; a decreasing slope for temp and pressure; and a flat
+line for ozone and pressure.
+
 
 
 ## Exercises {data-progressive=TRUE}
@@ -433,8 +455,7 @@ grade_this_code(
 
 ## Next Lesson
 
-
-You have completed Lesson {lesson$no}. Click the button below to mark it as complete and move on to the next lesson.
+You have completed Lesson . Click the button below to mark it as complete and move on to the next lesson.
 
 ```{r example-button, echo=FALSE}
   actionButton("complete_lesson", "Mark Lesson 6 Complete")
@@ -442,12 +463,24 @@ You have completed Lesson {lesson$no}. Click the button below to mark it as comp
 
 
 ```{r, context = "server"}
-  observeEvent(input$complete_lesson, {
-    shiny::stopApp()
-    trainingRIntro::set_user_state(lesson_6_complete=TRUE)
-  })
-```
+observeEvent(input$complete_lesson, {
+  showModal(modalDialog(
+    title = 'Congratulations!',
+tags$p("Fantastic work on completing Basic Statistics! You've now learned how to use R for descriptive statistics, hypothesis testing, and correlation analysis. Next, you'll advance to Quality Assurance and Common Pitfalls, where you'll explore best practices for ensuring data integrity and avoiding common mistakes in R programming. Ready to solidify your data science foundations?
+"),
+    easyClose = FALSE,
+    footer = tagList(
+      modalButton('Cancel'),
+      actionButton('confirm_complete', 'Confirm', class = 'btn-primary')
+    )
+  ))
+})
 
+observeEvent(input$confirm_complete, {
+  removeModal()
+  trainingRIntro::set_user_state(lesson_6_complete=TRUE)
+  shiny::stopApp()
+})
 
 
 
