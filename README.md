@@ -15,7 +15,7 @@ If you already have R and RStudio installed, you can quickly get started by foll
 2. **Install this repository as an R package:**  
    Use `remotes` to install the `trainingRIntro` package directly from GitHub.
    ```r
-   remotes::install_github("FluentData/trainingRIntro")
+   remotes::install_github("FluentData/trainingRIntro", upgrade="always")
    ```
    
    During the install process you may see one or more prompts asking if you want to install or update packages:
@@ -139,7 +139,7 @@ This repository is also an R package. It can be installed and ran by following t
 
 ```r
 install.packages("remotes")
-remotes::install_github("FluentData/trainingRIntro")
+remotes::install_github("FluentData/trainingRIntro", upgrade="always")
 library(trainingRIntro)
 start_training()
 ```

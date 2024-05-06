@@ -534,12 +534,12 @@ exercises:
         By using the `:` operator, we create a sequence of integers from 1 to 10. Placing this sequence inside the `sum()` function calculates the total sum of these numbers.
       code: |
         sum(1:10)
-  - instructions: "Read in the first 10 rows of the `chicago_daily.csv` file [here](https://github.com/LADCO/training-r-intro/blob/main/data/chicago_daily.csv)."
+  - instructions: "Read in the first 10 rows of the `chicago_daily.csv` file. file is located at ./data/chicago_daily.csv."
     hints:
       - "# Use the `read.csv()` function to read in CSV files. Specify the file path and use `nrows` to limit the number of rows read."
       - "# To read the first 10 rows, set `nrows = 10` in the `read.csv()` function."
     solution:
       explanation: |
-        First, ensure the `chicago_daily.csv` file is saved in your working directory. Then, by using the `read.csv()` function with the `nrows` parameter set to 10, we can read only the first 10 rows of the file.
+        Use the `read.csv()` function with the `nrows` parameter set to 10, we can read only the first 10 rows of the file.
       code: |
         read.csv("chicago_daily.csv", nrows = 10)
