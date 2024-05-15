@@ -223,7 +223,7 @@ Additional modifications can be made. Customize it by adding color, title, and l
 ggplot(chicago_air, aes(x = temp, y = ozone)) +
   geom_point(color = "forestgreen") +
   ggtitle('Relationship between Ozone and Temperature') +
-  xlab('Temperature (<U+00B0>F)') +
+  xlab('Temperature (°F)') +
   ylab('Ozone (ppm)')
 
 ```
@@ -238,7 +238,7 @@ argument `color` in the `aes( )` function.
 ggplot(chicago_air, aes(x = temp, y = ozone, color = factor(month))) +
   geom_point() +
   ggtitle('Relationship between Ozone and Temperature') +
-  xlab('Temperature (<U+00B0>F)') +
+  xlab('Temperature (°F)') +
   ylab('Ozone (ppm)')
 
 ```
@@ -431,8 +431,7 @@ To make a scatter plot in R, the `plot()` function can be used by specifying the
 
 ```r
 plot(x = chicago_air$pressure, y = chicago_air$ozone,
-     xlab = "Barometric Pressure",
-     ylab = "Ozone")
+     xlab = "Barometric Pressure", ylab = "Ozone")
 
 ```
 
@@ -453,7 +452,7 @@ Use the `plot()` function to make a line plot of temperature over time from the 
 
 <details><summary>Click for Hint</summary>
 
-> # To make a line plot, set the `type` parameter in the `plot()` function to `'l'` for line.
+> # To make a line plot, set the `type` parameter in the `plot()` function to 'l' for line.
 
 </details>
 
@@ -467,14 +466,13 @@ Use the `plot()` function to make a line plot of temperature over time from the 
 
 #### Solution
 
-To make a line plot of temperature over time, it's crucial to ensure that the date column is correctly formatted as a `Date` class. If it's not, we can convert it using `as.Date()`. In the `plot()` function, setting `type` to `"l"` creates a line plot, and `col` to "red" specifies the color of the line. This plot helps in visualizing temperature changes over time.
+To make a line plot of temperature over time, it's crucial to ensure that the date column is correctly formatted as a `Date` class. If it's not, we can convert it using `as.Date()`. In the `plot()` function, setting `type` to "l" creates a line plot, and `col` to "red" specifies the color of the line. This plot helps in visualizing temperature changes over time.
 
 
 ```r
 # if date column is not a Date class
 chicago_air$date <- as.Date(chicago_air$date)
-
-plot(x = chicago_air$date, y = chicago_air$temp, type = "l", col = "red")
+plot(x = chicago_air$date, y = chicago81_air$temp, type = "l", col = "red")
 
 ```
 
@@ -611,12 +609,10 @@ library(region5air)
 library(ggplot2)
 library(dplyr)
 library(maps)
-
 data(ertac_egu_projections)
 # filter to CONUS region
 conus <- filter(ertac_egu_projections, ertac_region == "CONUS")
 states_map <- map_data("state")
-
 ggplot() +
   geom_polygon(data = states_map, aes(x = long, y = lat, group = group),
                fill = "white", color = "black") +
@@ -625,7 +621,6 @@ ggplot() +
   coord_fixed(1.3) +
   labs(title = "Map of the US with Points", x = "Longitude", y = "Latitude") +
   theme_minimal()
-
 ```
 
 </details>

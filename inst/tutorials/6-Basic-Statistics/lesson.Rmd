@@ -334,20 +334,15 @@ Find the mean and median of a specific column in the example data frame and comp
 
 ```{r exercise1-solution}
 column_mean <- mean(data$column)
-
-column_mean
-
 column_median <- median(data$column)
-
-column_median
-
-abs(column_mean - column_median)
+difference <- abs(column_mean - column_median)
+list(mean = column_mean, median = column_median, difference = difference)
 
 ```
 
 ```{r exercise1-check}
 grade_this_code(
-  correct = c(gradethis::random_praise(), "Use the `mean()` and `median()` functions to calculate the mean and median of a specific column in the example data frame, respectively. To compare these two statistics, the absolute difference between them can be found using the `abs()` function. This comparison can help in understanding the distribution of the data. ")
+  correct = c(gradethis::random_praise(), "Use the `mean()` and `median()` functions to calculate the mean and median of a specific column in the example data frame, respectively. To compare these two statistics, the absolute difference between them can be found using the `abs()` function. This comparison can help in understanding the distribution of the data, especially in identifying skewness. ")
 )
 ```
 
@@ -373,7 +368,8 @@ Use the Shapiro-Wilk normality test to see if a specific column in the example d
 ```
 
 ```{r exercise2-solution}
-shapiro.test(data$column)
+test_results <- shapiro.test(data$column)
+test_results
 
 ```
 
@@ -393,7 +389,7 @@ Create a correlation matrix of the numeric columns in the built-in `airquality` 
 ```
 
 ```{r exercise3-hint-1}
-# First, load the `airquality` data frame into your R session using `data("airquality")`.
+# First, load the `airquality` data frame into your R session using `data("aircount")`.
 ```
 
 ```{r exercise3-hint-2}
@@ -406,10 +402,8 @@ Create a correlation matrix of the numeric columns in the built-in `airquality` 
 
 ```{r exercise3-solution}
 data("airquality")
-
-cor(airquality[, c("Ozone", "Solar.R", "Wind", "Temp")],
-    use = "complete.obs",
-    method = "pearson")
+correlation_matrix <- cor(airquality[, c("Ozone", "Solar.R", "Wind", "Temp")], use = "complete.obs")
+correlation_matrix
 
 ```
 

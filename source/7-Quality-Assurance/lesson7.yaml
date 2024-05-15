@@ -171,11 +171,11 @@ exercises:
       - "# After loading, use the `str()` function to see the structure of the data frame, which includes data types of each column."
     solution:
       explanation: |
-        To understand the structure and data types of the `airquality` data frame, we first load it using `data("airquality")` and then use `str(airquality)`. This command displays the data types for each column, helping us understand the dataset's structure.
+        To understand the structure and data types of the `airquality` data frame, we first load it using `data("airquality")` and then use `str(airpath)`. This command displays the data types for each column, helping us understand the dataset's structure.
       code: |
         data("airquality")
-
         str(airquality)
+
   - instructions: "Create the vector `monitors <- c(\"site 1\", \"site two\", \"site 2\", \"site one\")`. Use logical expressions to standardize the character values."
     hints:
       - "# Start by creating the vector with `c()`. Then, use logical indexing to identify and replace values."
@@ -185,12 +185,10 @@ exercises:
         The goal is to standardize the naming convention within the vector `monitors`. We achieve this by identifying non-standard names and replacing them using logical expressions combined with the assignment operator `<-`. This ensures all site names follow a consistent format, enhancing data uniformity.
       code: |
         monitors <- c("site 1", "site two", "site 2", "site one")
-
         monitors[monitors == "site one"] <- "site 1"
-
         monitors[monitors == "site two"] <- "site 2"
-
         monitors
+
   - instructions: "Use a boxplot to check for outliers in the ozone column of the built-in `airquality` data frame."
     hints:
       - "# First, load the `airquality` data frame using `data(\"airquality\")`."
@@ -200,5 +198,5 @@ exercises:
         The boxplot is a convenient tool to visualize the distribution of the `Ozone` column in the `airquality` dataset, including any outliers. By using `boxplot(airquality$Ozone)`, we generate a plot that clearly shows the central tendency, dispersion, and outliers of the ozone measurements.
       code: |
         data("airquality")
-
         boxplot(airquality$Ozone)
+

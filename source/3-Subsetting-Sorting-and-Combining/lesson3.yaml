@@ -652,8 +652,8 @@ exercises:
         Use the `data()` function to load the data frame into your R session and a vector from 1 to 10 in the first position of the brackets `[ , ]` to select the first 10 rows. This will allow you to work directly with the `chicago_air` dataset and easily access its initial rows for inspection.
       code: |
         data("chicago_air")
-
         chicago_air[1:10, ]
+
   - instructions: "Use the `filter()` function to subset the `chicago_air` data frame to values where ozone is above 0.060 ppm and the temperature is above 90 degrees."
     hints:
       - "# Make sure the `dplyr` package is loaded with `library(dplyr)` before using `filter()`."
@@ -665,8 +665,8 @@ exercises:
       code: |
         library(dplyr)
         data(chicago_air)
+        filter(chicago_air, ozone > 0.06, temp > 90)
 
-        filter(chicago_air, ozone > .06, temp > 90)
   - instructions: "Use the `arrange()` function to sort the `chicago_air` data frame in descending chronological order."
     hints:
       - "# Use `library(dplyr)` to load the package required for `arrange()`."
@@ -676,18 +676,21 @@ exercises:
       explanation: |
         Wrap the `date` column in the `desc()` function to sort the `chicago_air` data frame in descending chronological order. This method is useful for analyzing the dataset from the most recent to the earliest date, allowing for an intuitive understanding of trends over time.
       code: |
+        library(dplyr)
         data(chicago_air)
-
         descending <- arrange(chicago_air, desc(date))
-
         head(descending)
+
   - instructions: "Create two data frames using the `data.frame()` function. The first data frame should have the columns `monitor_id` and `state` and at least one record. The second data frame should have the same column names and at least one record. Use the `dplyr` function `bind_rows()` to combine the two data frames."
+    hints:
+      - "# Use the `data.frame()` function to create each data frame with the specified columns."
+      - "# Make sure each data frame contains at least one record."
+      - "# Combine the data frames using `bind_rows()` from the `dplyr` package."
     solution:
+      explanation: |
+        The `data.frame()` function is used to create two individual data frames. By using `bind_rows()` from the `dplyr` package, these two data frames are combined into one, providing a practical example of how to concatenate data frames vertically.
       code: |
         library(dplyr)
-
         monitors_1 <- data.frame(monitor_id = c(1, 2, 3), state = c("IL", "IN", "WI"))
-
         monitors_2 <- data.frame(monitor_id = c(4, 5, 6), state = c("MI", "OH", "MN"))
-
         bind_rows(monitors_1, monitors_2)

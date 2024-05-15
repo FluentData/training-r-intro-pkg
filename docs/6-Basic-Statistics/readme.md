@@ -335,19 +335,14 @@ Find the mean and median of a specific column in the example data frame and comp
 
 #### Solution
 
-Use the `mean()` and `median()` functions to calculate the mean and median of a specific column in the example data frame, respectively. To compare these two statistics, the absolute difference between them can be found using the `abs()` function. This comparison can help in understanding the distribution of the data.
+Use the `mean()` and `median()` functions to calculate the mean and median of a specific column in the example data frame, respectively. To compare these two statistics, the absolute difference between them can be found using the `abs()` function. This comparison can help in understanding the distribution of the data, especially in identifying skewness.
 
 
 ```r
 column_mean <- mean(data$column)
-
-column_mean
-
 column_median <- median(data$column)
-
-column_median
-
-abs(column_mean - column_median)
+difference <- abs(column_mean - column_median)
+list(mean = column_mean, median = column_median, difference = difference)
 
 ```
 
@@ -386,7 +381,8 @@ The Shapiro-Wilk normality test, applied with the `shapiro.test()` function, che
 
 
 ```r
-shapiro.test(data$column)
+test_results <- shapiro.test(data$column)
+test_results
 
 ```
 
@@ -401,7 +397,7 @@ Create a correlation matrix of the numeric columns in the built-in `airquality` 
 
 <details><summary>Click for Hint</summary>
 
-> # First, load the `airquality` data frame into your R session using `data("airquality")`.
+> # First, load the `airquality` data frame into your R session using `data("aircount")`.
 
 </details>
 
@@ -426,10 +422,8 @@ To explore the relationships among the numeric variables in the `airquality` dat
 
 ```r
 data("airquality")
-
-cor(airquality[, c("Ozone", "Solar.R", "Wind", "Temp")],
-    use = "complete.obs",
-    method = "pearson")
+correlation_matrix <- cor(airquality[, c("Ozone", "Solar.R", "Wind", "Temp")], use = "complete.obs")
+correlation_matrix
 
 ```
 

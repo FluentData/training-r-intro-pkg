@@ -485,21 +485,21 @@ exercises:
         To make a scatter plot in R, the `plot()` function can be used by specifying the x-axis and y-axis variables. Here, barometric pressure is set as the x-axis and ozone as the y-axis. The `xlab` and `ylab` parameters are used to provide descriptive labels for the axes, making the plot easier to understand.
       code: |
         plot(x = chicago_air$pressure, y = chicago_air$ozone,
-             xlab = "Barometric Pressure",
-             ylab = "Ozone")
+             xlab = "Barometric Pressure", ylab = "Ozone")
+
   - instructions: "Use the `plot()` function to make a line plot of temperature over time from the `chicago_air` data frame. Make sure the `date` column has the `Date` class and the line is red."
     hints:
       - "# First, check if the `date` column is of the `Date` class using `class(chicago_air$date)`. If it's not, convert it using `as.Date()`."
-      - "# To make a line plot, set the `type` parameter in the `plot()` function to `'l'` for line."
+      - "# To make a line plot, set the `type` parameter in the `plot()` function to 'l' for line."
       - "# Use the `col` parameter to set the color of the line to red."
     solution:
       explanation: |
-        To make a line plot of temperature over time, it's crucial to ensure that the date column is correctly formatted as a `Date` class. If it's not, we can convert it using `as.Date()`. In the `plot()` function, setting `type` to `"l"` creates a line plot, and `col` to "red" specifies the color of the line. This plot helps in visualizing temperature changes over time.
+        To make a line plot of temperature over time, it's crucial to ensure that the date column is correctly formatted as a `Date` class. If it's not, we can convert it using `as.Date()`. In the `plot()` function, setting `type` to "l" creates a line plot, and `col` to "red" specifies the color of the line. This plot helps in visualizing temperature changes over time.
       code: |
         # if date column is not a Date class
         chicago_air$date <- as.Date(chicago_air$date)
+        plot(x = chicago_air$date, y = chicago81_air$temp, type = "l", col = "red")
 
-        plot(x = chicago_air$date, y = chicago_air$temp, type = "l", col = "red")
   - instructions: "With `ggplot2`, make box plots of ozone from the `chicago_air` data frame. Use the `weekday` column as a factor on the y-axis."
     hints:
       - "# Load the `ggplot2` package using `library(ggplot2)`."
@@ -513,6 +513,7 @@ exercises:
         ggplot(chicago_air, aes(x = ozone, y = factor(weekday))) +
           geom_boxplot() +
           facet_wrap(~month)
+
   - instructions: "Use `ggplot2` to plot histograms of barometric pressure values for each month from the `chicago_air` data frame."
     hints:
       - "# Load the `ggplot2` package with `library(ggplot2)` if you haven't already."
@@ -526,6 +527,7 @@ exercises:
         ggplot(chicago_air, aes(pressure)) +
           geom_histogram() +
           facet_wrap(~month)
+
   - instructions: "__CHALLENGING EXERCISE!__ Use `ggplot2` and the data frame `ertac_egu_projections` from the `region5air` package to make a map of facility locations in the CONUS ERTAC region. "
     hints:
       - "# Use the `data()` function to load the `ertac_egu_projections` data frame and ?ertac_egu_projections to see the documentation. Which columns would be useful for the x and y coordinates?"
@@ -539,12 +541,10 @@ exercises:
         library(ggplot2)
         library(dplyr)
         library(maps)
-
         data(ertac_egu_projections)
         # filter to CONUS region
         conus <- filter(ertac_egu_projections, ertac_region == "CONUS")
         states_map <- map_data("state")
-
         ggplot() +
           geom_polygon(data = states_map, aes(x = long, y = lat, group = group),
                        fill = "white", color = "black") +
@@ -553,5 +553,3 @@ exercises:
           coord_fixed(1.3) +
           labs(title = "Map of the US with Points", x = "Longitude", y = "Latitude") +
           theme_minimal()
-
-

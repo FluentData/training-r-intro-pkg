@@ -498,48 +498,52 @@ content:
               emissions <- read_excel("./data/emissions_IL_2022.xlsx", sheet = "UNIT_DATA", skip = 6)
               head(emissions)
 exercises:
-  - instructions: "Use the `seq()` function to create a vector from 1 to 20 by 2. For help with the parameters, run `?seq()` in the console and consult the documentation."
-    hints:
-      - "# To create a sequence, use the `seq()` function with `from`, `to`, and `by` parameters."
-      - "# `from` specifies the starting number, `to` the ending number, and `by` how much to increment. For example, `seq(from = 1, to = 20, by = 2)`."
-    solution:
-      explanation: |
-        In the `seq()` function, set `by = 2` to increment the sequence by 2, starting from 1 and ending at 20. This creates a sequence of all odd numbers from 1 to 19.
-      code: |
-        seq(from = 1, to = 20, by = 2)
-  - instructions: "Use the `round( )` to round the number 13.5678 to two digits after the decimal point."
-    hints:
-      - "# Use the `round()` function with the number as the first argument and the number of decimal places as the second argument."
-      - "# To round 13.5678 to two decimal places, use `round(13.5678, digits = 2)`."
-    solution:
-      explanation: |
-        Set the `digits` parameter to 2 in the `round()` function to round the number to two decimal places. This changes 13.5678 to 13.57.
-      code: |
-        round(13.5678, digits=2)
-  - instructions: "Concatenate the strings \"Hello\" and \"R\" using the `paste()` function."
-    hints:
-      - "# Use the `paste()` function to combine two or more strings. The strings are separated by a space by default."
-      - "# For example, to concatenate \"Hello\" and \"R\", use `paste(\"Hello\", \"R\")`."
-    solution:
-      explanation: |
-        Using the `paste()` function, we can concatenate "Hello" and "R" into a single string "Hello R". By default, `paste()` separates the strings with a space.
-      code: |
-        paste("Hello", "R")
-  - instructions: "Sum the numbers 1 through 10 using the `sum()` function."
-    hints:
-      - "# Create a sequence of numbers using `:` operator. For example, `1:10` creates numbers from 1 to 10."
-      - "# Then, use the `sum()` function with the sequence to calculate the total sum."
-    solution:
-      explanation: |
-        By using the `:` operator, we create a sequence of integers from 1 to 10. Placing this sequence inside the `sum()` function calculates the total sum of these numbers.
-      code: |
-        sum(1:10)
-  - instructions: "Read in the first 10 rows of the `chicago_daily.csv` file. file is located at ./data/chicago_daily.csv."
-    hints:
-      - "# Use the `read.csv()` function to read in CSV files. Specify the file path and use `nrows` to limit the number of rows read."
-      - "# To read the first 10 rows, set `nrows = 10` in the `read.csv()` function."
-    solution:
-      explanation: |
-        Use the `read.csv()` function with the `nrows` parameter set to 10, we can read only the first 10 rows of the file.
-      code: |
-        read.csv("chicago_daily.csv", nrows = 10)
+- instructions: "Use the `seq()` function to create a vector from 1 to 20 by 2. For help with the parameters, run `?seq()` in the console and consult the documentation."
+  hints:
+    - "# To create a sequence, use the `seq()` function with `from`, `to`, and `by` parameters."
+    - "# `from` specifies the starting number, `to` the ending number, and `by` how much to increment. For example, `seq(from = 1, to = 20, by = 2)`."
+  solution:
+    explanation: |
+      In the `seq()` function, set `by = 2` to increment the sequence by 2, starting from 1 and ending at 20. This creates a sequence of all odd numbers from 1 to 19.
+    code: |
+      seq(from = 1, to = 20, by = 2)
+
+- instructions: "Use the `round()` to round the number 13.5678 to two digits after the decimal point."
+  hints:
+    - "# Use the `round()` function with the number as the first argument and the number of decimal places as the second argument."
+    - "# To round 13.5678 to two decimal places, use `round(13.5678, digits = 2)`."
+  solution:
+    explanation: |
+      Set the `digits` parameter to 2 in the `round()` function to round the number to two decimal places. This changes 13.5678 to 13.57.
+    code: |
+      round(13.5678, digits=2)
+
+- instructions: "Concatenate the strings \"Hello\" and \"R\" using the `paste()` function."
+  hints:
+    - "# Use the `paste()` function to combine two or more strings. The strings are separated by a space by default."
+    - "# For example, to concatenate \"Hello\" and \"R\", use `paste(\"Hello\", \"R\")`."
+  solution:
+    explanation: |
+      Using the `paste()` function, we can concatenate "Hello" and "R" into a single string "Hello R". By default, `paste()` separates the strings with a space.
+    code: |
+      paste("Hello", "R")
+
+- instructions: "Sum the numbers 1 through 10 using the `sum()` function."
+  hints:
+    - "# Create a sequence of numbers using `:` operator. For example, `1:10` creates numbers from 1 to 10."
+    - "# Then, use the `sum()` function with the sequence to calculate the total sum."
+  solution:
+    explanation: |
+      By using the `:` operator, we create a sequence of integers from 1 to 10. Placing this sequence inside the `sum()` function calculates the total sum of these numbers.
+    code: |
+      sum(1:10)
+
+- instructions: "Read in the first 10 rows of the `chicago_daily.csv` file. file is located at ./data/chicago_daily.csv."
+  hints:
+    - "# Use the `read.csv()` function to read in CSV files. Specify the file path and use `nrows` to limit the number of rows read."
+    - "# To read the first 10 rows, set `nrows = 10` in the `read.csv()` function."
+  solution:
+    explanation: |
+      Use the `read.csv()` function with the `nrows` parameter set to 10, we can read only the first 10 rows of the file.
+    code: |
+      read.csv("./data/chicago_daily.csv", nrows = 10)
