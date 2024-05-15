@@ -150,12 +150,11 @@ Find the data types for the built-in `airquality` data frame.
 
 #### Solution
 
-To understand the structure and data types of the `airquality` data frame, we first load it using `data("airquality")` and then use `str(airquality)`. This command displays the data types for each column, helping us understand the dataset's structure.
+To understand the structure and data types of the `airquality` data frame, we first load it using `data("airquality")` and then use `str(airpath)`. This command displays the data types for each column, helping us understand the dataset's structure.
 
 
 ```r
 data("airquality")
-
 str(airquality)
 
 ```
@@ -190,11 +189,8 @@ The goal is to standardize the naming convention within the vector `monitors`. W
 
 ```r
 monitors <- c("site 1", "site two", "site 2", "site one")
-
 monitors[monitors == "site one"] <- "site 1"
-
 monitors[monitors == "site two"] <- "site 2"
-
 monitors
 
 ```
@@ -229,8 +225,8 @@ The boxplot is a convenient tool to visualize the distribution of the `Ozone` co
 
 ```r
 data("airquality")
-
 boxplot(airquality$Ozone)
+
 ```
 
 </details>

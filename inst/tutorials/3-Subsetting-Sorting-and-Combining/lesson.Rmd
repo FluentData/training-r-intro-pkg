@@ -162,7 +162,7 @@ my_data[3, 2]
 
 ```
 
-We can also access data from a vector using the same indexing idea. In this case, you don<U+2019>t need the comma to separate the rows and columns since you are accessing one dimensional data. Below is a vector of numbers.
+We can also access data from a vector using the same indexing idea. In this case, you don’t need the comma to separate the rows and columns since you are accessing one dimensional data. Below is a vector of numbers.
 
 
 ```{r ex-81d6c088db05, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Vector Indexing Example'}
@@ -531,7 +531,6 @@ Load the `chicago_air` dataset from this package and display the first 10 rows o
 
 ```{r exercise1-solution}
 data("chicago_air")
-
 chicago_air[1:10, ]
 
 ```
@@ -566,8 +565,7 @@ Use the `filter()` function to subset the `chicago_air` data frame to values whe
 ```{r exercise2-solution}
 library(dplyr)
 data(chicago_air)
-
-filter(chicago_air, ozone > .06, temp > 90)
+filter(chicago_air, ozone > 0.06, temp > 90)
 
 ```
 
@@ -599,10 +597,9 @@ Use the `arrange()` function to sort the `chicago_air` data frame in descending 
 ```
 
 ```{r exercise3-solution}
+library(dplyr)
 data(chicago_air)
-
 descending <- arrange(chicago_air, desc(date))
-
 head(descending)
 
 ```
@@ -622,19 +619,28 @@ Create two data frames using the `data.frame()` function. The first data frame s
 # Your code here
 ```
 
+```{r exercise4-hint-1}
+# Use the `data.frame()` function to create each data frame with the specified columns.
+```
+
+```{r exercise4-hint-2}
+# Make sure each data frame contains at least one record.
+```
+
+```{r exercise4-hint-3}
+# Combine the data frames using `bind_rows()` from the `dplyr` package.
+```
+
 ```{r exercise4-solution}
 library(dplyr)
-
 monitors_1 <- data.frame(monitor_id = c(1, 2, 3), state = c("IL", "IN", "WI"))
-
 monitors_2 <- data.frame(monitor_id = c(4, 5, 6), state = c("MI", "OH", "MN"))
-
 bind_rows(monitors_1, monitors_2)
 ```
 
 ```{r exercise4-check}
 grade_this_code(
-  correct = c(gradethis::random_praise(), "")
+  correct = c(gradethis::random_praise(), "The `data.frame()` function is used to create two individual data frames. By using `bind_rows()` from the `dplyr` package, these two data frames are combined into one, providing a practical example of how to concatenate data frames vertically. ")
 )
 ```
 

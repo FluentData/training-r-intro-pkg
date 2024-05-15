@@ -492,6 +492,7 @@ exercises:
         ppm_to_ppb <- function(value) {
           value * 1000
         }
+
   - instructions: "Write a function named `check_value` that prints \"warning\" if a value is above a threshold, and \"OK\" if it's below. Make the threshold an argument in the function."
     hints:
       - "# Define the function `check_value` with two arguments: `value` and `threshold`."
@@ -508,6 +509,7 @@ exercises:
             print("OK")
           }
         }
+
   - instructions: "Use the `for()` function to loop through the `temp` column of the data from this package and print any value that is above 90 degrees."
     hints:
       - "# Access the `temp` column of the data frame within the loop."
@@ -523,6 +525,7 @@ exercises:
             print(i)
           }
         }
+
   - instructions: "Use the `apply()` function to create a vector of the mean values from the numeric columns in the data from this package."
     hints:
       - "# First, subset the data frame to include only the numeric columns you wish to analyze."

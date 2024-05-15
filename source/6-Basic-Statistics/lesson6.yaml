@@ -389,17 +389,13 @@ exercises:
       - "# To compare the mean and median, calculate the absolute difference between them using `abs(mean - median)`."
     solution:
       explanation: |
-        Use the `mean()` and `median()` functions to calculate the mean and median of a specific column in the example data frame, respectively. To compare these two statistics, the absolute difference between them can be found using the `abs()` function. This comparison can help in understanding the distribution of the data.
+        Use the `mean()` and `median()` functions to calculate the mean and median of a specific column in the example data frame, respectively. To compare these two statistics, the absolute difference between them can be found using the `abs()` function. This comparison can help in understanding the distribution of the data, especially in identifying skewness.
       code: |
         column_mean <- mean(data$column)
-
-        column_mean
-
         column_median <- median(data$column)
+        difference <- abs(column_mean - column_median)
+        list(mean = column_mean, median = column_median, difference = difference)
 
-        column_median
-
-        abs(column_mean - column_median)
   - instructions: "Use the Shapiro-Wilk normality test to see if a specific column in the example data frame is normally distributed."
     hints:
       - "# To perform a Shapiro-Wilk test, use the `shapiro.test()` function on the column of interest."
@@ -409,10 +405,12 @@ exercises:
       explanation: |
         The Shapiro-Wilk normality test, applied with the `shapiro.test()` function, checks the hypothesis that a sample comes from a normally distributed population. In this case, applying it to a specific column in the example data frame provides a p-value, which, if above .05, suggests that the data can be considered normally distributed.
       code: |
-        shapiro.test(data$column)
+        test_results <- shapiro.test(data$column)
+        test_results
+
   - instructions: "Create a correlation matrix of the numeric columns in the built-in `airquality` data frame. Use `data(\"airquality\")` to load the data frame."
     hints:
-      - "# First, load the `airquality` data frame into your R session using `data(\"airquality\")`."
+      - "# First, load the `airquality` data frame into your R session using `data(\"aircount\")`."
       - "# Use the `cor()` function to calculate correlations among numeric columns. For selected columns, use `data_frame[, c(\"Column1\", \"Column2\")]`."
       - "# To handle missing values, add the argument `use = \"complete.obs\"` within the `cor()` function."
     solution:
@@ -420,10 +418,9 @@ exercises:
         To explore the relationships among the numeric variables in the `airquality` data frame, a correlation matrix can be generated using the `cor()` function. This matrix helps in identifying potential relationships between variables like Ozone, Solar.R, Wind, and Temp, considering only rows with complete observations.
       code: |
         data("airquality")
+        correlation_matrix <- cor(airquality[, c("Ozone", "Solar.R", "Wind", "Temp")], use = "complete.obs")
+        correlation_matrix
 
-        cor(airquality[, c("Ozone", "Solar.R", "Wind", "Temp")],
-            use = "complete.obs",
-            method = "pearson")
   - instructions: "Create pairwise plots for all of the numeric columns in the `airquality` data frame. Have the lower-panel plots generate a smooth line representing relationship between the two variables."
     hints:
       - "# Use the `pairs()` function to create pairwise plots for selected numeric columns in a data frame."

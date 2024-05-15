@@ -239,7 +239,7 @@ mean(seq(from=1, to=10, by=3))
 
 ```
 
-_Note: Typically you don<U+2019>t want to have too many nested functions because it becomes difficult to read._
+_Note: Typically you don’t want to have too many nested functions because it becomes difficult to read._
 
 
 ## NA Values
@@ -322,7 +322,7 @@ serialCorrelationTest(x)
 Here is a link to a page that lists many useful packages for environmental data analysis: https://cran.r-project.org/web/views/Environmetrics.html
 
 
-Remember, when you close down RStudio, then start it up again, you don<U+2019>t have to download the package again. But you do have to use the `library()` function to load the package before you can use any function that's not in the R core functionality (this is very easy to forget).
+Remember, when you close down RStudio, then start it up again, you don’t have to download the package again. But you do have to use the `library()` function to load the package before you can use any function that's not in the R core functionality (this is very easy to forget).
 
 
 ## Importing Data
@@ -423,7 +423,7 @@ seq(from = 1, to = 20, by = 2)
 
 ### Exercise 2
 
-Use the `round( )` to round the number 13.5678 to two digits after the decimal point.
+Use the `round()` to round the number 13.5678 to two digits after the decimal point.
 
 <details><summary>Click for Hint</summary>
 
@@ -522,7 +522,7 @@ sum(1:10)
 
 ### Exercise 5
 
-Read in the first 10 rows of the `chicago_daily.csv` file [here](https://github.com/LADCO/training-r-intro/blob/main/data/chicago_daily.csv).
+Read in the first 10 rows of the `chicago_daily.csv` file. file is located at ./data/chicago_daily.csv.
 
 <details><summary>Click for Hint</summary>
 
@@ -540,11 +540,11 @@ Read in the first 10 rows of the `chicago_daily.csv` file [here](https://github.
 
 #### Solution
 
-First, ensure the `chicago_daily.csv` file is saved in your working directory. Then, by using the `read.csv()` function with the `nrows` parameter set to 10, we can read only the first 10 rows of the file.
+Use the `read.csv()` function with the `nrows` parameter set to 10, we can read only the first 10 rows of the file.
 
 
 ```r
-read.csv("chicago_daily.csv", nrows = 10)
+read.csv("./data/chicago_daily.csv", nrows = 10)
 ```
 
 </details>

@@ -161,7 +161,7 @@ my_data[3, 2]
 
 ```
 
-We can also access data from a vector using the same indexing idea. In this case, you don<U+2019>t need the comma to separate the rows and columns since you are accessing one dimensional data. Below is a vector of numbers.
+We can also access data from a vector using the same indexing idea. In this case, you don’t need the comma to separate the rows and columns since you are accessing one dimensional data. Below is a vector of numbers.
 
 
 ```{r ex-81d6c088db05, exercise = FALSE, exercise.eval = TRUE, exercise.cap = 'Vector Indexing Example'}
@@ -538,7 +538,6 @@ Use the `data()` function to load the data frame into your R session and a vecto
 
 ```r
 data("chicago_air")
-
 chicago_air[1:10, ]
 
 ```
@@ -580,8 +579,7 @@ Load the `dplyr` package using `library()` and use logical expressions to get re
 ```r
 library(dplyr)
 data(chicago_air)
-
-filter(chicago_air, ozone > .06, temp > 90)
+filter(chicago_air, ozone > 0.06, temp > 90)
 
 ```
 
@@ -620,10 +618,9 @@ Wrap the `date` column in the `desc()` function to sort the `chicago_air` data f
 
 
 ```r
+library(dplyr)
 data(chicago_air)
-
 descending <- arrange(chicago_air, desc(date))
-
 head(descending)
 
 ```
@@ -637,19 +634,35 @@ head(descending)
 
 Create two data frames using the `data.frame()` function. The first data frame should have the columns `monitor_id` and `state` and at least one record. The second data frame should have the same column names and at least one record. Use the `dplyr` function `bind_rows()` to combine the two data frames.
 
+<details><summary>Click for Hint</summary>
+
+> # Use the `data.frame()` function to create each data frame with the specified columns.
+
+</details>
+
+<details><summary>Click for Hint</summary>
+
+> # Make sure each data frame contains at least one record.
+
+</details>
+
+<details><summary>Click for Hint</summary>
+
+> # Combine the data frames using `bind_rows()` from the `dplyr` package.
+
+</details>
+
 <details><summary>Click for Solution</summary>
 
 #### Solution
 
+The `data.frame()` function is used to create two individual data frames. By using `bind_rows()` from the `dplyr` package, these two data frames are combined into one, providing a practical example of how to concatenate data frames vertically.
 
 
 ```r
 library(dplyr)
-
 monitors_1 <- data.frame(monitor_id = c(1, 2, 3), state = c("IL", "IN", "WI"))
-
 monitors_2 <- data.frame(monitor_id = c(4, 5, 6), state = c("MI", "OH", "MN"))
-
 bind_rows(monitors_1, monitors_2)
 ```
 

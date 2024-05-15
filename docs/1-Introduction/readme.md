@@ -125,7 +125,7 @@ about what variables you're working with during your R session.
 
 ## Basic Math
 
-Open up a script if you haven't already (<U+201C>File<U+201D> -> <U+201C>New File<U+201D> -> <U+201C>R Script<U+201D>). Try some math by either typing the lines below or copying and pasting
+Open up a script if you haven't already (“File” -> “New File” -> “R Script”). Try some math by either typing the lines below or copying and pasting
 the lines into your script.
 
 

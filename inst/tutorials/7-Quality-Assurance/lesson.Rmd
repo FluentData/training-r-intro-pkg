@@ -154,14 +154,13 @@ Find the data types for the built-in `airquality` data frame.
 
 ```{r exercise1-solution}
 data("airquality")
-
 str(airquality)
 
 ```
 
 ```{r exercise1-check}
 grade_this_code(
-  correct = c(gradethis::random_praise(), "To understand the structure and data types of the `airquality` data frame, we first load it using `data("airquality")` and then use `str(airquality)`. This command displays the data types for each column, helping us understand the dataset's structure. ")
+  correct = c(gradethis::random_praise(), "To understand the structure and data types of the `airquality` data frame, we first load it using `data("airquality")` and then use `str(airpath)`. This command displays the data types for each column, helping us understand the dataset's structure. ")
 )
 ```
 
@@ -184,11 +183,8 @@ Create the vector `monitors <- c("site 1", "site two", "site 2", "site one")`. U
 
 ```{r exercise2-solution}
 monitors <- c("site 1", "site two", "site 2", "site one")
-
 monitors[monitors == "site one"] <- "site 1"
-
 monitors[monitors == "site two"] <- "site 2"
-
 monitors
 
 ```
@@ -218,8 +214,8 @@ Use a boxplot to check for outliers in the ozone column of the built-in `airqual
 
 ```{r exercise3-solution}
 data("airquality")
-
 boxplot(airquality$Ozone)
+
 ```
 
 ```{r exercise3-check}
